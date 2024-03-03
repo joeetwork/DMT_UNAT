@@ -132,22 +132,22 @@
       .reverse();
     let svgs = [];
 
-    const eyeLidColor = () => {
-      if (lookType === "cyclops") {
-        return "#35491B";
-      }
-
-      if (lookType === "robot") {
-        return "#767679";
-      }
-
-      if (lookType === "alien") {
-        return "#1A7D84";
-      }
-    };
-
     //eyes
-    if (originalString.length >= 5) {
+    if (originalString.length >= 0) {
+      const eyeLidColor = () => {
+        if (lookType === "cyclops") {
+          return "#35491B";
+        }
+
+        if (lookType === "robot") {
+          return "#767679";
+        }
+
+        if (lookType === "alien") {
+          return "#1A7D84";
+        }
+      };
+
       //pupil colour
       const colorForFirstDigit = colorMap[digits[0]];
 
@@ -216,20 +216,20 @@
         0: fiveEyes,
       };
 
-      svgs.push(`
-
-               ${eyeType[digits[4]]}
-
-        `);
+      svgs.push(
+        `${originalString.length >= 5 ? eyeType[digits[4]] : singleEye}`
+      );
     }
-    //mouth
-    if (originalString.length >= 6) {
-      //mouth color
-      const colorForSixthDigit = colorMap[digits[5]] || "transparent";
 
-      //tooth colour
-      const colorForFourthDigit = colorMap2[digits[3]] || "transparent";
-      svgs.push(`
+    //mouth
+    //mouth color
+    const colorForSixthDigit =
+      originalString.length >= 6 ? colorMap[digits[5]] : "black";
+
+    //tooth colour
+    const colorForFourthDigit =
+      originalString.length >= 4 ? colorMap2[digits[3]] : "#D9D9D9";
+    svgs.push(`
   <div style="position: absolute; top: 281px; left:146px; z-index-1">
     <svg width="150" height="75" viewBox="0 0 190 162" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M190 81C190 70.3629 187.543 59.83 182.769 50.0026C177.994 40.1753 170.997 31.2459 162.175 23.7243C153.354 16.2028 142.881 10.2364 131.355 6.16576C119.829 2.09513 107.476 -4.64961e-07 95 0C82.5244 4.64961e-07 70.171 2.09513 58.6451 6.16576C47.1191 10.2364 36.6464 16.2028 27.8249 23.7244C19.0033 31.2459 12.0056 40.1753 7.23144 50.0026C2.45725 59.83 -1.09065e-06 70.3629 0 81L95 81H190Z" fill="${colorForSixthDigit}"/>
@@ -238,7 +238,6 @@
     </svg>
   </div>
 `);
-    }
 
     //background
     if (originalString.length >= 2) {
@@ -362,7 +361,7 @@
   }
 
   function displaycatnip() {
-    return `<div style="position: absolute; top: 293px; left: 356px;">
+    return `<div style="position: absolute; top: 300px; left: 305px;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="18" y="18" width="18" height="18" transform="rotate(-180 18 18)" fill="#00B127"/>
         </svg>
@@ -375,7 +374,7 @@
   }
 
   function displaycig(number) {
-    return `<div style="position: absolute; top: 219px; left: 302px;">
+    return `<div style="position: absolute; top: 226px; left: 251px;">
         <svg width="72" height="92" viewBox="0 0 72 92" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="72" y="92" width="72" height="18" transform="rotate(-180 72 92)" fill="#FBFBFB"/>
             <rect x="72" y="56" width="18" height="56" transform="rotate(-180 72 56)" fill="#EEEEEE" fill-opacity="0.3"/>
