@@ -401,7 +401,7 @@
     return numberStr.includes("00");
   }
 
-  function displayEarringR(number) {
+  function displayTash(number) {
     return `<div style="position: absolute;     top: 269px;
     left: 175px;
     z-index: 1;">
@@ -1285,7 +1285,7 @@
     let catnip = c420(blockNumber) ? displaycatnip() : "";
     let cig = c4a0(blockNumber) ? displaycig() : "";
     let earring = c0(blockNumber) ? displayEarring() : "";
-    let earringR = c00(blockNumber) ? displayEarringR() : "";
+    let tash = c00(blockNumber) ? displayTash() : "";
     let alienEarring = c000(blockNumber) ? displayAlienEarring() : "";
     let alienEarringR = c0000(blockNumber) ? displayAlienEarringR() : "";
     let alienTiara = c00000(blockNumber) ? displayAlienTiara() : "";
@@ -1332,7 +1332,7 @@
     const htmlContent =
       earring +
       alienEarring +
-      earringR +
+      tash +
       alienEarringR +
       nightVision +
       lookHtml +
