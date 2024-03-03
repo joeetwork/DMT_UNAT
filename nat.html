@@ -260,7 +260,7 @@
     }
   }
 
-  function generateLookSvg(lookType) {
+  function generateLookSvg(blockNumber, lookType) {
     const originalString = blockNumber.toString();
     const digits = originalString
       .padStart(7, "0")
@@ -1128,7 +1128,7 @@ ${neck}
   //fixed elements
   function generateHtmlBasedOnBlockNumber(blockNumber) {
     const lookType = getLook(blockNumber);
-    const lookHtml = generateLookSvg(lookType);
+    const lookHtml = generateLookSvg(blockNumber, lookType);
     let catnip = c420(blockNumber) ? displaycatnip() : "";
     let cig = c4a0(blockNumber) ? displaycig() : "";
     let earring = c0(blockNumber) ? displayEarring() : "";
