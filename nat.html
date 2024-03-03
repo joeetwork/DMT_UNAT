@@ -1,22 +1,22 @@
 <div id="natcatviewer" width="256" height="256"></div>
-<input id="blk" type="number" style="display:none" />
+<input id="blk" type="number" style="display: none" />
 
 <script id="preview" mint="MINT_INSCRIPTION_ID">
-// Retrieve render area
-const root = document.getElementById('natcatviewer')
-root.parentElement.style.width = '100%'
-root.parentElement.style.height = '100%'
-root.parentElement.style.padding = '0px'
-root.parentElement.style.margin = '0px'
+  // Retrieve render area
+  const root = document.getElementById("natcatviewer");
+  root.parentElement.style.width = "100%";
+  root.parentElement.style.height = "100%";
+  root.parentElement.style.padding = "0px";
+  root.parentElement.style.margin = "0px";
 
-const orgWidth = 212
-const orgHeight = 212
-let scaleW = 1
-let scaleH = 1
-let blockNumber = '0'
+  const orgWidth = 212;
+  const orgHeight = 212;
+  let scaleW = 1;
+  let scaleH = 1;
+  let blockNumber = "0";
 
-// Define the color map with the given colors
-const colorMap = {
+  // Define the color map with the given colors
+  const colorMap = {
     1: "#6D2BF8", // Purple
     2: "#AF89FE", // Lilac
     3: "#FDF64D", // Yellow
@@ -27,10 +27,10 @@ const colorMap = {
     8: "#FF64C1", // Pink
     9: "#F95E3C", // Orange
     0: "#585663", // Grey
-}
+  };
 
-// Define the color map with the given colors
-const colorMap2 = {
+  // Define the color map with the given colors
+  const colorMap2 = {
     1: "#5922CD", // Purple
     2: "#9C6EFE", // Lilac
     3: "#FDE14D", // Yellow
@@ -41,10 +41,10 @@ const colorMap2 = {
     8: "#F343AC", // Pink
     9: "#EC5331", // Orange
     0: "#403F4A", // Dark Grey
-}
+  };
 
-// Define the color map with the given colors
-const colorMap3 = {
+  // Define the color map with the given colors
+  const colorMap3 = {
     1: "#A2FF00", // GITD
     2: "#49EFEF", // Alien
     3: "#FFB800", // Gold
@@ -54,112 +54,264 @@ const colorMap3 = {
     7: "#00B127", // Green
     8: "#2A32FF", // Blue
     9: "#A9A8D6", // Platinum
-}
+  };
 
-// Resize window
-window.addEventListener('resize', resize, true)
-resize()
+  // Resize window
+  window.addEventListener("resize", resize, true);
+  resize();
 
-// Retrieve content inscription id
-let mintText = document.getElementById('preview').getAttribute('mint')
+  // Retrieve content inscription id
+  let mintText = document.getElementById("preview").getAttribute("mint");
 
-// Check no mint provided
-if(mintText.includes('MINT_INSCRIPTION_ID')) {
-  let input = document.getElementById('blk')
-  input.style.display = 'block'
-  input.style.position = 'absolute'
-  input.style.fontSize = '20px'
-  input.style.margin = '20px'
-  input.style.top = '0'
-  input.value = blockNumber
-  input.addEventListener('input',(event) => {
-      blockNumber = input.value
-      update()
-  })
-  update()
-}
-// Mint was provided
-else {
-  const request = new XMLHttpRequest()
-  try {
-    request.open('GET', '/content/' + mintText)
-    request.responseType = 'text'
-    request.addEventListener('load', () => initialize(request.response))
-    request.addEventListener('error', () => console.error('XHR error'))
-    request.send()
-  } catch (error) {
-    console.error(`XHR error ${request.status}`)
+  // Check no mint provided
+  if (mintText.includes("MINT_INSCRIPTION_ID")) {
+    let input = document.getElementById("blk");
+    input.style.display = "block";
+    input.style.position = "absolute";
+    input.style.fontSize = "20px";
+    input.style.margin = "20px";
+    input.style.top = "0";
+    input.value = blockNumber;
+    input.addEventListener("input", (event) => {
+      blockNumber = input.value;
+      update();
+    });
+    update();
   }
-}
-
-function initialize(result) {
-  if(result) {
-    console.log('Result', result)
-    data = JSON.parse(result)
-    blockNumber = data.blk
-  }
-  update()
-}
-
-function resize(event) {
-  root.width = window.innerWidth
-  root.height = window.innerHeight
-  scaleW = root.width / orgWidth
-  scaleH = root.height / orgHeight
-  offsetX = 0
-  offsetY = 0
-  if(scaleH < scaleW) {
-    scaleW = scaleH
-    offsetX = (root.width - orgWidth * scaleW) / 2
-  }
+  // Mint was provided
   else {
-    scaleH = scaleW
-    offsetY = (root.height - orgHeight * scaleH) / 2
+    const request = new XMLHttpRequest();
+    try {
+      request.open("GET", "/content/" + mintText);
+      request.responseType = "text";
+      request.addEventListener("load", () => initialize(request.response));
+      request.addEventListener("error", () => console.error("XHR error"));
+      request.send();
+    } catch (error) {
+      console.error(`XHR error ${request.status}`);
+    }
   }
-  root.style.zoom = scaleW / 2
-  update('resize')
-}
 
-function update() {
-  generateHtmlBasedOnBlockNumber(blockNumber)
-}
-
-function generateSvgForDigits(blockNumber) {
-    const originalString = blockNumber.toString()
-    const digits = originalString.padStart(7, '0').split('').map(Number).reverse()
-    let svgs = []
-
-    //left ear
-    if (originalString.length >= 3) {
-        const colorForThirdDigit = colorMap2[digits[2]] || "transparent"
-        svgs.push(`
-            <div style="position: absolute; top: 59px; left: 105px;">
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.99383e-06 0L80 80L0 80L6.99383e-06 0Z" fill="${colorForThirdDigit}"/>
-                </svg>
-            </div>
-        `)
+  function initialize(result) {
+    if (result) {
+      console.log("Result", result);
+      data = JSON.parse(result);
+      blockNumber = data.blk;
     }
-    //right ear
-    if (originalString.length >= 4) {
-        const colorForFourthDigit = colorMap2[digits[3]] || "transparent"
-        svgs.push(`
-            <div style="position: absolute; top: 59px; left: 240px;">
-                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 80L80 8.58338e-06L80 80L0 80Z" fill="${colorForFourthDigit}"/>
-                </svg>
-            </div>
-        `)
+    update();
+  }
+
+  function resize(event) {
+    root.width = window.innerWidth;
+    root.height = window.innerHeight;
+    scaleW = root.width / orgWidth;
+    scaleH = root.height / orgHeight;
+    offsetX = 0;
+    offsetY = 0;
+    if (scaleH < scaleW) {
+      scaleW = scaleH;
+      offsetX = (root.width - orgWidth * scaleW) / 2;
+    } else {
+      scaleH = scaleW;
+      offsetY = (root.height - orgHeight * scaleH) / 2;
     }
-    //neck
+    root.style.zoom = scaleW / 2;
+    update("resize");
+  }
+
+  function update() {
+    generateHtmlBasedOnBlockNumber(blockNumber);
+  }
+
+  function generateSvgForDigits(blockNumber, lookType) {
+    const originalString = blockNumber.toString();
+    const digits = originalString
+      .padStart(7, "0")
+      .split("")
+      .map(Number)
+      .reverse();
+    let svgs = [];
+
+    const eyeLidColor = () => {
+      if (lookType === "cyclops") {
+        return "#206227";
+      }
+
+      if (lookType === "robot") {
+        return "#767679";
+      }
+
+      if (lookType === "alien") {
+        return "#1A7D84";
+      }
+    };
+
+    //eyes
+    if (originalString.length >= 5) {
+      //pupil colour
+      const colorForFirstDigit = colorMap[digits[0]];
+
+      const singleEye = ` <div style="position: absolute; top: 176px; left: 186px;"><svg width="60" height="80" viewBox="0 0 138 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="69" cy="71" rx="69" ry="67" fill="white"/>
+<ellipse cx="68.5" cy="71.5" rx="28.5" ry="29.5" fill="${colorForFirstDigit}"/>
+<path d="M0 72C1.59983e-06 52.9044 7.26962 34.5909 20.2096 21.0883C33.1496 7.58569 50.7001 2.04866e-06 69 0C87.2999 -2.04866e-06 104.85 7.58569 117.79 21.0883C130.73 34.5909 138 52.9044 138 72L69 72L0 72Z" fill="${eyeLidColor()}"/>
+</svg> </div>`;
+
+      const fourEyes = `<div style="position: absolute; top: 159px; left: 141px;"><svg width="150" height="100" viewBox="0 0 234 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="30" cy="95.5" rx="30" ry="30.5" fill="white"/>
+<ellipse cx="29.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
+<path d="M0 91.5C6.95579e-07 84.2065 3.16071 77.2118 8.7868 72.0546C14.4129 66.8973 22.0435 64 30 64C37.9565 64 45.5871 66.8973 51.2132 72.0546C56.8393 77.2118 60 84.2065 60 91.5L30 91.5L0 91.5Z" fill="${eyeLidColor()}"/>
+<ellipse cx="204" cy="95.5" rx="30" ry="30.5" fill="white"/>
+<ellipse cx="203.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
+<path d="M174 91.5C174 84.2065 177.161 77.2118 182.787 72.0546C188.413 66.8973 196.044 64 204 64C211.956 64 219.587 66.8973 225.213 72.0546C230.839 77.2118 234 84.2065 234 91.5L204 91.5L174 91.5Z" fill="${eyeLidColor()}"/>
+<ellipse cx="117" cy="127.5" rx="30" ry="30.5" fill="white"/>
+<ellipse cx="116.5" cy="128.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
+<path d="M87 123.5C87 116.207 90.1607 109.212 95.7868 104.055C101.413 98.8973 109.044 96 117 96C124.956 96 132.587 98.8973 138.213 104.055C143.839 109.212 147 116.207 147 123.5L117 123.5L87 123.5Z" fill="${eyeLidColor()}"/>
+<ellipse cx="116.848" cy="45.1111" rx="43.848" ry="42.5696" fill="white"/>
+<ellipse cx="116.53" cy="45.4288" rx="18.1111" ry="18.7433" fill="${colorForFirstDigit}"/>
+<path d="M73 45.7464C73 33.6137 77.6197 21.9779 85.8428 13.3988C94.0659 4.8197 105.219 1.30165e-06 116.848 0C128.477 -1.30165e-06 139.63 4.8197 147.853 13.3988C156.076 21.9779 160.696 33.6137 160.696 45.7464L116.848 45.7464L73 45.7464Z" fill="${eyeLidColor()}"/>
+</svg> </div>`;
+
+      const fiveEyes = `<div style="position: absolute; top: 159px; left: 123px;"><svg width="180" height="100" viewBox="0 0 419 138" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="109.263" cy="37.25" rx="34.263" ry="33.264" fill="white"/>
+<ellipse cx="109.015" cy="37.4982" rx="14.1521" ry="14.6461" fill="${colorForFirstDigit}"/>
+<path d="M75 37.7464C75 28.2659 78.6098 19.1736 85.0354 12.4699C91.461 5.76613 100.176 2 109.263 2C118.35 2 127.065 5.76613 133.491 12.4699C139.916 19.1736 143.526 28.2659 143.526 37.7464L109.263 37.7464L75 37.7464Z" fill="${eyeLidColor()}"/>
+<ellipse cx="29.9498" cy="76.8125" rx="29.9498" ry="29.0765" fill="white"/>
+<ellipse cx="29.7326" cy="77.0294" rx="12.3705" ry="12.8024" fill="${colorForFirstDigit}"/>
+<path d="M0 77.2464C6.94414e-07 68.9594 3.15541 61.0117 8.77208 55.1519C14.3887 49.292 22.0066 46 29.9497 46C37.8929 46 45.5108 49.292 51.1274 55.1519C56.7441 61.0117 59.8995 68.9594 59.8995 77.2464L29.9498 77.2464L0 77.2464Z" fill="${eyeLidColor()}"/>
+<ellipse cx="34.263" cy="33.264" rx="34.263" ry="33.264" transform="matrix(-1 0 0 1 343.526 1.98592)" fill="white"/>
+<ellipse cx="14.1521" cy="14.6461" rx="14.1521" ry="14.6461" transform="matrix(-1 0 0 1 323.663 20.8521)" fill="${colorForFirstDigit}"/>
+<path d="M343.526 35.7464C343.526 26.2659 339.916 17.1736 333.49 10.4699C327.065 3.76613 318.35 1.01711e-06 309.263 0C300.176 -1.01711e-06 291.461 3.76613 285.035 10.4699C278.61 17.1736 275 26.2659 275 35.7464L309.263 35.7464L343.526 35.7464Z" fill="${eyeLidColor()}"/>
+<ellipse cx="29.9498" cy="29.0765" rx="29.9498" ry="29.0765" transform="matrix(-1 0 0 1 418.526 45.7359)" fill="white"/>
+<ellipse cx="12.3705" cy="12.8024" rx="12.3705" ry="12.8024" transform="matrix(-1 0 0 1 401.164 62.2271)" fill="${colorForFirstDigit}"/>
+<path d="M418.526 75.2464C418.526 66.9594 415.37 59.0117 409.754 53.1519C404.137 47.292 396.519 44 388.576 44C380.633 44 373.015 47.292 367.398 53.1519C361.782 59.0117 358.626 66.9594 358.626 75.2464L388.576 75.2464L418.526 75.2464Z" fill="${eyeLidColor()}"/>
+<ellipse cx="215.848" cy="91.1111" rx="43.848" ry="42.5696" fill="white"/>
+<ellipse cx="215.53" cy="91.4288" rx="18.1111" ry="18.7433" fill="${colorForFirstDigit}"/>
+<path d="M172 91.7464C172 79.6137 176.62 67.9779 184.843 59.3988C193.066 50.8197 204.219 46 215.848 46C227.477 46 238.63 50.8197 246.853 59.3988C255.076 67.9779 259.696 79.6137 259.696 91.7464L215.848 91.7464L172 91.7464Z" fill="${eyeLidColor()}"/>
+</svg>   </div>`;
+
+      //using fifth digit
+      const eyeType = {
+        1: singleEye,
+        2: singleEye,
+        3: singleEye,
+        4: fiveEyes,
+        5: fourEyes,
+        6: fourEyes,
+        7: fourEyes,
+        8: fourEyes,
+        9: fiveEyes,
+        0: fiveEyes,
+      };
+
+      svgs.push(`
+
+               ${eyeType[digits[4]]}
+
+        `);
+    }
+    //mouth
+    if (originalString.length >= 6) {
+      //mouth color
+      const colorForSixthDigit = colorMap[digits[5]] || "transparent";
+
+      //tooth colour
+      const colorForFourthDigit = colorMap2[digits[3]] || "transparent";
+      svgs.push(`
+            <div style="position: absolute; top: 281px; left:146px; z-index-1">
+               
+<svg width="150" height="75" viewBox="0 0 190 162" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M190 81C190 70.3629 187.543 59.83 182.769 50.0026C177.994 40.1753 170.997 31.2459 162.175 23.7243C153.354 16.2028 142.881 10.2364 131.355 6.16576C119.829 2.09513 107.476 -4.64961e-07 95 0C82.5244 4.64961e-07 70.171 2.09513 58.6451 6.16576C47.1191 10.2364 36.6464 16.2028 27.8249 23.7244C19.0033 31.2459 12.0056 40.1753 7.23144 50.0026C2.45725 59.83 -1.09065e-06 70.3629 0 81L95 81H190Z" fill="${colorForSixthDigit}"/>
+<path d="M43.6306 44.2193L57.8778 81.1561L28.4354 80.7763L43.6306 44.2193Z" fill="${colorForFourthDigit}"/>
+<path d="M138 47.0444L152.811 80.8308L123.366 80.9078L138 47.0444Z" fill="#D9D9D9"/>
+</svg>
+            </div>
+
+        `);
+    }
+
+    //background
     if (originalString.length >= 2) {
-        const colorForSecondDigit = colorMap2[digits[1]] || "transparent"
-        svgs.push(`
-            <div style="position: absolute; top: 315px; left: 57px;">
+      const colorForSecondDigit = colorMap2[digits[1]] || "transparent";
+      svgs.push(`
+        <div style="position: absolute; top: 0px; left: 0px; z-index:-1;">
+            <svg width="425" height="425" viewBox="0 0 425 425" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="425" height="425" fill="${colorForSecondDigit}"/>
+            </svg>
+        </div>
+
+        `);
+    }
+
+    return svgs.join("");
+  }
+
+  //nft type
+  function getLook(number) {
+    const numberStr = number.toString();
+    const lastFourDigits = parseInt(numberStr.substring(numberStr.length - 4));
+
+    if (lastFourDigits < 4800) {
+      return "cyclops";
+    } else if (lastFourDigits >= 4800 && lastFourDigits <= 5200) {
+      return "alien";
+    } else {
+      return "robot";
+    }
+  }
+
+  function generateLookSvg(lookType) {
+    const originalString = blockNumber.toString();
+    const digits = originalString
+      .padStart(7, "0")
+      .split("")
+      .map(Number)
+      .reverse();
+
+    const bodyColor = () => {
+      if (lookType === "cyclops") {
+        return "#206227";
+      }
+
+      if (lookType === "robot") {
+        return "#AAA9AD";
+      }
+
+      if (lookType === "alien") {
+        return "#32BDC6";
+      }
+    };
+
+    // colour ear tips
+    const colorForThirdDigit = colorMap2[digits[2]] || "transparent";
+
+    const head = `        <div style="position: absolute; top: 138px; left: 105px;">
+            <svg width="215" height="209" viewBox="0 0 215 209" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M-3.8147e-06 0H215V188C215 195.732 207.732 203 200 203H15C7.267 203 -3.8147e-06 195.732 -3.8147e-06 188V0Z" fill="${bodyColor()}"/>
+</svg>
+            </div>
+                         `;
+
+    const ears = `
+                         <div style="position: absolute; top: 136px; left: 46px;">
+<svg width="330" height="125" viewBox="0 0 775 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="83" y="51" width="85.6155" height="42.0018" transform="rotate(24.0638 83 51)" fill="${bodyColor()}"/>
+<path d="M35.815 89.5233C40.5183 92.4876 45.6723 94.6346 50.9829 95.8418C56.2934 97.0489 61.6564 97.2925 66.7657 96.5587C71.875 95.8249 76.6305 94.1281 80.7608 91.5651C84.891 89.002 88.315 85.623 90.8374 81.621C93.3597 77.6189 94.931 73.0722 95.4615 68.2403C95.9919 63.4085 95.4712 58.3863 93.9291 53.4603C92.3869 48.5343 89.8535 43.8011 86.4735 39.5309C83.0935 35.2607 78.9331 31.5372 74.2298 28.5729L55.0224 59.0481L35.815 89.5233Z" fill="${bodyColor()}"/>
+<path d="M45.0539 75.0424C47.7738 76.7567 50.7145 78.0615 53.7082 78.8823C56.7018 79.7032 59.6898 80.024 62.5015 79.8265C65.3132 79.629 67.8935 78.9171 70.0952 77.7313C72.2969 76.5455 74.0767 74.9092 75.3332 72.9156C76.5896 70.9221 77.2981 68.6104 77.418 66.1126C77.538 63.6148 77.0671 60.9798 76.0323 58.358C74.9975 55.7362 73.4191 53.179 71.3871 50.8323C69.355 48.4857 66.9093 46.3956 64.1894 44.6814L54.6217 59.8619L45.0539 75.0424Z" fill="${colorForThirdDigit}"/>
+<rect width="85.6155" height="42.0018" transform="matrix(-0.913092 0.407754 0.407754 0.913092 691.175 45)" fill="${bodyColor()}"/>
+<path d="M738.36 83.5233C733.657 86.4876 728.503 88.6346 723.192 89.8418C717.881 91.0489 712.518 91.2925 707.409 90.5587C702.3 89.8249 697.544 88.1281 693.414 85.5651C689.284 83.002 685.86 79.623 683.338 75.621C680.815 71.6189 679.244 67.0722 678.713 62.2403C678.183 57.4085 678.704 52.3863 680.246 47.4603C681.788 42.5343 684.321 37.8011 687.701 33.5309C691.081 29.2607 695.242 25.5372 699.945 22.5729L719.152 53.0481L738.36 83.5233Z" fill="${bodyColor()}"/>
+<path d="M729.137 69.0322C726.415 70.7478 723.472 72.0539 720.477 72.876C717.481 73.6981 714.491 74.0201 711.678 73.8236C708.865 73.627 706.283 72.9158 704.081 71.7305C701.878 70.5453 700.098 68.9092 698.842 66.9156C697.585 64.9221 696.877 62.6102 696.758 60.1118C696.639 57.6135 697.111 54.9778 698.147 52.355C699.184 49.7323 700.764 47.1739 702.798 44.826C704.832 42.4782 707.28 40.3867 710.002 38.6711L719.569 53.8517L729.137 69.0322Z" fill="${colorForThirdDigit}"/>
+</svg>
+
+                </div>
+                         `;
+
+    const neck = `
+                         <div style="position: absolute; top: 315px; left: 57px;">
 <svg width="300" height="110" viewBox="0 0 671 250" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_9_57)">
-<path d="M335.986 0.414764L626.104 247.293H45.8674L335.986 0.414764Z" fill="${colorForSecondDigit}"/>
-<path d="M196.757 47.4391H476.431V175.223H196.757V47.4391Z" fill="${colorForSecondDigit}"/>
+<path d="M335.986 0.414764L626.104 247.293H45.8674L335.986 0.414764Z" fill="${bodyColor()}"/>
+<path d="M196.757 47.4391H476.431V175.223H196.757V47.4391Z" fill="${bodyColor()}"/>
 </g>
 <defs>
 <clipPath id="clip0_9_57">
@@ -167,743 +319,672 @@ function generateSvgForDigits(blockNumber) {
 </clipPath>
 </defs>
 </svg>
-            </div>
-        `)
+            </div>  
+                         `;
+
+    let lookHtml = "";
+    if (lookType === "cyclops") {
+      lookHtml = `
+${head}
+        
+${ears}
+
+${neck}
+
+  
+            `;
+    } else if (lookType === "robot") {
+      lookHtml = `${head}
+        
+        ${ears}
+        
+        ${neck} `;
+    } else if (lookType === "alien") {
+      lookHtml = `${head}
+        
+        ${ears}
+        
+        ${neck} `;
     }
+    return lookHtml;
+  }
 
-    // face
-    if (originalString.length >= 1) {
-        const colorForFirstDigit = colorMap[digits[0]]
-        svgs.push(`<div style="position: absolute; top: 138px; left: 105px;">
-            <svg width="215" height="209" viewBox="0 0 215 209" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M-3.8147e-06 0H215V188C215 195.732 207.732 203 200 203H15C7.267 203 -3.8147e-06 195.732 -3.8147e-06 188V0Z" fill="${colorForFirstDigit}"/>
-</svg>
-            </div>
-        `)
-    }
-    //nose
-    if (originalString.length >= 5) {
-        const colorForFifthDigit = colorMap2[digits[4]] || "transparent"
-        svgs.push(`
-            <div style="position: absolute; top: 254px; left: 220px;">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M28 28L0 0H28V28Z" fill="${colorForFifthDigit}"/>
-                </svg>
-            </div>
-        `)
-    }
+  function c420(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("420");
+  }
 
-    //stripes
-    if (originalString.length >= 6) {
-        const colorForSixthDigit = colorMap[digits[5]] || "transparent"
-        svgs.push(`
-            <div style="position: absolute; top: 365px; left:105px;">
-                <svg width="36" height="54" viewBox="0 0 36 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="36" height="18" fill="${colorForSixthDigit}"/>
-                <rect y="36" width="36" height="18" fill="${colorForSixthDigit}"/>
-                </svg>
-            </div>
-
-        `)
-    }
-
-    //tail
-    if (originalString.length >= 2) {
-        const colorForSecondDigit = colorMap2[digits[1]] || "transparent"
-        svgs.push(`
-            <div style="position: absolute; top: 279px; left: 0;">
-                <svg width="46" height="146" viewBox="0 0 46 146" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M46.0001 146H0L5.3765e-05 23C5.93175e-05 10.2974 10.2975 -5.20515e-06 23.0001 0C35.7027 5.55247e-06 46.0001 10.2975 46.0001 23L46.0001 146Z" fill="${colorForSecondDigit}"/>
-                </svg>
-            </div>
-
-        `)
-    }
-
-
-    return svgs.join('')
-}
-
-function generateSvgForDigits2(blockNumber) {
-    const originalString = blockNumber.toString()
-    const digits = originalString.padStart(7, '0').split('').map(Number).reverse()
-    let svgs = []
-
-
-    //toothL
-    if (originalString.length >= 7) {
-        const colorForSeventhDigit = colorMap3[digits[6]] || "FFFFFF"
-        svgs.push(`
-            <div style="position: absolute; top: 288px; left:189px;">
-                <svg width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="35" fill="${colorForSeventhDigit}"/>
-                </svg>
-            </div>
-        `)
-    }
-
-    //toothR
-    if (originalString.length >= 7) {
-        const colorForSeventhDigit = colorMap3[digits[6]] || "FFFFFF"
-        svgs.push(`
-            <div style="position: absolute; top: 288px; left:249px;">
-                 <svg width="40" height="35" viewBox="0 0 40 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="35" fill="${colorForSeventhDigit}"/>
-                </svg>
-            </div>
-
-        `)
-    }
-
-
-    return svgs.join('')
-}
-
-//eye direction
-function getLook(number) {
-    const numberStr = number.toString()
-    const lastFourDigits = parseInt(numberStr.substring(numberStr.length - 4))
-
-    if (lastFourDigits < 4800) {
-        return "look_right"
-    } else if (lastFourDigits >= 4800 && lastFourDigits <= 5200) {
-        return "look_crossed"
-    } else {
-        return "look_left"
-    }
-}
-
-function generateLookSvg(lookDir) {
-    let lookHtml = ""
-    if (lookDir === "look_left") {
-        lookHtml = `<div style="position: absolute; top: 195px; left: 126px;">
-                        <svg width="158" height="38" viewBox="0 0 158 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="37" y="38" width="37" height="38" transform="rotate(-180 37 38)" fill="#070609"/>
-                        <rect x="158" y="38" width="37" height="38" transform="rotate(-180 158 38)" fill="#070609"/>
-                        </svg>
-                    </div>`
-    } else if (lookDir === "look_right") {
-        lookHtml = `<div style="position: absolute; top: 195px; left: 163px;">
-                        <svg width="158" height="38" viewBox="0 0 158 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="37" y="38" width="37" height="38" transform="rotate(-180 37 38)" fill="#070609"/>
-                        <rect x="157.5" y="38" width="36.5" height="38" transform="rotate(-180 157.5 38)" fill="#070609"/>
-                        </svg>
-                    </div>`
-    } else if (lookDir === "look_crossed") {
-        lookHtml = `<div style="position: absolute; top: 195px; left: 126px;">
-                        <svg width="195" height="38" viewBox="0 0 195 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="194.5" y="38" width="36.5" height="38" transform="rotate(-180 194.5 38)" fill="#070609"/>
-                        <rect x="37" y="38" width="37" height="38" transform="rotate(-180 37 38)" fill="#070609"/>
-                        </svg>
-                    </div>`
-    }
-    return lookHtml
-}
-
-function c420(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('420')
-}
-
-
-function displaycatnip() {
+  function displaycatnip() {
     return `<div style="position: absolute; top: 293px; left: 356px;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="18" y="18" width="18" height="18" transform="rotate(-180 18 18)" fill="#00B127"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c4a0(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('4') && numberStr.includes('0')
-}
+  function c4a0(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("4") && numberStr.includes("0");
+  }
 
-function displaycig(number) {
+  function displaycig(number) {
     return `<div style="position: absolute; top: 219px; left: 302px;">
         <svg width="72" height="92" viewBox="0 0 72 92" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="72" y="92" width="72" height="18" transform="rotate(-180 72 92)" fill="#FBFBFB"/>
             <rect x="72" y="56" width="18" height="56" transform="rotate(-180 72 56)" fill="#EEEEEE" fill-opacity="0.3"/>
             <rect x="72" y="92" width="18" height="18" transform="rotate(-180 72 92)" fill="#FF0034"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c0(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('0')
-}
+  function c0(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("0");
+  }
 
-
-function displayEarring(number) {
+  function displayEarring(number) {
     return `<div style="position: absolute; top: 120px; left: 87px;">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="19" height="18" fill="#FFC700"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c00(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('00')
-}
+  function c00(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("00");
+  }
 
-function displayEarringR(number) {
+  function displayEarringR(number) {
     return `<div style="position: absolute; top: 120px; left: 319px;">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="19" height="18" fill="#FFC700"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c000(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('000')
-}
+  function c000(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("000");
+  }
 
-function displayAlienEarring(number) {
+  function displayAlienEarring(number) {
     return `<div style="position: absolute; top: 120px; left: 87px;">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="19" height="18" fill="#49EFEF"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c0000(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('0000')
-}
+  function c0000(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("0000");
+  }
 
-function displayAlienEarringR(number) {
+  function displayAlienEarringR(number) {
     return `<div style="position: absolute; top: 120px; left: 319px;">
                 <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="19" height="18" fill="#49EFEF"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c00000(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('00000')
-}
+  function c00000(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("00000");
+  }
 
-function displayAlienTiara(number) {
+  function displayAlienTiara(number) {
     return `<div style="position: absolute; top: 102px; left: 132px;">
                 <svg width="162" height="36" viewBox="0 0 162 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M36 0H54V18H36V0ZM36 18V36H18H0V18H18H36ZM72 18V36H54V18H72ZM90 18H72V0H90V18ZM108 18V36H90V18H108ZM126 18H108V0H126V18ZM144 18H126V36H144H162V18H144Z" fill="#00FFF0"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c11(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('11')
-}
+  function c11(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("11");
+  }
 
-
-function displayFly(number) {
+  function displayFly(number) {
     return `<div style="position: absolute; top: 169px; left: 340px;">
                 <svg width="38" height="27" viewBox="0 0 38 27" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19 9.00001L6.29443e-06 9L0 27L19 27H38L38 9.00001H19Z" fill="#070609"/>
                 <rect x="19" width="19" height="18" fill="white" fill-opacity="0.5"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c111(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('111')
-}
+  function c111(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("111");
+  }
 
-function displayFlysEarring(number) {
+  function displayFlysEarring(number) {
     return `<div style="position: absolute; top: 178px; left: 378px;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="18" y="18" width="18" height="18" transform="rotate(-180 18 18)" fill="#FFC700"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function c1111(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("1111");
+  }
 
-function c1111(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('1111')
-}
-
-function displayFlysAlienEarring(number) {
+  function displayFlysAlienEarring(number) {
     return `<div style="position: absolute; top: 178px; left: 378px;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="18" y="18" width="18" height="18" transform="rotate(-180 18 18)" fill="#49EFEF"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function c11111(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("11111");
+  }
 
-function c11111(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('11111')
-}
-
-
-function displayFlysLaserEyes(number) {
+  function displayFlysLaserEyes(number) {
     return `<div style="position: absolute; top: 178px; left: 0;">
                 <svg width="340" height="19" viewBox="0 0 340 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="340" height="18.5" fill="#FD1935"/>
                 </svg>
-            </div>`
-}
+            </div>`;
+  }
 
-function c8a8(number) {
-    const numberStr = number.toString()
-    const count = (numberStr.match(/8/g) || []).length
-    return count >= 2 ? "c8a8" : null
-}
+  function c8a8(number) {
+    const numberStr = number.toString();
+    const count = (numberStr.match(/8/g) || []).length;
+    return count >= 2 ? "c8a8" : null;
+  }
 
-
-function displayBowR(number) {
+  function displayBowR(number) {
     return `<div style="position: absolute; top: 138px; left: 87px;">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 36V0L18 18L0 36Z" fill="#FF94D4"/>
         <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#FF94D4"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c88(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('88')
-}
+  function c88(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("88");
+  }
 
-
-function displayBowL(number) {
+  function displayBowL(number) {
     return `<div style="position: absolute; top: 138px; left: 302px;">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 36V0L18 18L0 36Z" fill="#FF94D4"/>
         <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#FF94D4"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c888(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('888')
-}
+  function c888(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("888");
+  }
 
-
-function displayBowTail(number) {
+  function displayBowTail(number) {
     return `<div style="position: absolute; top: 293px; left: 28px;">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 36V0L18 18L0 36Z" fill="#FF94D4"/>
         <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#FF94D4"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c8888(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('8888')
-}
+  function c8888(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("8888");
+  }
 
-
-function displayAlienBowTie(number) {
+  function displayAlienBowTie(number) {
     return `<div style="position: absolute; top: 365px; left: 123px;">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 36V0L18 18L0 36Z" fill="#49EFEF"/>
         <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#49EFEF"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function c88888(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('88888')
-}
+  function c88888(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("88888");
+  }
 
-function displayDoubleAlienBowTie(number) {
+  function displayDoubleAlienBowTie(number) {
     return `<div style="position: absolute; top: 365px; left: 177px;">
         <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 36V0L18 18L0 36Z" fill="#49EFEF"/>
         <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#49EFEF"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-function cp6(number) {
-    const numberStr = number.toString()
+  function cp6(number) {
+    const numberStr = number.toString();
     // Loop through the number string
-    for (let i = 0; i <= numberStr.length - 6; i++) { // Ensure there are at least 6 characters to check
-        const substring = numberStr.substring(i, i + 6) // Get the substring of 6 characters
-        // Check if the substring is a palindrome
-        if (substring === substring.split('').reverse().join('')) {
-            return "cp6"
-        }
+    for (let i = 0; i <= numberStr.length - 6; i++) {
+      // Ensure there are at least 6 characters to check
+      const substring = numberStr.substring(i, i + 6); // Get the substring of 6 characters
+      // Check if the substring is a palindrome
+      if (substring === substring.split("").reverse().join("")) {
+        return "cp6";
+      }
     }
-    return null
-}
+    return null;
+  }
 
-function displayAlienDiamond(number) {
+  function displayAlienDiamond(number) {
     return `<div style="position: absolute; top: 358px; left: 321px;">
         <svg width="67" height="68" viewBox="0 0 67 68" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="33.2734" y="0.546875" width="47.0569" height="47.0569" transform="rotate(45 33.2734 0.546875)" fill="#49EFEF"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function c9a9(number) {
+    const numberStr = number.toString();
+    const count = (numberStr.match(/9/g) || []).length;
+    return count >= 2 ? "c9a9" : null;
+  }
 
-function c9a9(number) {
-    const numberStr = number.toString()
-    const count = (numberStr.match(/9/g) || []).length
-    return count >= 2 ? "c9a9" : null
-}
-
-function displayTrout(number) {
+  function displayTrout(number) {
     return `<div style="position: absolute; top: 318px; left: 219px;">
                 <svg width="176" height="76" viewBox="0 0 176 76" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M176 0V76L137 38L176 0Z" fill="#0082BA"/>
                 <rect width="137" height="76" rx="38" fill="#0D8DCE"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H137C137 17.0132 119.987 0 99 0H38Z" fill="#0082BA"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function c99(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("99");
+  }
 
-
-function c99(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('99')
-}
-
-
-function displaySalmon(number) {
+  function displaySalmon(number) {
     return `<div style="position: absolute; top: 318px; left: 183px;">
                 <svg width="212" height="76" viewBox="0 0 212 76" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M212 0V76L173 38L212 0Z" fill="#0082BA"/>
                 <rect width="173" height="76" rx="38" fill="#FF906D"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H173C173 17.0132 155.987 0 135 0H38Z" fill="#0082BA"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function c999(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("999");
+  }
 
-function c999(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('999')
-}
-
-function displayAlienFish(number) {
+  function displayAlienFish(number) {
     return `<div style="position: absolute; top: 318px; left: 183px;">
                 <svg width="212" height="76" viewBox="0 0 212 76" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M212 0V76L173 38L212 0Z" fill="#49EFEF"/>
                 <rect width="173" height="76" rx="38" fill="#66F8F8"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H173C173 17.0132 155.987 0 135 0H38Z" fill="#49EFEF"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function c9999(number) {
+    const numberStr = number.toString();
+    return numberStr.includes("9999");
+  }
 
-
-function c9999(number) {
-    const numberStr = number.toString()
-    return numberStr.includes('9999')
-}
-
-
-function displayGiantAlienFish(number) {
+  function displayGiantAlienFish(number) {
     return `<div style="position: absolute; top: 318px; left: 123px;">
             <svg width="272" height="76" viewBox="0 0 272 76" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M272 0V76L233 38L272 0Z" fill="#49EFEF"/>
             <rect width="233" height="76" rx="38" fill="#66F8F8"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H233C233 17.0132 215.987 0 195 0H38Z" fill="#49EFEF"/>
             </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-
-
-
-function cs5(number) {
-    const numberStr = number.toString()
-    for (let i = 0; i < numberStr.length - 4; i++) { // Ensure there are at least 3 characters to check
-        const substring = numberStr.substring(i, i + 5) // Get the substring of 3 characters
-        if (!substring.startsWith('0')) { // Exclude substrings starting with '0'
-            const subNum = parseInt(substring, 10)
-            const s = Math.sqrt(subNum)
-            if (s === Math.floor(s)) { // Check if s is a perfect square
-                return "cs5d" // Return a different identifier for 3-digit perfect squares
-            }
+  function cs5(number) {
+    const numberStr = number.toString();
+    for (let i = 0; i < numberStr.length - 4; i++) {
+      // Ensure there are at least 3 characters to check
+      const substring = numberStr.substring(i, i + 5); // Get the substring of 3 characters
+      if (!substring.startsWith("0")) {
+        // Exclude substrings starting with '0'
+        const subNum = parseInt(substring, 10);
+        const s = Math.sqrt(subNum);
+        if (s === Math.floor(s)) {
+          // Check if s is a perfect square
+          return "cs5d"; // Return a different identifier for 3-digit perfect squares
         }
+      }
     }
-    return null
-}
+    return null;
+  }
 
-function displayYarn(number) {
+  function displayYarn(number) {
     return `<div style="position: absolute; top: 359px; left: 200px;">
             <svg width="225" height="66" viewBox="0 0 225 66" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="33" cy="33" r="33" fill="#C53DF5"/>
             <rect x="35" y="57" width="190" height="9" fill="#C53DF5"/>
             </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-// Function to check if a number contains a 4-digit square as a substring
-function containsFourDigitSquare(number) {
-    const numberStr = number.toString()
+  // Function to check if a number contains a 4-digit square as a substring
+  function containsFourDigitSquare(number) {
+    const numberStr = number.toString();
     for (let i = 0; i <= numberStr.length - 4; i++) {
-        const substring = numberStr.substring(i, i + 4)
-        const num = parseInt(substring, 10)
-        if (Math.sqrt(num) % 1 === 0) {
-            return true
-        }
+      const substring = numberStr.substring(i, i + 4);
+      const num = parseInt(substring, 10);
+      if (Math.sqrt(num) % 1 === 0) {
+        return true;
+      }
     }
-    return false
-}
+    return false;
+  }
 
-// Determine the range for laser eyes based on the last four digits
-function getLaserEyeRange(lastFourDigits) {
-    if (lastFourDigits < 4800) {
-        return "laser_right"
-    } else if (lastFourDigits >= 4800 && lastFourDigits <= 5200) {
-        return "laser_crossed"
+  // Determine the range for laser eyes based on the digit 5 value
+  function getLaserEyeRange(lastFourDigits) {
+    const originalString = blockNumber.toString();
+    const digits = originalString
+      .padStart(7, "0")
+      .split("")
+      .map(Number)
+      .reverse();
+
+    const eyeType = {
+      1: "single_eye",
+      2: "single_eye",
+      3: "single_eye",
+      4: "five_eyes",
+      5: "four_eyes",
+      6: "four_eyes",
+      7: "four_eyes",
+      8: "four_eyes",
+      9: "five_eyes",
+      0: "five_eyes",
+    };
+
+    return eyeType[digits[4]];
+  }
+
+  // Function to generate SVG for laser eyes based on direction
+  function displayLaserEyes(eyeType) {
+    if (eyeType === "single_eye") {
+      return `
+    <div style="position: absolute; top: 126px; left: 215px;">
+        <svg width="200" height="325" viewBox="0 0 454 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="5.71717" y1="8.79549" x2="447.717" y2="316.796" stroke="#069BDA" stroke-width="20"/>
+</svg>
+                        </div>
+    `;
+    } else if (eyeType === "four_eyes") {
+      return `
+    <div style="position: absolute; top: 189px; left: 213px;">
+        <svg width="165" height="141" viewBox="0 0 165 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="3.59629" y1="3.90358" x2="161.518" y2="137.41" stroke="#DA0606" stroke-width="9.35065"/>
+</svg>
+                        </div>
+
+                        <div style="position: absolute; top: 216px; left: 155px;">
+
+                            <svg width="145" height="130" viewBox="0 0 145 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="2.57021" y1="3.04005" x2="142.31" y2="127.196" stroke="#069BDA" stroke-width="6.23377"/>
+</svg>
+                        </div>
+
+                        <div style="position: absolute; top: 237px; left: 213px;">
+                            <svg width="126" height="108" viewBox="0 0 126 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.29224 2.43506L123.851 105.292" stroke="#069BDA" stroke-width="6.23377"/>
+</svg>
+                        </div>
+
+                        <div style="position: absolute; top: 216px; left: 266px;">
+  
+<svg width="106" height="93" viewBox="0 0 106 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="2.5145" y1="3.00275" x2="103.813" y2="89.756" stroke="#069BDA" stroke-width="6.23377"/>
+</svg>
+                        </div>
+    `;
+    } else if (eyeType === "five_eyes") {
+      return `
+    <div style="position: absolute; top: 125px; left: 133px;">
+        <svg width="260" height="300" viewBox="0 0 606 378" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="189.172" y1="62.132" x2="586.172" y2="370.132" stroke="#DA0606" stroke-width="16"/>
+<line x1="288.091" y1="4.61137" x2="546.694" y2="245.702" stroke="#06CDDA" stroke-width="12"/>
+<line x1="87.0243" y1="8.54974" x2="390.024" y2="282.55" stroke="#06CDDA" stroke-width="12"/>
+<line x1="3.96144" y1="46.4937" x2="309.961" y2="313.494" stroke="#06CDDA" stroke-width="12"/>
+<line x1="363.167" y1="44.6574" x2="601.532" y2="250.722" stroke="#06CDDA" stroke-width="12"/>
+</svg>
+                        </div>
+    `;
     } else {
-        return "laser_left"
+      return "";
     }
-}
+  }
 
-// Function to generate SVG for laser eyes based on direction
-function displayLaserEyes(eyeDirection) {
-    let svgHTML = ""
-    switch (eyeDirection) {
-        case "laser_left":
-            svgHTML = `<div style="position: absolute; top: 214px; left: 0;">
-                            <svg width="284" height="19" viewBox="0 0 284 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="284" height="18.5" fill="#FD1935"/>
-                            </svg>
-                        </div>`
-            break
-        case "laser_right":
-            svgHTML = `<div style="position: absolute; top: 214px; left: 163px;">
-                        <svg width="262" height="19" viewBox="0 0 262 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="262" height="18.5" fill="#FD1935"/>
-                        </svg>
-                        </div>`
-            break
-        case "laser_crossed":
-            svgHTML = `<div style="position: absolute; top: 214px; left: 0;">
-                            <svg width="425" height="19" viewBox="0 0 425 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="163" height="18.5" fill="#FD1935"/>
-                            <rect x="284" width="141" height="18.5" fill="#FD1935"/>
-                            </svg>
-                    </div>`
-            break
-    }
-    return svgHTML
-}
-
-
-function cs6(number) {
-    const numberStr = number.toString()
-    for (let i = 0; i < numberStr.length - 5; i++) { // Ensure there are at least 3 characters to check
-        const substring = numberStr.substring(i, i + 6) // Get the substring of 3 characters
-        if (!substring.startsWith('0')) { // Exclude substrings starting with '0'
-            const subNum = parseInt(substring, 10)
-            const s = Math.sqrt(subNum)
-            if (s === Math.floor(s)) { // Check if s is a perfect square
-                return "cs3d" // Return a different identifier for 3-digit perfect squares
-            }
+  function cs6(number) {
+    const numberStr = number.toString();
+    for (let i = 0; i < numberStr.length - 5; i++) {
+      // Ensure there are at least 3 characters to check
+      const substring = numberStr.substring(i, i + 6); // Get the substring of 3 characters
+      if (!substring.startsWith("0")) {
+        // Exclude substrings starting with '0'
+        const subNum = parseInt(substring, 10);
+        const s = Math.sqrt(subNum);
+        if (s === Math.floor(s)) {
+          // Check if s is a perfect square
+          return "cs3d"; // Return a different identifier for 3-digit perfect squares
         }
+      }
     }
-    return null
-}
+    return null;
+  }
 
-function displayLaserPointer(number) {
+  function displayLaserPointer(number) {
     return `<div style="position: absolute; top: 293px; left: 284px;">
                 <svg width="141" height="18" viewBox="0 0 141 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="52" y="18" width="52" height="18" transform="rotate(-180 52 18)" fill="#E7E5F7"/>
                 <rect x="141" y="18" width="89" height="18" transform="rotate(-180 141 18)" fill="#FF1E39"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-function cf3(number) {
-    let numberStr = number.toString()
-    let a = 0, b = 1
-    let fibNumbers = new Set()
+  function cf3(number) {
+    let numberStr = number.toString();
+    let a = 0,
+      b = 1;
+    let fibNumbers = new Set();
 
     // Generate 3-digit Fibonacci numbers
-    while (b < 1000) { // 1000 is the smallest 4-digit number
-        if (b >= 100) { // 100 is the smallest 3-digit number
-            fibNumbers.add(b.toString())
-        }
-        [a, b] = [b, a + b] // Update the Fibonacci sequence
+    while (b < 1000) {
+      // 1000 is the smallest 4-digit number
+      if (b >= 100) {
+        // 100 is the smallest 3-digit number
+        fibNumbers.add(b.toString());
+      }
+      [a, b] = [b, a + b]; // Update the Fibonacci sequence
     }
 
     // Check for 3-digit Fibonacci patterns
-    for (let i = 0; i <= numberStr.length - 3; i++) { // Loop through the number string
-        let substring = numberStr.substring(i, i + 3)
-        if (fibNumbers.has(substring)) {
-            return "cf3"
-        }
+    for (let i = 0; i <= numberStr.length - 3; i++) {
+      // Loop through the number string
+      let substring = numberStr.substring(i, i + 3);
+      if (fibNumbers.has(substring)) {
+        return "cf3";
+      }
     }
 
-    return null
-}
+    return null;
+  }
 
-function displayBloodDrips(number) {
+  function displayBloodDrips(number) {
     return `<div style="position: absolute; top: 329px; left: 159px;">
                 <svg width="36" height="90" viewBox="0 0 36 90" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M36 18L36 0L18 -7.86805e-07L18 18L18 36L36 36L36 18Z" fill="#FF1E39"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M18 72L18 54L0 54L-7.86805e-07 72L-1.57361e-06 90L18 90L18 72Z" fill="#FF1E39"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-function cf4(number) {
-    let numberStr = number.toString()
-    let a = 0, b = 1
-    let fibNumbers = new Set()
+  function cf4(number) {
+    let numberStr = number.toString();
+    let a = 0,
+      b = 1;
+    let fibNumbers = new Set();
 
     // Generate 4-digit Fibonacci numbers
-    while (b < 10000) { // 10000 is the smallest 5-digit number
-        if (b >= 1000) { // 1000 is the smallest 4-digit number
-            fibNumbers.add(b.toString())
-        }
-        [a, b] = [b, a + b] // Update the Fibonacci sequence
+    while (b < 10000) {
+      // 10000 is the smallest 5-digit number
+      if (b >= 1000) {
+        // 1000 is the smallest 4-digit number
+        fibNumbers.add(b.toString());
+      }
+      [a, b] = [b, a + b]; // Update the Fibonacci sequence
     }
 
     // Check for 4-digit Fibonacci patterns
-    for (let i = 0; i <= numberStr.length - 4; i++) { // Loop through the number string
-        let substring = numberStr.substring(i, i + 4)
-        if (fibNumbers.has(substring)) {
-            return "cf4" // Return identifier for 4-digit Fibonacci numbers
-        }
+    for (let i = 0; i <= numberStr.length - 4; i++) {
+      // Loop through the number string
+      let substring = numberStr.substring(i, i + 4);
+      if (fibNumbers.has(substring)) {
+        return "cf4"; // Return identifier for 4-digit Fibonacci numbers
+      }
     }
 
-    return null
-}
+    return null;
+  }
 
-
-function displayHalo(number) {
+  function displayHalo(number) {
     return `<div style="position: absolute; top: 41px; left: 146px;">
             <svg width="132" height="18" viewBox="0 0 132 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect width="132" height="18" fill="#FFB700"/>
             </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-function cf5(number) {
-    let numberStr = number.toString()
-    let a = 0, b = 1
-    let fibNumbers = new Set()
+  function cf5(number) {
+    let numberStr = number.toString();
+    let a = 0,
+      b = 1;
+    let fibNumbers = new Set();
 
     // Generate 5-digit Fibonacci numbers
-    while (b < 100000) { // 100000 is the smallest 6-digit number
-        if (b >= 10000) { // 10000 is the smallest 5-digit number
-            fibNumbers.add(b.toString())
-        }
-        [a, b] = [b, a + b] // Update the Fibonacci sequence
+    while (b < 100000) {
+      // 100000 is the smallest 6-digit number
+      if (b >= 10000) {
+        // 10000 is the smallest 5-digit number
+        fibNumbers.add(b.toString());
+      }
+      [a, b] = [b, a + b]; // Update the Fibonacci sequence
     }
 
     // Check for 5-digit Fibonacci patterns
-    for (let i = 0; i <= numberStr.length - 5; i++) { // Loop through the number string
-        let substring = numberStr.substring(i, i + 5)
-        if (fibNumbers.has(substring)) {
-            return "cf5"
-        }
+    for (let i = 0; i <= numberStr.length - 5; i++) {
+      // Loop through the number string
+      let substring = numberStr.substring(i, i + 5);
+      if (fibNumbers.has(substring)) {
+        return "cf5";
+      }
     }
 
-    return null
-}
+    return null;
+  }
 
-
-function displayBrowPiercing(number) {
+  function displayBrowPiercing(number) {
     return `<div style="position: absolute; top: 174px; left: 320px;">
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="18" y="18" width="18" height="18" transform="rotate(-180 18 18)" fill="#FFB800"/>
             </svg>
 
-    </div>`
-}
+    </div>`;
+  }
 
-
-function cf6(number) {
-    let numberStr = number.toString()
-    let a = 0, b = 1
-    let fibNumbers = new Set()
+  function cf6(number) {
+    let numberStr = number.toString();
+    let a = 0,
+      b = 1;
+    let fibNumbers = new Set();
 
     // Generate 6-digit Fibonacci numbers
-    while (b < 1000000) { // 1000000 is the smallest 7-digit number
-        if (b >= 100000) { // 100000 is the smallest 6-digit number
-            fibNumbers.add(b.toString())
-        }
-        [a, b] = [b, a + b] // Update the Fibonacci sequence
+    while (b < 1000000) {
+      // 1000000 is the smallest 7-digit number
+      if (b >= 100000) {
+        // 100000 is the smallest 6-digit number
+        fibNumbers.add(b.toString());
+      }
+      [a, b] = [b, a + b]; // Update the Fibonacci sequence
     }
 
     // Check for 6-digit Fibonacci patterns
-    for (let i = 0; i <= numberStr.length - 6; i++) { // Loop through the number string
-        let substring = numberStr.substring(i, i + 6)
-        if (fibNumbers.has(substring)) {
-            return "cf6"
-        }
+    for (let i = 0; i <= numberStr.length - 6; i++) {
+      // Loop through the number string
+      let substring = numberStr.substring(i, i + 6);
+      if (fibNumbers.has(substring)) {
+        return "cf6";
+      }
     }
 
-    return null
-}
+    return null;
+  }
 
-
-function displayHammer(number) {
+  function displayHammer(number) {
     return `<div style="position: absolute; top: 160px; left: 341px;">
                 <svg width="84" height="265" viewBox="0 0 84 265" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="33" y="265" width="229" height="18" transform="rotate(-90 33 265)" fill="#5A4545"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V36H48H84C84 16.1177 67.8822 0 48 0Z" fill="#C6C2D2"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-function cf7(number) {
-    let numberStr = number.toString()
-    let a = 0, b = 1
-    let fibNumbers = new Set()
+  function cf7(number) {
+    let numberStr = number.toString();
+    let a = 0,
+      b = 1;
+    let fibNumbers = new Set();
 
     // Generate 6-digit Fibonacci numbers
-    while (b < 10000000) { // 10000000 is the smallest 8-digit number
-        if (b >= 1000000) { // 1000000 is the smallest 7-digit number
-            fibNumbers.add(b.toString())
-        }
-        [a, b] = [b, a + b] // Update the Fibonacci sequence
+    while (b < 10000000) {
+      // 10000000 is the smallest 8-digit number
+      if (b >= 1000000) {
+        // 1000000 is the smallest 7-digit number
+        fibNumbers.add(b.toString());
+      }
+      [a, b] = [b, a + b]; // Update the Fibonacci sequence
     }
 
     // Check for 6-digit Fibonacci patterns
-    for (let i = 0; i <= numberStr.length - 7; i++) { // Loop through the number string
-        let substring = numberStr.substring(i, i + 7)
-        if (fibNumbers.has(substring)) {
-            return "cf7"
-        }
+    for (let i = 0; i <= numberStr.length - 7; i++) {
+      // Loop through the number string
+      let substring = numberStr.substring(i, i + 7);
+      if (fibNumbers.has(substring)) {
+        return "cf7";
+      }
     }
 
-    return null
-}
+    return null;
+  }
 
-
-function displayVial(number) {
+  function displayVial(number) {
     return `<div style="position: absolute; top: 251px; left: 338px;">
                 <svg width="36" height="174" viewBox="0 0 36 174" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="36" width="174" height="36" transform="rotate(90 36 0)" fill="white" fill-opacity="0.5"/>
                 <rect x="36" y="67" width="107" height="36" transform="rotate(90 36 67)" fill="#A2FF00"/>
                 </svg>
-             </div>`
-}
+             </div>`;
+  }
 
-function m12(number) {
-    return number % 12 === 0
-}
+  function m12(number) {
+    return number % 12 === 0;
+  }
 
-function displayRainbowCollar(number) {
+  function displayRainbowCollar(number) {
     return `<div style="position: absolute; top: 347px; left: 105px;">
                 <svg width="90" height="18" viewBox="0 0 90 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="20" height="18" fill="#FF1D38"/>
@@ -912,14 +993,14 @@ function displayRainbowCollar(number) {
                 <rect x="54" width="20" height="18" fill="#A1FF00"/>
                 <rect x="72" width="18" height="18" fill="#FFC700"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-function m13(number) {
-    return number % 13 === 0
-}
+  function m13(number) {
+    return number % 13 === 0;
+  }
 
-function displayPearls(number) {
+  function displayPearls(number) {
     return `<div style="position: absolute; top: 347px; left: 105px;">
         <svg width="90" height="54" viewBox="0 0 90 54" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="18" height="18" fill="white"/>
@@ -928,15 +1009,14 @@ function displayPearls(number) {
         <rect x="54" y="18" width="18" height="18" fill="white"/>
         <rect x="72" width="18" height="18" fill="white"/>
         </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function m14(number) {
+    return number % 14 === 0;
+  }
 
-function m14(number) {
-    return number % 14 === 0
-}
-
-function displayOrangeCollar(number) {
+  function displayOrangeCollar(number) {
     return `<div style="position: absolute; top: 365px; left: 105px;">
                 <svg width="90" height="18" viewBox="0 0 90 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="20" height="18" fill="#FF835A"/>
@@ -945,15 +1025,14 @@ function displayOrangeCollar(number) {
                 <rect x="54" width="20" height="18" fill="#FF5620"/>
                 <rect x="72" width="18" height="18" fill="#FF490F"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function m15(number) {
+    return number % 15 === 0;
+  }
 
-function m15(number) {
-    return number % 15 === 0
-}
-
-function displayHeadBand(number) {
+  function displayHeadBand(number) {
     return `<div style="position: absolute; top: 156px; left: 105px;">
             <svg width="215" height="18" viewBox="0 0 215 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="215" y="18" width="20" height="18" transform="rotate(-180 215 18)" fill="#FF9877"/>
@@ -968,28 +1047,26 @@ function displayHeadBand(number) {
                 <rect x="72" width="20" height="18" fill="#FF5620"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M107 0H90V18H107H108H125V0H108H107Z" fill="#FF4910"/>
             </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function m16(number) {
+    return number % 16 === 0;
+  }
 
-function m16(number) {
-    return number % 16 === 0
-}
-
-function displaySunHat(number) {
+  function displaySunHat(number) {
     return `<div style="position: absolute; top: 120px; left: 68.5px;">
                 <svg width="287" height="37" viewBox="0 0 287 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M36 17.4999L36 0L252 9.34601e-05L252 17.5L287 17.5V36.5L0 36.4999L8.30517e-06 17.4999L36 17.4999Z" fill="#FFE898"/>
                 </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function m69(number) {
+    return number % 69 === 0;
+  }
 
-function m69(number) {
-    return number % 69 === 0
-}
-
-function displaySpikeCollar(number) {
+  function displaySpikeCollar(number) {
     return `<div style="position: absolute; top: 383px; left: 87px;">
                 <svg width="108" height="18" viewBox="0 0 108 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M18 0L18 17.9998H62.9996L62.9998 17.9998L107.999 17.9998L107.999 2.36039e-06L62.9996 0H18Z" fill="#2E2D34"/>
@@ -997,143 +1074,149 @@ function displaySpikeCollar(number) {
                 <path d="M89.9998 0L72 17.9998H89.9998V0Z" fill="#EDEAFC"/>
                 <path d="M53.9998 0L36 17.9998H53.9998V0Z" fill="#EDEAFC"/>
                 </svg>
-            </div>`
-}
+            </div>`;
+  }
 
-function m11(number) {
-    return number % 11 === 0
-}
+  function m11(number) {
+    return number % 11 === 0;
+  }
 
-function displayMouse(number) {
+  function displayMouse(number) {
     return `<div style="position: absolute; top: 318px; left: 224px;">
             <svg width="201" height="38" viewBox="0 0 201 38" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38L44 38L70 38L201 38V29L86.1586 29C87.9599 26.0954 89 22.6692 89 19C89 8.50659 80.4934 0 70 0L19 0Z" fill="#8F8DA5"/>
             </svg>
-    </div>`
-}
+    </div>`;
+  }
 
+  function m888(number) {
+    return number % 888 === 0;
+  }
 
-function m888(number) {
-    return number % 888 === 0
-}
-
-function displayAlienMouse(number) {
+  function displayAlienMouse(number) {
     return `<div style="position: absolute; top: 318px; left: 224px;">
                <svg width="201" height="38" viewBox="0 0 201 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38L44 38L70 38L201 38V29L86.1586 29C87.9599 26.0954 89 22.6692 89 19C89 8.50659 80.4934 0 70 0L19 0Z" fill="#49efef"/>
             </svg>
-    </div>`
-}
+    </div>`;
+  }
 
-
-function ce7(number) {
-    let numberStr = number.toString()
-    let exponent = 7
-    let power = 1
+  function ce7(number) {
+    let numberStr = number.toString();
+    let exponent = 7;
+    let power = 1;
     while (true) {
-        let exponentStr = Math.pow(exponent, power).toString()
-        if (numberStr.includes(exponentStr)) {
-            return true
-        }
-        if (Math.pow(exponent, power) > number) break // Stop if the exponent value exceeds the number
-        power++
+      let exponentStr = Math.pow(exponent, power).toString();
+      if (numberStr.includes(exponentStr)) {
+        return true;
+      }
+      if (Math.pow(exponent, power) > number) break; // Stop if the exponent value exceeds the number
+      power++;
     }
-    return false
-}
+    return false;
+  }
 
-function displayNightVision() {
+  function displayNightVision() {
     return `<div style="position: absolute; top: 195px; left: 126px;">
                 <svg width="194" height="38" viewBox="0 0 194 38" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="74" y="38" width="74" height="38" transform="rotate(-180 74 38)" fill="#A2FF00"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M121 0H193.469L194 0.53125V37.5391L193.539 38H121V0Z" fill="#A2FF00"/>
                 </svg>
-            </div>`
-}
+            </div>`;
+  }
 
+  //fixed elements
+  function generateHtmlBasedOnBlockNumber(blockNumber) {
+    const lookType = getLook(blockNumber);
+    const lookHtml = generateLookSvg(lookType);
+    let catnip = c420(blockNumber) ? displaycatnip() : "";
+    let cig = c4a0(blockNumber) ? displaycig() : "";
+    let earring = c0(blockNumber) ? displayEarring() : "";
+    let earringR = c00(blockNumber) ? displayEarringR() : "";
+    let alienEarring = c000(blockNumber) ? displayAlienEarring() : "";
+    let alienEarringR = c0000(blockNumber) ? displayAlienEarringR() : "";
+    let alienTiara = c00000(blockNumber) ? displayAlienTiara() : "";
+    let fly = c11(blockNumber) ? displayFly() : "";
+    let flysEarring = c111(blockNumber) ? displayFlysEarring() : "";
+    let flysAlienEarring = c1111(blockNumber) ? displayFlysAlienEarring() : "";
+    let flysLaserEyes = c11111(blockNumber) ? displayFlysLaserEyes() : "";
+    let bowR = c8a8(blockNumber) ? displayBowR() : "";
+    let bowL = c88(blockNumber) ? displayBowL() : "";
+    let bowTail = c888(blockNumber) ? displayBowTail() : "";
+    let bowAlienBowTie = c8888(blockNumber) ? displayAlienBowTie() : "";
+    let bowDoubleAlienBowTie = c88888(blockNumber)
+      ? displayDoubleAlienBowTie()
+      : "";
+    let alienDiamond = cp6(blockNumber) ? displayAlienDiamond() : "";
+    let yarn = cs5(blockNumber) ? displayYarn() : "";
+    let laserPointer = cs6(blockNumber) ? displayLaserPointer() : "";
+    let trout = c9a9(blockNumber) ? displayTrout() : "";
+    let salmon = c99(blockNumber) ? displaySalmon() : "";
+    let alienFish = c999(blockNumber) ? displayAlienFish() : "";
+    let giantAlienFish = c9999(blockNumber) ? displayGiantAlienFish() : "";
+    let bloodDrips = cf3(blockNumber) ? displayBloodDrips() : "";
+    let browPiercing = cf4(blockNumber) ? displayBrowPiercing() : "";
+    let halo = cf5(blockNumber) ? displayHalo() : "";
+    let hammer = cf6(blockNumber) ? displayHammer() : "";
+    let vial = cf7(blockNumber) ? displayVial() : "";
+    let mouse = m11(blockNumber) ? displayMouse() : "";
+    let alienMouse = m888(blockNumber) ? displayAlienMouse() : "";
+    let nightVision = ce7(blockNumber) ? displayNightVision() : "";
+    let rainbowCollar = m12(blockNumber) ? displayRainbowCollar() : "";
+    let pearls = m13(blockNumber) ? displayPearls() : "";
+    let orangeCollar = m14(blockNumber) ? displayOrangeCollar() : "";
+    let headBand = m15(blockNumber) ? displayHeadBand() : "";
+    let sunHat = m16(blockNumber) ? displaySunHat() : "";
+    let spikeCollar = m69(blockNumber) ? displaySpikeCollar() : "";
+    const containsSquare = containsFourDigitSquare(blockNumber);
+    const eyeType = getLaserEyeRange(
+      parseInt(blockNumber.toString().slice(-4))
+    );
+    const laserEyes = containsSquare ? displayLaserEyes(eyeType) : "";
+    const svgsForDigits = generateSvgForDigits(blockNumber, lookType);
 
-//fixed elements
-function generateHtmlBasedOnBlockNumber(blockNumber) {
-    const lookDir = getLook(blockNumber)
-    const lookHtml = generateLookSvg(lookDir)
-    let catnip = c420(blockNumber) ? displaycatnip() : ""
-    let cig = c4a0(blockNumber) ? displaycig() : ""
-    let earring = c0(blockNumber) ? displayEarring() : ""
-    let earringR = c00(blockNumber) ? displayEarringR() : ""
-    let alienEarring = c000(blockNumber) ? displayAlienEarring() : ""
-    let alienEarringR = c0000(blockNumber) ? displayAlienEarringR() : ""
-    let alienTiara = c00000(blockNumber) ? displayAlienTiara() : ""
-    let fly = c11(blockNumber) ? displayFly() : ""
-    let flysEarring = c111(blockNumber) ? displayFlysEarring() : ""
-    let flysAlienEarring = c1111(blockNumber) ? displayFlysAlienEarring() : ""
-    let flysLaserEyes = c11111(blockNumber) ? displayFlysLaserEyes() : ""
-    let bowR = c8a8(blockNumber) ? displayBowR() : ""
-    let bowL = c88(blockNumber) ? displayBowL() : ""
-    let bowTail = c888(blockNumber) ? displayBowTail() : ""
-    let bowAlienBowTie = c8888(blockNumber) ? displayAlienBowTie() : ""
-    let bowDoubleAlienBowTie = c88888(blockNumber) ? displayDoubleAlienBowTie() : ""
-    let alienDiamond = cp6(blockNumber) ? displayAlienDiamond() : ""
-    let yarn = cs5(blockNumber) ? displayYarn() : ""
-    let laserPointer = cs6(blockNumber) ? displayLaserPointer() : ""
-    let trout = c9a9(blockNumber) ? displayTrout() : ""
-    let salmon = c99(blockNumber) ? displaySalmon() : ""
-    let alienFish = c999(blockNumber) ? displayAlienFish() : ""
-    let giantAlienFish = c9999(blockNumber) ? displayGiantAlienFish() : ""
-    let bloodDrips = cf3(blockNumber) ? displayBloodDrips() : ""
-    let browPiercing = cf4(blockNumber) ? displayBrowPiercing() : ""
-    let halo = cf5(blockNumber) ? displayHalo() : ""
-    let hammer = cf6(blockNumber) ? displayHammer() : ""
-    let vial = cf7(blockNumber) ? displayVial() : ""
-    let mouse = m11(blockNumber) ? displayMouse() : ""
-    let alienMouse = m888(blockNumber) ? displayAlienMouse() : ""
-    let nightVision = ce7(blockNumber) ? displayNightVision() : ""
-    let rainbowCollar = m12(blockNumber) ? displayRainbowCollar() : ""
-    let pearls = m13(blockNumber) ? displayPearls() : ""
-    let orangeCollar = m14(blockNumber) ? displayOrangeCollar() : ""
-    let headBand = m15(blockNumber) ? displayHeadBand() : ""
-    let sunHat = m16(blockNumber) ? displaySunHat() : ""
-    let spikeCollar = m69(blockNumber) ? displaySpikeCollar() : ""
-    const containsSquare = containsFourDigitSquare(blockNumber)
-    const eyeDirection = getLaserEyeRange(parseInt(blockNumber.toString().slice(-4)))
-    const laserEyes = containsSquare ? displayLaserEyes(eyeDirection) : ""
-    const svgsForDigits = generateSvgForDigits(blockNumber)
-    const svgsForDigits2 = generateSvgForDigits2(blockNumber)
-
-    //background
-    const background = `<div style="position: absolute; top: 0px; left: 0px;">
-            <svg width="425" height="425" viewBox="0 0 425 425" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="425" height="425" fill="#201F27"/>
-            </svg>
-        </div>`;
-
-    //mouth
-    const mouth = `<div style="position: absolute; top: 288px; left: 194px;">
-            <svg width="113" height="35" viewBox="0 0 113 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M60 0L90 30V0H113V35H0V0L30 30V0H60Z" fill="#070609"/>
-            </svg>
-        </div>`
-
-    //eyes
-    const eyes = `
-        <div style="position: absolute; top: 195px; left: 126px;">
-                <svg width="194" height="38" viewBox="0 0 194 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="74" y="38" width="74" height="38" transform="rotate(-180 74 38)" fill="white"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M121 0H193.469L194 0.53125V37.5391L193.539 38H121V0Z" fill="white"/>
-                </svg>
-            </div>`
-
-    //teeth
-    const teeth = `
-        <div style="position: absolute; top: 288px; left: 189px;">
-                <svg width="100" height="35" viewBox="0 0 100 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="35" fill="#FFFFFF"/>
-                </svg>
-            </div>`
-
-
-
-
-//construction
-    const htmlContent = background + earring + alienEarring + earringR + alienEarringR + eyes + nightVision + lookHtml + teeth + svgsForDigits2 + mouth + svgsForDigits + cig + catnip + fly + flysEarring + flysAlienEarring + headBand + sunHat + bowL + bowR + bowTail + rainbowCollar + orangeCollar + spikeCollar + pearls + bowAlienBowTie + bowDoubleAlienBowTie + trout + salmon + alienFish + giantAlienFish + yarn + laserPointer + halo + bloodDrips + hammer + vial + mouse + browPiercing + alienMouse + alienDiamond + alienTiara + flysLaserEyes + laserEyes
-    document.getElementById('natcatviewer').innerHTML = htmlContent
-}
+    //construction
+    const htmlContent =
+      earring +
+      alienEarring +
+      earringR +
+      alienEarringR +
+      nightVision +
+      lookHtml +
+      svgsForDigits +
+      cig +
+      catnip +
+      fly +
+      flysEarring +
+      flysAlienEarring +
+      headBand +
+      sunHat +
+      bowL +
+      bowR +
+      bowTail +
+      rainbowCollar +
+      orangeCollar +
+      spikeCollar +
+      pearls +
+      bowAlienBowTie +
+      bowDoubleAlienBowTie +
+      trout +
+      salmon +
+      alienFish +
+      giantAlienFish +
+      yarn +
+      laserPointer +
+      halo +
+      bloodDrips +
+      hammer +
+      vial +
+      mouse +
+      browPiercing +
+      alienMouse +
+      alienDiamond +
+      alienTiara +
+      flysLaserEyes +
+      laserEyes;
+    document.getElementById("natcatviewer").innerHTML = htmlContent;
+  }
 </script>
