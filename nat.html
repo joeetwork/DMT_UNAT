@@ -134,7 +134,7 @@
 
     const eyeLidColor = () => {
       if (lookType === "cyclops") {
-        return "#206227";
+        return "#35491B";
       }
 
       if (lookType === "robot") {
@@ -151,44 +151,56 @@
       //pupil colour
       const colorForFirstDigit = colorMap[digits[0]];
 
-      const singleEye = ` <div style="position: absolute; top: 176px; left: 186px;"><svg width="60" height="80" viewBox="0 0 138 144" fill="none" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="69" cy="71" rx="69" ry="67" fill="white"/>
-<ellipse cx="68.5" cy="71.5" rx="28.5" ry="29.5" fill="${colorForFirstDigit}"/>
-<path d="M0 72C1.59983e-06 52.9044 7.26962 34.5909 20.2096 21.0883C33.1496 7.58569 50.7001 2.04866e-06 69 0C87.2999 -2.04866e-06 104.85 7.58569 117.79 21.0883C130.73 34.5909 138 52.9044 138 72L69 72L0 72Z" fill="${eyeLidColor()}"/>
-</svg> </div>`;
+      const singleEye = `
+  <div style="position: absolute; top: 176px; left: 186px;">
+    <svg width="60" height="80" viewBox="0 0 138 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="69" cy="71" rx="69" ry="67" fill="white"/>
+      <ellipse cx="68.5" cy="71.5" rx="28.5" ry="29.5" fill="${colorForFirstDigit}"/>
+      <path d="M0 72C1.59983e-06 52.9044 7.26962 34.5909 20.2096 21.0883C33.1496 7.58569 50.7001 2.04866e-06 69 0C87.2999 -2.04866e-06 104.85 7.58569 117.79 21.0883C130.73 34.5909 138 52.9044 138 72L69 72L0 72Z" fill="${eyeLidColor()}"/>
+    </svg>
+  </div>
+`;
 
-      const fourEyes = `<div style="position: absolute; top: 159px; left: 141px;"><svg width="150" height="100" viewBox="0 0 234 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="30" cy="95.5" rx="30" ry="30.5" fill="white"/>
-<ellipse cx="29.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
-<path d="M0 91.5C6.95579e-07 84.2065 3.16071 77.2118 8.7868 72.0546C14.4129 66.8973 22.0435 64 30 64C37.9565 64 45.5871 66.8973 51.2132 72.0546C56.8393 77.2118 60 84.2065 60 91.5L30 91.5L0 91.5Z" fill="${eyeLidColor()}"/>
-<ellipse cx="204" cy="95.5" rx="30" ry="30.5" fill="white"/>
-<ellipse cx="203.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
-<path d="M174 91.5C174 84.2065 177.161 77.2118 182.787 72.0546C188.413 66.8973 196.044 64 204 64C211.956 64 219.587 66.8973 225.213 72.0546C230.839 77.2118 234 84.2065 234 91.5L204 91.5L174 91.5Z" fill="${eyeLidColor()}"/>
-<ellipse cx="117" cy="127.5" rx="30" ry="30.5" fill="white"/>
-<ellipse cx="116.5" cy="128.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
-<path d="M87 123.5C87 116.207 90.1607 109.212 95.7868 104.055C101.413 98.8973 109.044 96 117 96C124.956 96 132.587 98.8973 138.213 104.055C143.839 109.212 147 116.207 147 123.5L117 123.5L87 123.5Z" fill="${eyeLidColor()}"/>
-<ellipse cx="116.848" cy="45.1111" rx="43.848" ry="42.5696" fill="white"/>
-<ellipse cx="116.53" cy="45.4288" rx="18.1111" ry="18.7433" fill="${colorForFirstDigit}"/>
-<path d="M73 45.7464C73 33.6137 77.6197 21.9779 85.8428 13.3988C94.0659 4.8197 105.219 1.30165e-06 116.848 0C128.477 -1.30165e-06 139.63 4.8197 147.853 13.3988C156.076 21.9779 160.696 33.6137 160.696 45.7464L116.848 45.7464L73 45.7464Z" fill="${eyeLidColor()}"/>
-</svg> </div>`;
+      const fourEyes = `
+  <div style="position: absolute; top: 159px; left: 141px;">
+    <svg width="150" height="100" viewBox="0 0 234 158" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="30" cy="95.5" rx="30" ry="30.5" fill="white"/>
+      <ellipse cx="29.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
+      <path d="M0 91.5C6.95579e-07 84.2065 3.16071 77.2118 8.7868 72.0546C14.4129 66.8973 22.0435 64 30 64C37.9565 64 45.5871 66.8973 51.2132 72.0546C56.8393 77.2118 60 84.2065 60 91.5L30 91.5L0 91.5Z" fill="${eyeLidColor()}"/>
+      <ellipse cx="204" cy="95.5" rx="30" ry="30.5" fill="white"/>
+      <ellipse cx="203.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
+      <path d="M174 91.5C174 84.2065 177.161 77.2118 182.787 72.0546C188.413 66.8973 196.044 64 204 64C211.956 64 219.587 66.8973 225.213 72.0546C230.839 77.2118 234 84.2065 234 91.5L204 91.5L174 91.5Z" fill="${eyeLidColor()}"/>
+      <ellipse cx="117" cy="127.5" rx="30" ry="30.5" fill="white"/>
+      <ellipse cx="116.5" cy="128.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
+      <path d="M87 123.5C87 116.207 90.1607 109.212 95.7868 104.055C101.413 98.8973 109.044 96 117 96C124.956 96 132.587 98.8973 138.213 104.055C143.839 109.212 147 116.207 147 123.5L117 123.5L87 123.5Z" fill="${eyeLidColor()}"/>
+      <ellipse cx="116.848" cy="45.1111" rx="43.848" ry="42.5696" fill="white"/>
+      <ellipse cx="116.53" cy="45.4288" rx="18.1111" ry="18.7433" fill="${colorForFirstDigit}"/>
+      <path d="M73 45.7464C73 33.6137 77.6197 21.9779 85.8428 13.3988C94.0659 4.8197 105.219 1.30165e-06 116.848 0C128.477 -1.30165e-06 139.63 4.8197 147.853 13.3988C156.076 21.9779 160.696 33.6137 160.696 45.7464L116.848 45.7464L73 45.7464Z" fill="${eyeLidColor()}"/>
+    </svg>
+  </div>
+`;
 
-      const fiveEyes = `<div style="position: absolute; top: 159px; left: 123px;"><svg width="180" height="100" viewBox="0 0 419 138" fill="none" xmlns="http://www.w3.org/2000/svg">
-<ellipse cx="109.263" cy="37.25" rx="34.263" ry="33.264" fill="white"/>
-<ellipse cx="109.015" cy="37.4982" rx="14.1521" ry="14.6461" fill="${colorForFirstDigit}"/>
-<path d="M75 37.7464C75 28.2659 78.6098 19.1736 85.0354 12.4699C91.461 5.76613 100.176 2 109.263 2C118.35 2 127.065 5.76613 133.491 12.4699C139.916 19.1736 143.526 28.2659 143.526 37.7464L109.263 37.7464L75 37.7464Z" fill="${eyeLidColor()}"/>
-<ellipse cx="29.9498" cy="76.8125" rx="29.9498" ry="29.0765" fill="white"/>
-<ellipse cx="29.7326" cy="77.0294" rx="12.3705" ry="12.8024" fill="${colorForFirstDigit}"/>
-<path d="M0 77.2464C6.94414e-07 68.9594 3.15541 61.0117 8.77208 55.1519C14.3887 49.292 22.0066 46 29.9497 46C37.8929 46 45.5108 49.292 51.1274 55.1519C56.7441 61.0117 59.8995 68.9594 59.8995 77.2464L29.9498 77.2464L0 77.2464Z" fill="${eyeLidColor()}"/>
-<ellipse cx="34.263" cy="33.264" rx="34.263" ry="33.264" transform="matrix(-1 0 0 1 343.526 1.98592)" fill="white"/>
-<ellipse cx="14.1521" cy="14.6461" rx="14.1521" ry="14.6461" transform="matrix(-1 0 0 1 323.663 20.8521)" fill="${colorForFirstDigit}"/>
-<path d="M343.526 35.7464C343.526 26.2659 339.916 17.1736 333.49 10.4699C327.065 3.76613 318.35 1.01711e-06 309.263 0C300.176 -1.01711e-06 291.461 3.76613 285.035 10.4699C278.61 17.1736 275 26.2659 275 35.7464L309.263 35.7464L343.526 35.7464Z" fill="${eyeLidColor()}"/>
-<ellipse cx="29.9498" cy="29.0765" rx="29.9498" ry="29.0765" transform="matrix(-1 0 0 1 418.526 45.7359)" fill="white"/>
-<ellipse cx="12.3705" cy="12.8024" rx="12.3705" ry="12.8024" transform="matrix(-1 0 0 1 401.164 62.2271)" fill="${colorForFirstDigit}"/>
-<path d="M418.526 75.2464C418.526 66.9594 415.37 59.0117 409.754 53.1519C404.137 47.292 396.519 44 388.576 44C380.633 44 373.015 47.292 367.398 53.1519C361.782 59.0117 358.626 66.9594 358.626 75.2464L388.576 75.2464L418.526 75.2464Z" fill="${eyeLidColor()}"/>
-<ellipse cx="215.848" cy="91.1111" rx="43.848" ry="42.5696" fill="white"/>
-<ellipse cx="215.53" cy="91.4288" rx="18.1111" ry="18.7433" fill="${colorForFirstDigit}"/>
-<path d="M172 91.7464C172 79.6137 176.62 67.9779 184.843 59.3988C193.066 50.8197 204.219 46 215.848 46C227.477 46 238.63 50.8197 246.853 59.3988C255.076 67.9779 259.696 79.6137 259.696 91.7464L215.848 91.7464L172 91.7464Z" fill="${eyeLidColor()}"/>
-</svg>   </div>`;
+      const fiveEyes = `
+  <div style="position: absolute; top: 159px; left: 123px;">
+    <svg width="180" height="100" viewBox="0 0 419 138" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="109.263" cy="37.25" rx="34.263" ry="33.264" fill="white"/>
+      <ellipse cx="109.015" cy="37.4982" rx="14.1521" ry="14.6461" fill="${colorForFirstDigit}"/>
+      <path d="M75 37.7464C75 28.2659 78.6098 19.1736 85.0354 12.4699C91.461 5.76613 100.176 2 109.263 2C118.35 2 127.065 5.76613 133.491 12.4699C139.916 19.1736 143.526 28.2659 143.526 37.7464L109.263 37.7464L75 37.7464Z" fill="${eyeLidColor()}"/>
+      <ellipse cx="29.9498" cy="76.8125" rx="29.9498" ry="29.0765" fill="white"/>
+      <ellipse cx="29.7326" cy="77.0294" rx="12.3705" ry="12.8024" fill="${colorForFirstDigit}"/>
+      <path d="M0 77.2464C6.94414e-07 68.9594 3.15541 61.0117 8.77208 55.1519C14.3887 49.292 22.0066 46 29.9497 46C37.8929 46 45.5108 49.292 51.1274 55.1519C56.7441 61.0117 59.8995 68.9594 59.8995 77.2464L29.9498 77.2464L0 77.2464Z" fill="${eyeLidColor()}"/>
+      <ellipse cx="34.263" cy="33.264" rx="34.263" ry="33.264" transform="matrix(-1 0 0 1 343.526 1.98592)" fill="white"/>
+      <ellipse cx="14.1521" cy="14.6461" rx="14.1521" ry="14.6461" transform="matrix(-1 0 0 1 323.663 20.8521)" fill="${colorForFirstDigit}"/>
+      <path d="M343.526 35.7464C343.526 26.2659 339.916 17.1736 333.49 10.4699C327.065 3.76613 318.35 1.01711e-06 309.263 0C300.176 -1.01711e-06 291.461 3.76613 285.035 10.4699C278.61 17.1736 275 26.2659 275 35.7464L309.263 35.7464L343.526 35.7464Z" fill="${eyeLidColor()}"/>
+      <ellipse cx="29.9498" cy="29.0765" rx="29.9498" ry="29.0765" transform="matrix(-1 0 0 1 418.526 45.7359)" fill="white"/>
+      <ellipse cx="12.3705" cy="12.8024" rx="12.3705" ry="12.8024" transform="matrix(-1 0 0 1 401.164 62.2271)" fill="${colorForFirstDigit}"/>
+      <path d="M418.526 75.2464C418.526 66.9594 415.37 59.0117 409.754 53.1519C404.137 47.292 396.519 44 388.576 44C380.633 44 373.015 47.292 367.398 53.1519C361.782 59.0117 358.626 66.9594 358.626 75.2464L388.576 75.2464L418.526 75.2464Z" fill="${eyeLidColor()}"/>
+      <ellipse cx="215.848" cy="91.1111" rx="43.848" ry="42.5696" fill="white"/>
+      <ellipse cx="215.53" cy="91.4288" rx="18.1111" ry="18.7433" fill="${colorForFirstDigit}"/>
+      <path d="M172 91.7464C172 79.6137 176.62 67.9779 184.843 59.3988C193.066 50.8197 204.219 46 215.848 46C227.477 46 238.63 50.8197 246.853 59.3988C255.076 67.9779 259.696 79.6137 259.696 91.7464L215.848 91.7464L172 91.7464Z" fill="${eyeLidColor()}"/>
+    </svg>
+  </div>
+`;
 
       //using fifth digit
       const eyeType = {
@@ -218,16 +230,14 @@
       //tooth colour
       const colorForFourthDigit = colorMap2[digits[3]] || "transparent";
       svgs.push(`
-            <div style="position: absolute; top: 281px; left:146px; z-index-1">
-               
-<svg width="150" height="75" viewBox="0 0 190 162" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M190 81C190 70.3629 187.543 59.83 182.769 50.0026C177.994 40.1753 170.997 31.2459 162.175 23.7243C153.354 16.2028 142.881 10.2364 131.355 6.16576C119.829 2.09513 107.476 -4.64961e-07 95 0C82.5244 4.64961e-07 70.171 2.09513 58.6451 6.16576C47.1191 10.2364 36.6464 16.2028 27.8249 23.7244C19.0033 31.2459 12.0056 40.1753 7.23144 50.0026C2.45725 59.83 -1.09065e-06 70.3629 0 81L95 81H190Z" fill="${colorForSixthDigit}"/>
-<path d="M43.6306 44.2193L57.8778 81.1561L28.4354 80.7763L43.6306 44.2193Z" fill="${colorForFourthDigit}"/>
-<path d="M138 47.0444L152.811 80.8308L123.366 80.9078L138 47.0444Z" fill="#D9D9D9"/>
-</svg>
-            </div>
-
-        `);
+  <div style="position: absolute; top: 281px; left:146px; z-index-1">
+    <svg width="150" height="75" viewBox="0 0 190 162" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M190 81C190 70.3629 187.543 59.83 182.769 50.0026C177.994 40.1753 170.997 31.2459 162.175 23.7243C153.354 16.2028 142.881 10.2364 131.355 6.16576C119.829 2.09513 107.476 -4.64961e-07 95 0C82.5244 4.64961e-07 70.171 2.09513 58.6451 6.16576C47.1191 10.2364 36.6464 16.2028 27.8249 23.7244C19.0033 31.2459 12.0056 40.1753 7.23144 50.0026C2.45725 59.83 -1.09065e-06 70.3629 0 81L95 81H190Z" fill="${colorForSixthDigit}"/>
+      <path d="M43.6306 44.2193L57.8778 81.1561L28.4354 80.7763L43.6306 44.2193Z" fill="${colorForFourthDigit}"/>
+      <path d="M138 47.0444L152.811 80.8308L123.366 80.9078L138 47.0444Z" fill="#D9D9D9"/>
+    </svg>
+  </div>
+`);
     }
 
     //background
@@ -285,66 +295,63 @@
     // colour ear tips
     const colorForThirdDigit = colorMap2[digits[2]] || "transparent";
 
-    const head = `        <div style="position: absolute; top: 138px; left: 105px;">
-            <svg width="215" height="209" viewBox="0 0 215 209" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M-3.8147e-06 0H215V188C215 195.732 207.732 203 200 203H15C7.267 203 -3.8147e-06 195.732 -3.8147e-06 188V0Z" fill="${bodyColor()}"/>
-</svg>
-            </div>
-                         `;
+    const head = `
+  <div style="position: absolute; top: 138px; left: 105px;">
+    <svg width="215" height="209" viewBox="0 0 215 209" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M-3.8147e-06 0H215V188C215 195.732 207.732 203 200 203H15C7.267 203 -3.8147e-06 195.732 -3.8147e-06 188V0Z" fill="${bodyColor()}"/>
+    </svg>
+  </div>
+`;
 
     const ears = `
-                         <div style="position: absolute; top: 136px; left: 46px;">
-<svg width="330" height="125" viewBox="0 0 775 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="83" y="51" width="85.6155" height="42.0018" transform="rotate(24.0638 83 51)" fill="${bodyColor()}"/>
-<path d="M35.815 89.5233C40.5183 92.4876 45.6723 94.6346 50.9829 95.8418C56.2934 97.0489 61.6564 97.2925 66.7657 96.5587C71.875 95.8249 76.6305 94.1281 80.7608 91.5651C84.891 89.002 88.315 85.623 90.8374 81.621C93.3597 77.6189 94.931 73.0722 95.4615 68.2403C95.9919 63.4085 95.4712 58.3863 93.9291 53.4603C92.3869 48.5343 89.8535 43.8011 86.4735 39.5309C83.0935 35.2607 78.9331 31.5372 74.2298 28.5729L55.0224 59.0481L35.815 89.5233Z" fill="${bodyColor()}"/>
-<path d="M45.0539 75.0424C47.7738 76.7567 50.7145 78.0615 53.7082 78.8823C56.7018 79.7032 59.6898 80.024 62.5015 79.8265C65.3132 79.629 67.8935 78.9171 70.0952 77.7313C72.2969 76.5455 74.0767 74.9092 75.3332 72.9156C76.5896 70.9221 77.2981 68.6104 77.418 66.1126C77.538 63.6148 77.0671 60.9798 76.0323 58.358C74.9975 55.7362 73.4191 53.179 71.3871 50.8323C69.355 48.4857 66.9093 46.3956 64.1894 44.6814L54.6217 59.8619L45.0539 75.0424Z" fill="${colorForThirdDigit}"/>
-<rect width="85.6155" height="42.0018" transform="matrix(-0.913092 0.407754 0.407754 0.913092 691.175 45)" fill="${bodyColor()}"/>
-<path d="M738.36 83.5233C733.657 86.4876 728.503 88.6346 723.192 89.8418C717.881 91.0489 712.518 91.2925 707.409 90.5587C702.3 89.8249 697.544 88.1281 693.414 85.5651C689.284 83.002 685.86 79.623 683.338 75.621C680.815 71.6189 679.244 67.0722 678.713 62.2403C678.183 57.4085 678.704 52.3863 680.246 47.4603C681.788 42.5343 684.321 37.8011 687.701 33.5309C691.081 29.2607 695.242 25.5372 699.945 22.5729L719.152 53.0481L738.36 83.5233Z" fill="${bodyColor()}"/>
-<path d="M729.137 69.0322C726.415 70.7478 723.472 72.0539 720.477 72.876C717.481 73.6981 714.491 74.0201 711.678 73.8236C708.865 73.627 706.283 72.9158 704.081 71.7305C701.878 70.5453 700.098 68.9092 698.842 66.9156C697.585 64.9221 696.877 62.6102 696.758 60.1118C696.639 57.6135 697.111 54.9778 698.147 52.355C699.184 49.7323 700.764 47.1739 702.798 44.826C704.832 42.4782 707.28 40.3867 710.002 38.6711L719.569 53.8517L729.137 69.0322Z" fill="${colorForThirdDigit}"/>
-</svg>
-
-                </div>
-                         `;
+  <div style="position: absolute; top: 136px; left: 46px;">
+    <svg width="330" height="125" viewBox="0 0 775 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="83" y="51" width="85.6155" height="42.0018" transform="rotate(24.0638 83 51)" fill="${bodyColor()}"/>
+      <path d="M35.815 89.5233C40.5183 92.4876 45.6723 94.6346 50.9829 95.8418C56.2934 97.0489 61.6564 97.2925 66.7657 96.5587C71.875 95.8249 76.6305 94.1281 80.7608 91.5651C84.891 89.002 88.315 85.623 90.8374 81.621C93.3597 77.6189 94.931 73.0722 95.4615 68.2403C95.9919 63.4085 95.4712 58.3863 93.9291 53.4603C92.3869 48.5343 89.8535 43.8011 86.4735 39.5309C83.0935 35.2607 78.9331 31.5372 74.2298 28.5729L55.0224 59.0481L35.815 89.5233Z" fill="${bodyColor()}"/>
+      <path d="M45.0539 75.0424C47.7738 76.7567 50.7145 78.0615 53.7082 78.8823C56.7018 79.7032 59.6898 80.024 62.5015 79.8265C65.3132 79.629 67.8935 78.9171 70.0952 77.7313C72.2969 76.5455 74.0767 74.9092 75.3332 72.9156C76.5896 70.9221 77.2981 68.6104 77.418 66.1126C77.538 63.6148 77.0671 60.9798 76.0323 58.358C74.9975 55.7362 73.4191 53.179 71.3871 50.8323C69.355 48.4857 66.9093 46.3956 64.1894 44.6814L54.6217 59.8619L45.0539 75.0424Z" fill="${colorForThirdDigit}"/>
+      <rect width="85.6155" height="42.0018" transform="matrix(-0.913092 0.407754 0.407754 0.913092 691.175 45)" fill="${bodyColor()}"/>
+      <path d="M738.36 83.5233C733.657 86.4876 728.503 88.6346 723.192 89.8418C717.881 91.0489 712.518 91.2925 707.409 90.5587C702.3 89.8249 697.544 88.1281 693.414 85.5651C689.284 83.002 685.86 79.623 683.338 75.621C680.815 71.6189 679.244 67.0722 678.713 62.2403C678.183 57.4085 678.704 52.3863 680.246 47.4603C681.788 42.5343 684.321 37.8011 687.701 33.5309C691.081 29.2607 695.242 25.5372 699.945 22.5729L719.152 53.0481L738.36 83.5233Z" fill="${bodyColor()}"/>
+      <path d="M729.137 69.0322C726.415 70.7478 723.472 72.0539 720.477 72.876C717.481 73.6981 714.491 74.0201 711.678 73.8236C708.865 73.627 706.283 72.9158 704.081 71.7305C701.878 70.5453 700.098 68.9092 698.842 66.9156C697.585 64.9221 696.877 62.6102 696.758 60.1118C696.639 57.6135 697.111 54.9778 698.147 52.355C699.184 49.7323 700.764 47.1739 702.798 44.826C704.832 42.4782 707.28 40.3867 710.002 38.6711L719.569 53.8517L729.137 69.0322Z" fill="${colorForThirdDigit}"/>
+    </svg>
+  </div>
+`;
 
     const neck = `
-                         <div style="position: absolute; top: 315px; left: 57px;">
-<svg width="300" height="110" viewBox="0 0 671 250" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_9_57)">
-<path d="M335.986 0.414764L626.104 247.293H45.8674L335.986 0.414764Z" fill="${bodyColor()}"/>
-<path d="M196.757 47.4391H476.431V175.223H196.757V47.4391Z" fill="${bodyColor()}"/>
-</g>
-<defs>
-<clipPath id="clip0_9_57">
-<rect width="670" height="250" fill="white" transform="translate(0.985901)"/>
-</clipPath>
-</defs>
-</svg>
-            </div>  
-                         `;
+  <div style="position: absolute; top: 315px; left: 57px;">
+    <svg width="300" height="110" viewBox="0 0 671 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_9_57)">
+        <path d="M335.986 0.414764L626.104 247.293H45.8674L335.986 0.414764Z" fill="${bodyColor()}"/>
+        <path d="M196.757 47.4391H476.431V175.223H196.757V47.4391Z" fill="${bodyColor()}"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_9_57">
+          <rect width="670" height="250" fill="white" transform="translate(0.985901)"/>
+        </clipPath>
+      </defs>
+    </svg>
+  </div>
+`;
 
     let lookHtml = "";
+
     if (lookType === "cyclops") {
       lookHtml = `
-${head}
-        
-${ears}
-
-${neck}
-
-  
-            `;
+    ${head}
+    ${ears}
+    ${neck}
+  `;
     } else if (lookType === "robot") {
-      lookHtml = `${head}
-        
-        ${ears}
-        
-        ${neck} `;
+      lookHtml = `
+    ${head}
+    ${ears}
+    ${neck}
+  `;
     } else if (lookType === "alien") {
-      lookHtml = `${head}
-        
-        ${ears}
-        
-        ${neck} `;
+      lookHtml = `
+    ${head}
+    ${ears}
+    ${neck}
+  `;
     }
     return lookHtml;
   }
@@ -718,52 +725,50 @@ ${neck}
   function displayLaserEyes(eyeType) {
     if (eyeType === "single_eye") {
       return `
-    <div style="position: absolute; top: 126px; left: 215px;">
-        <svg width="200" height="325" viewBox="0 0 454 325" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="5.71717" y1="8.79549" x2="447.717" y2="316.796" stroke="#069BDA" stroke-width="20"/>
-</svg>
-                        </div>
-    `;
+  <div style="position: absolute; top: 126px; left: 215px;">
+    <svg width="200" height="325" viewBox="0 0 454 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="5.71717" y1="8.79549" x2="447.717" y2="316.796" stroke="#069BDA" stroke-width="20"/>
+    </svg>
+  </div>
+`;
     } else if (eyeType === "four_eyes") {
       return `
-    <div style="position: absolute; top: 189px; left: 213px;">
-        <svg width="165" height="141" viewBox="0 0 165 141" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="3.59629" y1="3.90358" x2="161.518" y2="137.41" stroke="#DA0606" stroke-width="9.35065"/>
-</svg>
-                        </div>
+  <div style="position: absolute; top: 189px; left: 213px;">
+    <svg width="165" height="141" viewBox="0 0 165 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="3.59629" y1="3.90358" x2="161.518" y2="137.41" stroke="#DA0606" stroke-width="9.35065"/>
+    </svg>
+  </div>
 
-                        <div style="position: absolute; top: 216px; left: 155px;">
+  <div style="position: absolute; top: 216px; left: 155px;">
+    <svg width="145" height="130" viewBox="0 0 145 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="2.57021" y1="3.04005" x2="142.31" y2="127.196" stroke="#069BDA" stroke-width="6.23377"/>
+    </svg>
+  </div>
 
-                            <svg width="145" height="130" viewBox="0 0 145 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="2.57021" y1="3.04005" x2="142.31" y2="127.196" stroke="#069BDA" stroke-width="6.23377"/>
-</svg>
-                        </div>
+  <div style="position: absolute; top: 237px; left: 213px;">
+    <svg width="126" height="108" viewBox="0 0 126 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.29224 2.43506L123.851 105.292" stroke="#069BDA" stroke-width="6.23377"/>
+    </svg>
+  </div>
 
-                        <div style="position: absolute; top: 237px; left: 213px;">
-                            <svg width="126" height="108" viewBox="0 0 126 108" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M2.29224 2.43506L123.851 105.292" stroke="#069BDA" stroke-width="6.23377"/>
-</svg>
-                        </div>
-
-                        <div style="position: absolute; top: 216px; left: 266px;">
-  
-<svg width="106" height="93" viewBox="0 0 106 93" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="2.5145" y1="3.00275" x2="103.813" y2="89.756" stroke="#069BDA" stroke-width="6.23377"/>
-</svg>
-                        </div>
-    `;
+  <div style="position: absolute; top: 216px; left: 266px;">
+    <svg width="106" height="93" viewBox="0 0 106 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="2.5145" y1="3.00275" x2="103.813" y2="89.756" stroke="#069BDA" stroke-width="6.23377"/>
+    </svg>
+  </div>
+`;
     } else if (eyeType === "five_eyes") {
       return `
-    <div style="position: absolute; top: 125px; left: 133px;">
-        <svg width="260" height="300" viewBox="0 0 606 378" fill="none" xmlns="http://www.w3.org/2000/svg">
-<line x1="189.172" y1="62.132" x2="586.172" y2="370.132" stroke="#DA0606" stroke-width="16"/>
-<line x1="288.091" y1="4.61137" x2="546.694" y2="245.702" stroke="#06CDDA" stroke-width="12"/>
-<line x1="87.0243" y1="8.54974" x2="390.024" y2="282.55" stroke="#06CDDA" stroke-width="12"/>
-<line x1="3.96144" y1="46.4937" x2="309.961" y2="313.494" stroke="#06CDDA" stroke-width="12"/>
-<line x1="363.167" y1="44.6574" x2="601.532" y2="250.722" stroke="#06CDDA" stroke-width="12"/>
-</svg>
-                        </div>
-    `;
+  <div style="position: absolute; top: 125px; left: 133px;">
+    <svg width="260" height="300" viewBox="0 0 606 378" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="189.172" y1="62.132" x2="586.172" y2="370.132" stroke="#DA0606" stroke-width="16"/>
+      <line x1="288.091" y1="4.61137" x2="546.694" y2="245.702" stroke="#06CDDA" stroke-width="12"/>
+      <line x1="87.0243" y1="8.54974" x2="390.024" y2="282.55" stroke="#06CDDA" stroke-width="12"/>
+      <line x1="3.96144" y1="46.4937" x2="309.961" y2="313.494" stroke="#06CDDA" stroke-width="12"/>
+      <line x1="363.167" y1="44.6574" x2="601.532" y2="250.722" stroke="#06CDDA" stroke-width="12"/>
+    </svg>
+  </div>
+`;
     } else {
       return "";
     }
