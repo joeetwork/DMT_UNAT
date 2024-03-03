@@ -317,7 +317,7 @@
 
     const neck = `
   <div style="position: absolute; top: 315px; left: 57px;">
-    <svg width="300" height="110" viewBox="0 0 671 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="300" height="110" viewBox="0 0 671 240" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#clip0_9_57)">
         <path d="M335.986 0.414764L626.104 247.293H45.8674L335.986 0.414764Z" fill="${bodyColor()}"/>
         <path d="M196.757 47.4391H476.431V175.223H196.757V47.4391Z" fill="${bodyColor()}"/>
@@ -1097,11 +1097,36 @@
     return number % 888 === 0;
   }
 
-  function displayAlienMouse(number) {
-    return `<div style="position: absolute; top: 318px; left: 224px;">
-               <svg width="201" height="38" viewBox="0 0 201 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 0C8.50659 0 0 8.50659 0 19C0 29.4934 8.50659 38 19 38L44 38L70 38L201 38V29L86.1586 29C87.9599 26.0954 89 22.6692 89 19C89 8.50659 80.4934 0 70 0L19 0Z" fill="#49efef"/>
-            </svg>
+  function displayShield(number) {
+    return `<div style="position: absolute; top: 274px; left: 38px;">
+       
+<svg width="175" height="150" viewBox="0 0 233 205" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="118.69" height="115.679" transform="matrix(0.829823 0.558027 -0.530394 0.847751 96.8952 24.9885)" fill="#A1662F"/>
+<rect x="8.42346" y="70.3923" width="194" height="74" transform="rotate(-12.4589 8.42346 70.3923)" fill="#A1662F"/>
+<rect x="110.423" y="93.4338" width="71.601" height="99.7164" transform="rotate(-12.4589 110.423 93.4338)" fill="#A1662F"/>
+<rect width="34.3378" height="31.4982" transform="matrix(-0.531862 0.846831 0.846831 0.531862 184.766 84.6851)" fill="#A1662F"/>
+<rect x="40.5087" y="117.979" width="34.3378" height="29" transform="rotate(32.9509 40.5087 117.979)" fill="#A1662F"/>
+<rect x="41.1077" y="111.595" width="71.601" height="96.9368" transform="rotate(-12.4589 41.1077 111.595)" fill="#A1662F"/>
+<path d="M128.425 113.475C129.802 119.71 125.183 126.354 117.621 128.025C110.059 129.695 103.071 125.616 101.693 119.381C100.315 113.145 104.935 106.502 112.497 104.831C120.059 103.16 127.047 107.239 128.425 113.475Z" fill="#464646" stroke="black" stroke-width="3"/>
+<line x1="161.599" y1="37.2933" x2="192.556" y2="177.408" stroke="black" stroke-width="7"/>
+<line x1="95.2961" y1="25.5552" x2="112.899" y2="105.227" stroke="black" stroke-width="7"/>
+<line x1="117.806" y1="127.438" x2="131.829" y2="190.907" stroke="black" stroke-width="7"/>
+<line x1="41.2606" y1="63.8811" x2="72.2179" y2="203.996" stroke="black" stroke-width="7"/>
+<line x1="71.3452" y1="57.2342" x2="102.302" y2="197.349" stroke="black" stroke-width="7"/>
+<line x1="133.633" y1="43.4722" x2="164.59" y2="183.587" stroke="black" stroke-width="7"/>
+<line x1="8.36263" y1="70.7817" x2="24.4308" y2="143.507" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="198.105" y1="26.4345" x2="214.248" y2="99.4984" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="5.97825" y1="69.2602" x2="77.588" y2="53.4386" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="124.786" y1="43.0107" x2="200.139" y2="26.3622" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="75.5278" y1="54.9731" x2="96.5242" y2="23.3005" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="127.252" y1="43.3414" x2="94.5206" y2="24.0371" stroke="#4F4F4F" stroke-width="4"/>
+<line y1="-2" x2="44.23" y2="-2" transform="matrix(0.538804 -0.842431 0.939065 0.34374 192.171 136.169)" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="200.592" y1="178.929" x2="190.752" y2="134.393" stroke="#4F4F4F" stroke-width="4"/>
+<line y1="-2" x2="37.1807" y2="-2" transform="matrix(0.819785 0.572672 -0.733337 0.679866 22.4778 143.939)" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="54.5454" y1="163.145" x2="64.0206" y2="206.031" stroke="#4F4F4F" stroke-width="4"/>
+<line x1="102.113" y1="198.637" x2="62.2831" y2="207.437" stroke="#4F4F4F" stroke-width="4"/>
+<line y1="-2" x2="110.13" y2="-2" transform="matrix(-0.976451 0.215739 -0.0015228 -0.999999 201.766 174.635)" stroke="#4F4F4F" stroke-width="4"/>
+</svg>
     </div>`;
   }
 
@@ -1120,12 +1145,16 @@
     return false;
   }
 
-  function displayNightVision() {
-    return `<div style="position: absolute; top: 195px; left: 126px;">
-                <svg width="194" height="38" viewBox="0 0 194 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="74" y="38" width="74" height="38" transform="rotate(-180 74 38)" fill="#A2FF00"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M121 0H193.469L194 0.53125V37.5391L193.539 38H121V0Z" fill="#A2FF00"/>
-                </svg>
+  function displayLipsVision() {
+    return `<div style="position: absolute;     top: 254px;
+    left: 171px;
+    z-index: 1;">
+        <svg width="100" height="94" viewBox="0 0 218 94" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1_48_758" fill="white">
+<path d="M218 93.5C218 81.2214 215.181 69.063 209.703 57.7191C204.225 46.3752 196.196 36.0678 186.075 27.3855C175.953 18.7032 163.937 11.8161 150.712 7.11726C137.488 2.41845 123.314 -5.36714e-07 109 0C94.6859 5.36715e-07 80.512 2.41845 67.2875 7.11727C54.063 11.8161 42.0469 18.7032 31.9254 27.3855C21.8038 36.0678 13.7749 46.3752 8.29713 57.7191C2.81937 69.063 -1.25138e-06 81.2214 0 93.5L109 93.5H218Z"/>
+</mask>
+<path d="M218 93.5C218 81.2214 215.181 69.063 209.703 57.7191C204.225 46.3752 196.196 36.0678 186.075 27.3855C175.953 18.7032 163.937 11.8161 150.712 7.11726C137.488 2.41845 123.314 -5.36714e-07 109 0C94.6859 5.36715e-07 80.512 2.41845 67.2875 7.11727C54.063 11.8161 42.0469 18.7032 31.9254 27.3855C21.8038 36.0678 13.7749 46.3752 8.29713 57.7191C2.81937 69.063 -1.25138e-06 81.2214 0 93.5L109 93.5H218Z" stroke="#8B0909" stroke-width="26" mask="url(#path-1-inside-1_48_758)"/>
+</svg>
             </div>`;
   }
 
@@ -1164,8 +1193,8 @@
     let hammer = cf6(blockNumber) ? displayHammer() : "";
     let vial = cf7(blockNumber) ? displayVial() : "";
     let mouse = m11(blockNumber) ? displayMouse() : "";
-    let alienMouse = m888(blockNumber) ? displayAlienMouse() : "";
-    let nightVision = ce7(blockNumber) ? displayNightVision() : "";
+    let shield = m888(blockNumber) ? displayShield() : "";
+    let nightVision = ce7(blockNumber) ? displayLipsVision() : "";
     let rainbowCollar = m12(blockNumber) ? displayRainbowCollar() : "";
     let pearls = m13(blockNumber) ? displayPearls() : "";
     let orangeCollar = m14(blockNumber) ? displayOrangeCollar() : "";
@@ -1216,7 +1245,7 @@
       vial +
       mouse +
       browPiercing +
-      alienMouse +
+      shield +
       alienDiamond +
       alienTiara +
       flysLaserEyes +
