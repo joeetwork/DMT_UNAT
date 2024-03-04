@@ -386,7 +386,14 @@
 
   function c0(number) {
     const numberStr = number.toString();
-    return numberStr.includes("0");
+
+    if (numberStr.includes("00")) {
+      return false;
+    }
+
+    if (numberStr.includes("0")) {
+      return true;
+    }
   }
 
   function displayEarring(number) {
@@ -399,7 +406,14 @@
 
   function c00(number) {
     const numberStr = number.toString();
-    return numberStr.includes("00");
+
+    if (numberStr.includes("000")) {
+      return false;
+    }
+
+    if (numberStr.includes("00")) {
+      return true;
+    }
   }
 
   function displayTash(number) {
@@ -524,7 +538,14 @@
 
   function c000(number) {
     const numberStr = number.toString();
-    return numberStr.includes("000");
+
+    if (numberStr.includes("0000")) {
+      return false;
+    }
+
+    if (numberStr.includes("000")) {
+      return true;
+    }
   }
 
   function displayAlienEarring(number) {
@@ -537,7 +558,13 @@
 
   function c0000(number) {
     const numberStr = number.toString();
-    return numberStr.includes("0000");
+    if (numberStr.includes("00000")) {
+      return false;
+    }
+
+    if (numberStr.includes("0000")) {
+      return true;
+    }
   }
 
   function displayMonocle(number) {
@@ -550,7 +577,7 @@
     </div>`;
   }
 
-  function displayBloodshot(number, lookType) {
+  function displayBloodShot(lookType) {
     if (lookType === "four_eyes") {
       return `<div style="position: absolute; top: 200px; left: 203px; z-index:1;">
         <svg width="26" height="50" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1396,13 +1423,14 @@
   function generateHtmlBasedOnBlockNumber(blockNumber) {
     const lookType = getLook(blockNumber);
     const lookHtml = generateLookSvg(blockNumber, lookType);
+    const eyeType = getLaserEyeRange(blockNumber);
     let catnip = c420(blockNumber) ? displaycatnip() : "";
     let cig = c4a0(blockNumber) ? displaycig() : "";
     let earring = c0(blockNumber) ? displayEarring() : "";
     let tash = c00(blockNumber) ? displayTash() : "";
     let alienEarring = c000(blockNumber) ? displayAlienEarring() : "";
     let monocle = c0000(blockNumber) ? displayMonocle() : "";
-    let bloodShot = c00000(blockNumber, lookType) ? displayBloodShot() : "";
+    let bloodShot = c00000(blockNumber) ? displayBloodShot(eyeType) : "";
     let fly = c11(blockNumber) ? displayFly() : "";
     let flysEarring = c111(blockNumber) ? displayFlysEarring() : "";
     let flysAlienEarring = c1111(blockNumber) ? displayFlysAlienEarring() : "";
@@ -1436,7 +1464,6 @@
     let sunHat = m16(blockNumber) ? displaySunHat() : "";
     let spikeCollar = m69(blockNumber) ? displaySpikeCollar() : "";
     const containsSquare = containsFourDigitSquare(blockNumber);
-    const eyeType = getLaserEyeRange(blockNumber);
     const laserEyes = containsSquare ? displayLaserEyes(eyeType) : "";
     const svgsForDigits = generateSvgForDigits(blockNumber, lookType);
 
