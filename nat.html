@@ -1545,15 +1545,26 @@
     return number % 12 === 0;
   }
 
-  function displayRainbowCollar(number) {
-    return `<div style="position: absolute; top: 347px; left: 105px;">
-                <svg width="90" height="18" viewBox="0 0 90 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="20" height="18" fill="#FF1D38"/>
-                <rect x="18" width="20" height="18" fill="#C53DF5"/>
-                <rect x="36" width="20" height="18" fill="#115FF5"/>
-                <rect x="54" width="20" height="18" fill="#A1FF00"/>
-                <rect x="72" width="18" height="18" fill="#FFC700"/>
-                </svg>
+  function displaySpikyHair(number) {
+    return `<div style="position: absolute; top: 11px; left: 90px;">
+      <svg width="238.2" height="215" viewBox="0 0 570 215" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M35.4299 6.03382L96.4236 146.617L35.0571 156.163L35.4299 6.03382Z" fill="#FF6B00"/>
+<path d="M533.277 16.208L551.226 165.535L489.056 161.398L533.277 16.208Z" fill="#FF6B00"/>
+<path d="M486.082 11.5269L523.004 158.23L460.685 160.045L486.082 11.5269Z" fill="#FF6B00"/>
+<path d="M474.111 14.1961L480.691 164.218L418.969 156.571L474.111 14.1961Z" fill="#FF6B00"/>
+<path d="M428.501 13.5473L451.64 162.341L389.354 159.82L428.501 13.5473Z" fill="#FF6B00"/>
+<path d="M71.8683 43.2033L114.651 158.785L52.5253 163.392L71.8683 43.2033Z" fill="#FF6B00"/>
+<path d="M393.165 14.2276L417.321 162.9L355.019 160.697L393.165 14.2276Z" fill="#FF6B00"/>
+<path d="M353.134 9.84643L376.463 158.618L314.174 156.156L353.134 9.84643Z" fill="#FF6B00"/>
+<path d="M319.772 10.6137L330.357 160.465L268.447 154.049L319.772 10.6137Z" fill="#FF6B00"/>
+<path d="M265.777 6.63812L284.111 155.93L221.93 151.913L265.777 6.63812Z" fill="#FF6B00"/>
+<path d="M226.452 7.42288L240.401 157.068L178.358 151.691L226.452 7.42288Z" fill="#FF6B00"/>
+<path d="M195.61 6.70997L190.577 156.777L129.584 145.587L195.61 6.70997Z" fill="#FF6B00"/>
+<path d="M129.345 4.6098L165.874 151.387L103.551 153.077L129.345 4.6098Z" fill="#FF6B00"/>
+<path d="M104.481 2.14087L123.811 151.339L61.6048 147.631L104.481 2.14087Z" fill="#FF6B00"/>
+<path d="M35 148.559H549.5L551.5 165.833H35V148.559Z" fill="#FF6B00"/>
+</svg>
+
     </div>`;
   }
 
@@ -1761,7 +1772,7 @@
     let staff = m11(blockNumber) ? displayStaff() : "";
     let shield = m888(blockNumber) ? displayShield() : "";
     let nightVision = ce7(blockNumber) ? displayLipsVision() : "";
-    let rainbowCollar = m12(blockNumber) ? displayRainbowCollar() : "";
+    let spikyHair = m12(blockNumber) ? displaySpikyHair() : "";
     let pearls = m13(blockNumber) ? displayPearls() : "";
     let orangeCollar = m14(blockNumber) ? displayOrangeCollar() : "";
     let headBand = m15(blockNumber) ? displayHeadBand() : "";
@@ -1790,7 +1801,7 @@
       bowL +
       bowR +
       bowTail +
-      rainbowCollar +
+      spikyHair +
       orangeCollar +
       spikeCollar +
       pearls +
