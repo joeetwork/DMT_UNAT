@@ -550,17 +550,130 @@
     </div>`;
   }
 
+  function displayBloodshot(number, lookType) {
+    if (lookType === "four_eyes") {
+      return `<div style="position: absolute; top: 200px; left: 203px; z-index:1;">
+        <svg width="26" height="50" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 157px; left: 196px; z-index:1;">
+        <svg width="32" height="50" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 180px; left: 240px; z-index:1;">
+        <svg width="25" height="50" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 180px; left: 166px; z-index:1;">
+        <svg width="25" height="50" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+</div>
+
+
+
+
+`;
+    }
+
+    if (lookType === "five_eyes") {
+      return `<div style="position: absolute; top: 206px; left: 197px; z-index:1;">
+        <svg width="31" height="40" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+
+
+    </div>
+    
+    <div style="position: absolute; top: 197px; left: 278px; z-index:1;">
+        <svg width="20" height="40" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+
+
+    </div>
+
+    <div style="position: absolute; top: 180px; left: 242px; z-index:1;">
+        <svg width="23" height="40" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+
+
+    </div>
+
+    <div style="position: absolute; top: 181px; left: 156px; z-index:1;">
+        <svg width="23" height="40" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+
+
+    </div>
+
+    <div style="position: absolute; top: 198px; left: 124px; z-index:1;">
+        <svg width="20" height="40" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+
+
+    </div>
+    
+    
+    `;
+    }
+
+    return `<div style="position: absolute; top: 203px; left: 189px; z-index:1;">
+        <svg width="45" height="50" viewBox="0 0 110 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38.1581 11.4865C37.9207 13.3856 31.5013 18.0168 29.6716 15.7297C27.3332 12.8066 23.8206 12.3261 20.6464 11.4192C16.2929 10.1753 6.38699 -0.136857 3 6.63712" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M58.7679 27.2471C55.6903 27.6318 50.3706 33.394 47.2506 35.1273C42.4051 37.8193 43.4269 37.1672 46.375 40.8523C48.5551 43.5774 37.0151 43.2577 35.7333 43.6138C31.7929 44.7083 25.8293 44.5278 23.6099 47.857" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M74.5284 28.4595C74.898 29.8557 82.3042 49.048 83.0149 43.0076C83.1425 41.923 84.0751 37.5526 84.8334 36.9459C85.7159 36.2399 86.1535 38.7884 88.4704 39.3032C92.7259 40.2489 96.9541 40.8893 100.661 43.0076C103.538 44.6514 105.724 50.8431 107.262 53.9188" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+<path d="M96.3508 6.63704C94.3302 6.63704 100.392 6.63704 102.413 6.63704C105.784 6.63704 106.05 6.37147 106.05 3" stroke="#930505" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
+
+
+    </div>`;
+  }
+
   function c00000(number) {
     const numberStr = number.toString();
     return numberStr.includes("00000");
-  }
-
-  function displayAlienTiara(number) {
-    return `<div style="position: absolute; top: 102px; left: 132px;">
-                <svg width="162" height="36" viewBox="0 0 162 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M36 0H54V18H36V0ZM36 18V36H18H0V18H18H36ZM72 18V36H54V18H72ZM90 18H72V0H90V18ZM108 18V36H90V18H108ZM126 18H108V0H126V18ZM144 18H126V36H144H162V18H144Z" fill="#00FFF0"/>
-                </svg>
-    </div>`;
   }
 
   function c11(number) {
@@ -837,15 +950,7 @@
 
   // Function to generate SVG for laser eyes based on direction
   function displayLaserEyes(eyeType) {
-    if (eyeType === "single_eye") {
-      return `
-  <div style="position: absolute; top: 126px; left: 215px;">
-    <svg width="200" height="325" viewBox="0 0 454 325" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="5.71717" y1="8.79549" x2="447.717" y2="316.796" stroke="#069BDA" stroke-width="20"/>
-    </svg>
-  </div>
-`;
-    } else if (eyeType === "four_eyes") {
+    if (eyeType === "four_eyes") {
       return `
   <div style="position: absolute; top: 174px; left: 212px;">
     <svg width="165" height="141" viewBox="0 0 165 141" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -884,7 +989,13 @@
   </div>
 `;
     } else {
-      return "";
+      return `
+  <div style="position: absolute; top: 126px; left: 215px;">
+    <svg width="200" height="325" viewBox="0 0 454 325" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="5.71717" y1="8.79549" x2="447.717" y2="316.796" stroke="#069BDA" stroke-width="20"/>
+    </svg>
+  </div>
+`;
     }
   }
 
@@ -1291,7 +1402,7 @@
     let tash = c00(blockNumber) ? displayTash() : "";
     let alienEarring = c000(blockNumber) ? displayAlienEarring() : "";
     let monocle = c0000(blockNumber) ? displayMonocle() : "";
-    let alienTiara = c00000(blockNumber) ? displayAlienTiara() : "";
+    let bloodShot = c00000(blockNumber, lookType) ? displayBloodShot() : "";
     let fly = c11(blockNumber) ? displayFly() : "";
     let flysEarring = c111(blockNumber) ? displayFlysEarring() : "";
     let flysAlienEarring = c1111(blockNumber) ? displayFlysAlienEarring() : "";
@@ -1368,7 +1479,7 @@
       browPiercing +
       shield +
       alienDiamond +
-      alienTiara +
+      bloodShot +
       flysLaserEyes +
       laserEyes;
     document.getElementById("natcatviewer").innerHTML = htmlContent;
