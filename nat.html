@@ -948,12 +948,11 @@
     }
   }
 
-  function displayFly(number) {
-    return `<div style="position: absolute; top: 169px; left: 340px;">
-                <svg width="38" height="27" viewBox="0 0 38 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M19 9.00001L6.29443e-06 9L0 27L19 27H38L38 9.00001H19Z" fill="#070609"/>
-                <rect x="19" width="19" height="18" fill="white" fill-opacity="0.5"/>
-                </svg>
+  function displayStud(number) {
+    return `<div style="position: absolute; top: 196px; left: 352px;">
+      <svg width="14" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="14" cy="12" rx="14" ry="12" fill="#FFD700"/>
+</svg>
     </div>`;
   }
 
@@ -1721,7 +1720,7 @@
     let eyeLash = c000(blockNumber) ? displayEyeLash(eyeType) : "";
     let monocle = c0000(blockNumber) ? displayMonocle() : "";
     let bloodShot = c00000(blockNumber) ? displayBloodShot(eyeType) : "";
-    let fly = c11(blockNumber) ? displayFly() : "";
+    let stud = c11(blockNumber) ? displayStud() : "";
     let flysEarring = c111(blockNumber) ? displayFlysEarring() : "";
     let flysAlienEarring = c1111(blockNumber) ? displayFlysAlienEarring() : "";
     let flysLaserEyes = c11111(blockNumber) ? displayFlysLaserEyes() : "";
@@ -1768,7 +1767,7 @@
       svgsForDigits +
       cig +
       catnip +
-      fly +
+      stud +
       flysEarring +
       flysAlienEarring +
       headBand +
