@@ -1610,15 +1610,34 @@
     return number % 14 === 0;
   }
 
-  function displayOrangeCollar(number) {
-    return `<div style="position: absolute; top: 365px; left: 105px;">
-                <svg width="90" height="18" viewBox="0 0 90 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="20" height="18" fill="#FF835A"/>
-                <rect x="18" width="20" height="18" fill="#FF6F41"/>
-                <rect x="36" width="20" height="18" fill="#FF6533"/>
-                <rect x="54" width="20" height="18" fill="#FF5620"/>
-                <rect x="72" width="18" height="18" fill="#FF490F"/>
-                </svg>
+  function displayBuildersHat(number) {
+    return `<div style="position: absolute; top: -159px; left: 105px;">
+                
+<svg width="215" height="485" viewBox="0 0 517 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M517 242.5C517 178.185 489.765 116.504 441.287 71.0266C392.809 25.549 327.058 4.85565e-06 258.5 0C189.942 -4.85565e-06 124.191 25.549 75.7129 71.0266C27.2348 116.504 1.0352e-05 178.185 0 242.5L258.5 242.5H517Z" fill="url(#paint0_linear_60_1731)"/>
+<path d="M118 38.5L142 26L167 15.5V242H118V38.5Z" fill="url(#paint1_linear_60_1731)"/>
+<path d="M227 1.5L251.5 0L276 0.5V242H227V1.5Z" fill="url(#paint2_linear_60_1731)"/>
+<path d="M347 14.5L372 24.5L396 37V242H347V14.5Z" fill="url(#paint3_linear_60_1731)"/>
+<defs>
+<linearGradient id="paint0_linear_60_1731" x1="258.5" y1="0" x2="258.5" y2="485" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFF500"/>
+<stop offset="0.48" stop-color="#999303"/>
+</linearGradient>
+<linearGradient id="paint1_linear_60_1731" x1="142.5" y1="15.5" x2="142.5" y2="242" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFF500"/>
+<stop offset="0.0001" stop-color="#999300"/>
+</linearGradient>
+<linearGradient id="paint2_linear_60_1731" x1="251.5" y1="0" x2="251.5" y2="242" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFF500"/>
+<stop offset="0.0001" stop-color="#999300"/>
+</linearGradient>
+<linearGradient id="paint3_linear_60_1731" x1="371.5" y1="14.5" x2="371.5" y2="242" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFF500"/>
+<stop offset="0.0001" stop-color="#999300"/>
+</linearGradient>
+</defs>
+</svg>
+
     </div>`;
   }
 
@@ -1809,7 +1828,7 @@
     let nightVision = ce7(blockNumber) ? displayLipsVision() : "";
     let spikyHair = m12(blockNumber) ? displaySpikyHair() : "";
     let crown = m13(blockNumber) ? displayCrown() : "";
-    let orangeCollar = m14(blockNumber) ? displayOrangeCollar() : "";
+    let buildersHat = m14(blockNumber) ? displayBuildersHat() : "";
     let headBand = m15(blockNumber) ? displayHeadBand() : "";
     let hoodie = m16(blockNumber) ? displayHoodie() : "";
     let spikeCollar = m69(blockNumber) ? displaySpikeCollar() : "";
@@ -1837,7 +1856,7 @@
       bowR +
       bowTail +
       spikyHair +
-      orangeCollar +
+      buildersHat +
       spikeCollar +
       crown +
       bowAlienBowTie +
