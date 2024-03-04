@@ -396,12 +396,90 @@
     }
   }
 
-  function displayEarring(number) {
-    return `<div style="position: absolute; top: 120px; left: 87px;">
-                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="19" height="18" fill="#FFC700"/>
-                </svg>
-    </div>`;
+  function displaySquint(lookType, eyeType) {
+    const eyeLidColor = () => {
+      if (lookType === "cyclops") {
+        return "#35491B";
+      }
+
+      if (lookType === "robot") {
+        return "#767679";
+      }
+
+      if (lookType === "alien") {
+        return "#1A7D84";
+      }
+    };
+
+    if (eyeType === "four_eyes") {
+      return `<div style="position: absolute; top: 181.5px; left: 166.5px; z-index:1;">
+        <svg width="27.2" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 158.5px; left: 197px; z-index:1;">
+        <svg width="37.2" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 200.5px; left: 204.5px; z-index:1;">
+        <svg width="27.2" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 181.5px; left: 240.5px; z-index:1;">
+        <svg width="27.2" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+`;
+    }
+
+    if (eyeType === "five_eyes") {
+      return `
+      <div style="position: absolute; top: 194px; left: 123px; z-index:1;">
+        <svg width="25" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 178px; left: 155px; z-index:1;">
+        <svg width="30" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 203px; left: 197px; z-index:1;">
+        <svg width="37" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 193px; left: 277px; z-index:1;">
+        <svg width="25" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+
+<div style="position: absolute; top: 177px; left: 241px; z-index:1;">
+        <svg width="30" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>
+    
+    
+    `;
+    }
+
+    return `<div style="position: absolute; top: 207px; left: 186px; z-index:1;">
+        <svg width="60" height="53" viewBox="0 0 135 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 0.5C0.5 13.363 12.06 29.6992 25 38.7947C37.94 47.8902 49.7001 53 68 53C86.2999 53 98.06 47.8902 111 38.7947C123.94 29.6992 135 13.363 135 0.5L68 4.5L0.5 0.5Z" fill="${eyeLidColor()}"/>
+</svg>
+</div>`;
   }
 
   function c00(number) {
@@ -1638,7 +1716,7 @@
     const eyeType = getLaserEyeRange(blockNumber);
     let catnip = c420(blockNumber) ? displaycatnip() : "";
     let cig = c4a0(blockNumber) ? displaycig() : "";
-    let earring = c0(blockNumber) ? displayEarring() : "";
+    let squint = c0(blockNumber) ? displaySquint(lookType, eyeType) : "";
     let tash = c00(blockNumber) ? displayTash() : "";
     let eyeLash = c000(blockNumber) ? displayEyeLash(eyeType) : "";
     let monocle = c0000(blockNumber) ? displayMonocle() : "";
@@ -1681,7 +1759,7 @@
 
     //construction
     const htmlContent =
-      earring +
+      squint +
       eyeLash +
       tash +
       monocle +
