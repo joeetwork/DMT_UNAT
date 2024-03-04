@@ -705,7 +705,13 @@
 
   function c11(number) {
     const numberStr = number.toString();
-    return numberStr.includes("11");
+    if (numberStr.includes("111")) {
+      return false;
+    }
+
+    if (numberStr.includes("11")) {
+      return true;
+    }
   }
 
   function displayFly(number) {
@@ -719,7 +725,13 @@
 
   function c111(number) {
     const numberStr = number.toString();
-    return numberStr.includes("111");
+    if (numberStr.includes("1111")) {
+      return false;
+    }
+
+    if (numberStr.includes("111")) {
+      return true;
+    }
   }
 
   function displayFlysEarring(number) {
@@ -732,7 +744,13 @@
 
   function c1111(number) {
     const numberStr = number.toString();
-    return numberStr.includes("1111");
+    if (numberStr.includes("11111")) {
+      return false;
+    }
+
+    if (numberStr.includes("1111")) {
+      return true;
+    }
   }
 
   function displayFlysAlienEarring(number) {
@@ -758,6 +776,9 @@
 
   function c8a8(number) {
     const numberStr = number.toString();
+    if (numberStr.includes("888")) {
+      return false;
+    }
     const count = (numberStr.match(/8/g) || []).length;
     return count >= 2 ? "c8a8" : null;
   }
@@ -773,7 +794,13 @@
 
   function c88(number) {
     const numberStr = number.toString();
-    return numberStr.includes("88");
+    if (numberStr.includes("888")) {
+      return false;
+    }
+
+    if (numberStr.includes("88")) {
+      return true;
+    }
   }
 
   function displayBowL(number) {
@@ -787,7 +814,13 @@
 
   function c888(number) {
     const numberStr = number.toString();
-    return numberStr.includes("888");
+    if (numberStr.includes("8888")) {
+      return false;
+    }
+
+    if (numberStr.includes("888")) {
+      return true;
+    }
   }
 
   function displayBowTail(number) {
@@ -801,7 +834,13 @@
 
   function c8888(number) {
     const numberStr = number.toString();
-    return numberStr.includes("8888");
+    if (numberStr.includes("88888")) {
+      return false;
+    }
+
+    if (numberStr.includes("8888")) {
+      return true;
+    }
   }
 
   function displayAlienBowTie(number) {
@@ -851,6 +890,9 @@
 
   function c9a9(number) {
     const numberStr = number.toString();
+    if (numberStr.includes("99")) {
+      return false;
+    }
     const count = (numberStr.match(/9/g) || []).length;
     return count >= 2 ? "c9a9" : null;
   }
@@ -867,7 +909,13 @@
 
   function c99(number) {
     const numberStr = number.toString();
-    return numberStr.includes("99");
+    if (numberStr.includes("999")) {
+      return false;
+    }
+
+    if (numberStr.includes("99")) {
+      return true;
+    }
   }
 
   function displaySalmon(number) {
@@ -882,7 +930,13 @@
 
   function c999(number) {
     const numberStr = number.toString();
-    return numberStr.includes("999");
+    if (numberStr.includes("9999")) {
+      return false;
+    }
+
+    if (numberStr.includes("999")) {
+      return true;
+    }
   }
 
   function displayAlienFish(number) {
