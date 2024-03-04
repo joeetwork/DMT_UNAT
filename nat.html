@@ -1009,11 +1009,16 @@
     return numberStr.includes("11111");
   }
 
-  function displayFlysLaserEyes(number) {
-    return `<div style="position: absolute; top: 178px; left: 0;">
-                <svg width="340" height="19" viewBox="0 0 340 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="340" height="18.5" fill="#FD1935"/>
-                </svg>
+  function displayHeadphones(number) {
+    return `<div style="position: absolute; top: 158px; left: 51px;">
+      <svg width="320" height="103" viewBox="0 0 740 103" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="710" cy="20.5" rx="30" ry="16.5" fill="#D9D9D9"/>
+<rect x="722.284" y="21" width="18" height="68" transform="rotate(15.5977 722.284 21)" fill="#D9D9D9"/>
+<path d="M700.5 41C697.414 41 694.358 40.4698 691.507 39.4395C688.656 38.4093 686.065 36.8993 683.883 34.9957C681.701 33.0921 679.97 30.8322 678.789 28.345C677.608 25.8578 677 23.1921 677 20.5C677 17.8079 677.608 15.1422 678.789 12.655C679.97 10.1678 681.701 7.90791 683.883 6.00431C686.065 4.1007 688.656 2.59069 691.507 1.56047C694.358 0.530246 697.414 -1.31579e-06 700.5 0L700.5 20.5L700.5 41Z" fill="black"/>
+<ellipse cx="30" cy="16.5" rx="30" ry="16.5" transform="matrix(-1 0 0 1 60 15)" fill="#D9D9D9"/>
+<rect width="18" height="68" transform="matrix(-0.963173 0.268881 0.268881 0.963173 17.7161 32)" fill="#D9D9D9"/>
+<path d="M39.5 52C42.5861 52 45.6419 51.4698 48.4931 50.4395C51.3442 49.4093 53.9348 47.8993 56.117 45.9957C58.2992 44.0921 60.0302 41.8322 61.2112 39.345C62.3922 36.8578 63 34.1921 63 31.5C63 28.8079 62.3922 26.1422 61.2112 23.655C60.0302 21.1678 58.2992 18.9079 56.117 17.0043C53.9348 15.1007 51.3442 13.5907 48.4931 12.5605C45.6419 11.5302 42.5861 11 39.5 11L39.5 31.5L39.5 52Z" fill="black"/>
+</svg>
             </div>`;
   }
 
@@ -1733,7 +1738,7 @@
     let stud = c11(blockNumber) ? displayStud() : "";
     let earWound = c111(blockNumber) ? displayEarWound() : "";
     let hoops = c1111(blockNumber) ? displayHoops() : "";
-    let flysLaserEyes = c11111(blockNumber) ? displayFlysLaserEyes() : "";
+    let headphones = c11111(blockNumber) ? displayHeadphones() : "";
     let bowR = c8a8(blockNumber) ? displayBowR() : "";
     let bowL = c88(blockNumber) ? displayBowL() : "";
     let bowTail = c888(blockNumber) ? displayBowTail() : "";
@@ -1806,7 +1811,7 @@
       shield +
       alienDiamond +
       bloodShot +
-      flysLaserEyes +
+      headphones +
       laserEyes;
     document.getElementById("natcatviewer").innerHTML = htmlContent;
   }
