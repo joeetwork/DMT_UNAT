@@ -162,21 +162,22 @@
 `;
 
       const fourEyes = `
-  <div style="position: absolute; top: 159px; left: 141px;">
-    <svg width="150" height="100" viewBox="0 0 234 158" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="30" cy="95.5" rx="30" ry="30.5" fill="white"/>
-      <ellipse cx="29.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
-      <path d="M0 91.5C6.95579e-07 84.2065 3.16071 77.2118 8.7868 72.0546C14.4129 66.8973 22.0435 64 30 64C37.9565 64 45.5871 66.8973 51.2132 72.0546C56.8393 77.2118 60 84.2065 60 91.5L30 91.5L0 91.5Z" fill="${eyeLidColor()}"/>
-      <ellipse cx="204" cy="95.5" rx="30" ry="30.5" fill="white"/>
-      <ellipse cx="203.5" cy="96.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
-      <path d="M174 91.5C174 84.2065 177.161 77.2118 182.787 72.0546C188.413 66.8973 196.044 64 204 64C211.956 64 219.587 66.8973 225.213 72.0546C230.839 77.2118 234 84.2065 234 91.5L204 91.5L174 91.5Z" fill="${eyeLidColor()}"/>
-      <ellipse cx="117" cy="127.5" rx="30" ry="30.5" fill="white"/>
-      <ellipse cx="116.5" cy="128.5" rx="12.5" ry="13.5" fill="${colorForFirstDigit}"/>
-      <path d="M87 123.5C87 116.207 90.1607 109.212 95.7868 104.055C101.413 98.8973 109.044 96 117 96C124.956 96 132.587 98.8973 138.213 104.055C143.839 109.212 147 116.207 147 123.5L117 123.5L87 123.5Z" fill="${eyeLidColor()}"/>
-      <ellipse cx="116.848" cy="45.1111" rx="43.848" ry="42.5696" fill="white"/>
-      <ellipse cx="116.53" cy="45.4288" rx="18.1111" ry="18.7433" fill="${colorForFirstDigit}"/>
-      <path d="M73 45.7464C73 33.6137 77.6197 21.9779 85.8428 13.3988C94.0659 4.8197 105.219 1.30165e-06 116.848 0C128.477 -1.30165e-06 139.63 4.8197 147.853 13.3988C156.076 21.9779 160.696 33.6137 160.696 45.7464L116.848 45.7464L73 45.7464Z" fill="${eyeLidColor()}"/>
-    </svg>
+  <div style="position: absolute; top: 143px; left: 167px;">
+    <svg width="100" height="100" viewBox="0 0 83 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="41.977" cy="53.7903" rx="10.9713" ry="11.2098" fill="white"/>
+<ellipse cx="41.977" cy="54.2672" rx="4.77011" ry="5.00862" fill="${colorForFirstDigit}"/>
+<path d="M31.0057 52.3593C31.0057 49.6393 32.1616 47.0307 34.2191 45.1074C36.2767 43.184 39.0672 42.1035 41.977 42.1035C44.8868 42.1035 47.6773 43.184 49.7349 45.1074C51.7924 47.0307 52.9483 49.6393 52.9483 52.3593L41.977 52.3593L31.0057 52.3593Z" fill="${eyeLidColor()}"/>
+<ellipse cx="10.9713" cy="38.0489" rx="10.9713" ry="11.2098" fill="white"/>
+<ellipse cx="10.9713" cy="38.526" rx="4.77011" ry="5.00862" fill="${colorForFirstDigit}"/>
+<path d="M0 36.6178C2.54379e-07 33.8978 1.1559 31.2892 3.21341 29.3659C5.27092 27.4426 8.0615 26.3621 10.9713 26.3621C13.881 26.3621 16.6716 27.4426 18.7291 29.3659C20.7866 31.2892 21.9425 33.8978 21.9425 36.6178L10.9713 36.6178L0 36.6178Z" fill="${eyeLidColor()}"/>
+<ellipse cx="72.0288" cy="37.5718" rx="10.9713" ry="11.2098" fill="white"/>
+<ellipse cx="72.0288" cy="38.0489" rx="4.77011" ry="5.00862" fill="${colorForFirstDigit}"/>
+<path d="M61.0575 36.1408C61.0575 33.4208 62.2134 30.8122 64.2709 28.8888C66.3284 26.9655 69.119 25.885 72.0288 25.885C74.9385 25.885 77.7291 26.9655 79.7866 28.8888C81.8441 30.8122 83 33.4208 83 36.1408L72.0288 36.1408L61.0575 36.1408Z" fill="${eyeLidColor()}"/>
+<ellipse cx="40.3302" cy="16.59" rx="16.0026" ry="15.536" fill="white"/>
+<ellipse cx="40.2142" cy="16.706" rx="6.60976" ry="6.84048" fill="${colorForFirstDigit}"/>
+<path d="M24.3276 16.8219C24.3276 12.394 26.0136 8.14743 29.0147 5.01644C32.0157 1.88544 36.0861 0.126465 40.3302 0.126465C44.5743 0.126464 48.6447 1.88544 51.6457 5.01643C54.6468 8.14743 56.3328 12.394 56.3328 16.8219L40.3302 16.8219L24.3276 16.8219Z" fill="${eyeLidColor()}"/>
+</svg>
+
   </div>
 `;
 
@@ -539,11 +540,13 @@
     return numberStr.includes("0000");
   }
 
-  function displayAlienEarringR(number) {
-    return `<div style="position: absolute; top: 120px; left: 319px;">
-                <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="19" height="18" fill="#49EFEF"/>
-                </svg>
+  function displayMonocle(number) {
+    return `<div style="position: absolute; top: 185px; left: 129px; z-index:1;">
+        <svg width="119" height="182" viewBox="0 0 119 182" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M59.143 30.6357C59.143 44.8939 71.2524 56.7714 86.5917 56.7714C101.931 56.7714 114.04 44.8939 114.04 30.6357C114.04 16.3775 101.931 4.5 86.5917 4.5C71.2524 4.5 59.143 16.3775 59.143 30.6357Z" fill="#A7C7CB" fill-opacity="0.65" stroke="#FFD700" stroke-width="9"/>
+<path d="M62.5208 47.7041C62.4007 48.7522 60.8817 49.7839 60.249 50.5679C58.8034 52.3591 57.8594 54.1545 57.0937 56.3201C55.6385 60.4359 55.4381 65.0428 54.3423 69.293C50.5789 83.8906 34.1222 90.2081 22.5373 97.9314C17.9728 100.974 14.3787 105.674 11.0774 109.925C5.62651 116.944 2.99997 125.975 2.99997 134.672C2.99997 149.448 2.99997 164.224 2.99997 179" stroke="#FFD700" stroke-width="5" stroke-linecap="round"/>
+</svg>
+
     </div>`;
   }
 
@@ -808,7 +811,7 @@
   }
 
   // Determine the range for laser eyes based on the digit 5 value
-  function getLaserEyeRange(lastFourDigits) {
+  function getLaserEyeRange(blockNumber) {
     const originalString = blockNumber.toString();
     const digits = originalString
       .padStart(7, "0")
@@ -829,7 +832,7 @@
       0: "five_eyes",
     };
 
-    return eyeType[digits[4]];
+    return originalString.length >= 5 ? eyeType[digits[4]] : "single_eye";
   }
 
   // Function to generate SVG for laser eyes based on direction
@@ -844,25 +847,25 @@
 `;
     } else if (eyeType === "four_eyes") {
       return `
-  <div style="position: absolute; top: 189px; left: 213px;">
+  <div style="position: absolute; top: 174px; left: 212px;">
     <svg width="165" height="141" viewBox="0 0 165 141" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="3.59629" y1="3.90358" x2="161.518" y2="137.41" stroke="#DA0606" stroke-width="9.35065"/>
+      <line x1="3.59629" y1="3.90358" x2="161.518" y2="137.41" stroke="#DA0606" stroke-width="7.5"/>
     </svg>
   </div>
 
-  <div style="position: absolute; top: 216px; left: 155px;">
+  <div style="position: absolute; top: 197px; left: 177px;">
     <svg width="145" height="130" viewBox="0 0 145 130" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="2.57021" y1="3.04005" x2="142.31" y2="127.196" stroke="#069BDA" stroke-width="6.23377"/>
     </svg>
   </div>
 
-  <div style="position: absolute; top: 237px; left: 213px;">
+  <div style="position: absolute; top: 216px; left: 214px;">
     <svg width="126" height="108" viewBox="0 0 126 108" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.29224 2.43506L123.851 105.292" stroke="#069BDA" stroke-width="6.23377"/>
     </svg>
   </div>
 
-  <div style="position: absolute; top: 216px; left: 266px;">
+  <div style="position: absolute; top: 197px; left: 253px;">
     <svg width="106" height="93" viewBox="0 0 106 93" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="2.5145" y1="3.00275" x2="103.813" y2="89.756" stroke="#069BDA" stroke-width="6.23377"/>
     </svg>
@@ -1287,7 +1290,7 @@
     let earring = c0(blockNumber) ? displayEarring() : "";
     let tash = c00(blockNumber) ? displayTash() : "";
     let alienEarring = c000(blockNumber) ? displayAlienEarring() : "";
-    let alienEarringR = c0000(blockNumber) ? displayAlienEarringR() : "";
+    let monocle = c0000(blockNumber) ? displayMonocle() : "";
     let alienTiara = c00000(blockNumber) ? displayAlienTiara() : "";
     let fly = c11(blockNumber) ? displayFly() : "";
     let flysEarring = c111(blockNumber) ? displayFlysEarring() : "";
@@ -1322,9 +1325,7 @@
     let sunHat = m16(blockNumber) ? displaySunHat() : "";
     let spikeCollar = m69(blockNumber) ? displaySpikeCollar() : "";
     const containsSquare = containsFourDigitSquare(blockNumber);
-    const eyeType = getLaserEyeRange(
-      parseInt(blockNumber.toString().slice(-4))
-    );
+    const eyeType = getLaserEyeRange(blockNumber);
     const laserEyes = containsSquare ? displayLaserEyes(eyeType) : "";
     const svgsForDigits = generateSvgForDigits(blockNumber, lookType);
 
@@ -1333,7 +1334,7 @@
       earring +
       alienEarring +
       tash +
-      alienEarringR +
+      monocle +
       nightVision +
       lookHtml +
       svgsForDigits +
