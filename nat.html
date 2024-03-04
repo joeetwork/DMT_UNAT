@@ -1626,11 +1626,24 @@
     return number % 16 === 0;
   }
 
-  function displaySunHat(number) {
-    return `<div style="position: absolute; top: 120px; left: 68.5px;">
-                <svg width="287" height="37" viewBox="0 0 287 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M36 17.4999L36 0L252 9.34601e-05L252 17.5L287 17.5V36.5L0 36.4999L8.30517e-06 17.4999L36 17.4999Z" fill="#FFE898"/>
-                </svg>
+  function displayHoodie(number) {
+    return `<div style="position: absolute; top: -75px; left: 68.5px;">               
+      <svg width="290" height="500" viewBox="0 0 660 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M310.1 598.278L625.561 714.984L1.50073e-06 714.984L310.1 598.278Z" fill="#272424"/>
+<path d="M161.717 529.567L318.932 595.085L466.823 529.567L466.823 648.321L161.717 648.321L161.717 529.567Z" fill="#272424"/>
+<path d="M460.081 593.443L400.655 702.795L629 715.3L460.081 593.443Z" fill="#272424"/>
+<path d="M162.447 592.958L225.429 700.602L0.53903 714.656L162.447 592.958Z" fill="#272424"/>
+<rect width="169.318" height="6.84496" transform="matrix(0.923853 0.382748 -0.488237 0.872711 165.059 524)" fill="#272424"/>
+<path d="M464.362 526.4L314.809 589.871L318.582 595.438L467.704 532.374L464.362 526.4Z" fill="#272424"/>
+<path d="M85 34.5L147.5 124.5L118 527L85 532L83 465L84 282.5L81 105L85 34.5Z" fill="#272424"/>
+<path d="M601.5 34L535 123.5L564.5 526L600 522.5L601.5 470.5V396V34Z" fill="#272424"/>
+<path d="M82.355 36.7774C83.0149 16.2771 99.8244 0 120.335 0H562.792C585.352 0 602.944 19.5401 600.584 41.9761L594.562 99.2088C592.285 120.848 572.339 136.16 550.846 132.768L340.758 99.6084C336.737 98.9737 332.64 98.9893 328.624 99.6544L124.679 133.434C101.038 137.35 79.7187 118.673 80.4897 94.7222L82.355 36.7774Z" fill="#272424"/>
+<rect x="285" y="79" width="112" height="26" fill="#272424"/>
+<path d="M446 529L591.941 488.827L600.31 522.811L455.369 558.505L446 529Z" fill="#272424"/>
+<path d="M238.5 547L96.6509 498L86 531.34L228.192 576.765L238.5 547Z" fill="#272424"/>
+<path d="M304.153 570.199L462.5 524.5L471.253 554.716L313.127 600.915L304.153 570.199Z" fill="#272424"/>
+<rect width="128.187" height="32" transform="matrix(-0.959871 -0.280443 -0.280443 0.959871 341.017 576.949)" fill="#272424"/>
+</svg>
     </div>`;
   }
 
@@ -1776,7 +1789,7 @@
     let pearls = m13(blockNumber) ? displayPearls() : "";
     let orangeCollar = m14(blockNumber) ? displayOrangeCollar() : "";
     let headBand = m15(blockNumber) ? displayHeadBand() : "";
-    let sunHat = m16(blockNumber) ? displaySunHat() : "";
+    let hoodie = m16(blockNumber) ? displayHoodie() : "";
     let spikeCollar = m69(blockNumber) ? displaySpikeCollar() : "";
     const containsSquare = containsFourDigitSquare(blockNumber);
     const laserEyes = containsSquare ? displayLaserEyes(eyeType) : "";
@@ -1797,7 +1810,7 @@
       earWound +
       hoops +
       headBand +
-      sunHat +
+      hoodie +
       bowL +
       bowR +
       bowTail +
