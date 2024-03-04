@@ -967,11 +967,12 @@
     }
   }
 
-  function displayFlysEarring(number) {
-    return `<div style="position: absolute; top: 178px; left: 378px;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="18" y="18" width="18" height="18" transform="rotate(-180 18 18)" fill="#FFC700"/>
-        </svg>
+  function displayEarWound(number) {
+    return `<div style="position: absolute; top: 188.5px; left: 319px;">
+      <svg width="20" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.5 10.5L10.5 6L23 0.5L21.7969 15.3333L30 19.3333L13.2031 16.3333L5 28.9999L8.125 11.6666L0.5 10.5Z" fill="black"/>
+</svg>
+
     </div>`;
   }
 
@@ -1721,7 +1722,7 @@
     let monocle = c0000(blockNumber) ? displayMonocle() : "";
     let bloodShot = c00000(blockNumber) ? displayBloodShot(eyeType) : "";
     let stud = c11(blockNumber) ? displayStud() : "";
-    let flysEarring = c111(blockNumber) ? displayFlysEarring() : "";
+    let earWound = c111(blockNumber) ? displayEarWound() : "";
     let flysAlienEarring = c1111(blockNumber) ? displayFlysAlienEarring() : "";
     let flysLaserEyes = c11111(blockNumber) ? displayFlysLaserEyes() : "";
     let bowR = c8a8(blockNumber) ? displayBowR() : "";
@@ -1768,7 +1769,7 @@
       cig +
       catnip +
       stud +
-      flysEarring +
+      earWound +
       flysAlienEarring +
       headBand +
       sunHat +
