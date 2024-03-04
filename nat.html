@@ -1572,15 +1572,37 @@
     return number % 13 === 0;
   }
 
-  function displayPearls(number) {
-    return `<div style="position: absolute; top: 347px; left: 105px;">
-        <svg width="90" height="54" viewBox="0 0 90 54" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="18" height="18" fill="white"/>
-        <rect x="18" y="18" width="18" height="18" fill="white"/>
-        <rect x="36" y="36" width="18" height="18" fill="white"/>
-        <rect x="54" y="18" width="18" height="18" fill="white"/>
-        <rect x="72" width="18" height="18" fill="white"/>
-        </svg>
+  function displayCrown(number) {
+    return `<div style="position: absolute; top: 40px; left: 105px;">
+      <svg width="220" height="131" viewBox="0 0 404 131" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 75.5L396 75.7477V131H0V75.5Z" fill="url(#paint0_linear_58_1553)"/>
+<path d="M51.5 0L103.028 75.75L0 75.5L51.5 0Z" fill="url(#paint1_linear_58_1553)"/>
+<path d="M344.5 0L396.029 75.75H292.971L344.5 0Z" fill="url(#paint2_linear_58_1553)"/>
+<path d="M247.5 0L299.029 75.75H195.971L247.5 0Z" fill="url(#paint3_linear_58_1553)"/>
+<path d="M148.5 0L200.029 75.75H96.9715L148.5 0Z" fill="url(#paint4_linear_58_1553)"/>
+<defs>
+<linearGradient id="paint0_linear_58_1553" x1="0" y1="103.25" x2="396" y2="103.25" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFD700"/>
+<stop offset="0.84" stop-color="#998100"/>
+</linearGradient>
+<linearGradient id="paint1_linear_58_1553" x1="51.5142" y1="0" x2="51.5142" y2="75.75" gradientUnits="userSpaceOnUse">
+<stop offset="0.705" stop-color="#FFD700"/>
+<stop offset="1" stop-color="#D5B509"/>
+</linearGradient>
+<linearGradient id="paint2_linear_58_1553" x1="344.5" y1="0" x2="344.5" y2="101" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFD700"/>
+<stop offset="1" stop-color="#998100"/>
+</linearGradient>
+<linearGradient id="paint3_linear_58_1553" x1="247.5" y1="0" x2="247.5" y2="101" gradientUnits="userSpaceOnUse">
+<stop offset="0.355" stop-color="#FFD700"/>
+<stop offset="1" stop-color="#998100"/>
+</linearGradient>
+<linearGradient id="paint4_linear_58_1553" x1="148.5" y1="0" x2="148.5" y2="101" gradientUnits="userSpaceOnUse">
+<stop offset="0.52" stop-color="#FFD700"/>
+<stop offset="1" stop-color="#998100"/>
+</linearGradient>
+</defs>
+</svg>
     </div>`;
   }
 
@@ -1786,7 +1808,7 @@
     let shield = m888(blockNumber) ? displayShield() : "";
     let nightVision = ce7(blockNumber) ? displayLipsVision() : "";
     let spikyHair = m12(blockNumber) ? displaySpikyHair() : "";
-    let pearls = m13(blockNumber) ? displayPearls() : "";
+    let crown = m13(blockNumber) ? displayCrown() : "";
     let orangeCollar = m14(blockNumber) ? displayOrangeCollar() : "";
     let headBand = m15(blockNumber) ? displayHeadBand() : "";
     let hoodie = m16(blockNumber) ? displayHoodie() : "";
@@ -1817,7 +1839,7 @@
       spikyHair +
       orangeCollar +
       spikeCollar +
-      pearls +
+      crown +
       bowAlienBowTie +
       bowDoubleAlienBowTie +
       trout +
