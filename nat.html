@@ -495,7 +495,7 @@
   }
 
   function displayTash(number) {
-    return `<div style="position: absolute;     top: 269px;
+    return `<div style="position: absolute; top: 269px;
     left: 175px;
     z-index: 1;">
     <svg width="90" height="27" viewBox="0 0 120 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1091,12 +1091,22 @@
     }
   }
 
-  function displayAlienBowTie(number) {
-    return `<div style="position: absolute; top: 365px; left: 123px;">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 36V0L18 18L0 36Z" fill="#49EFEF"/>
-        <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#49EFEF"/>
-        </svg>
+  function displayHighVis(number) {
+    return `<div style="position: absolute; top: 337.7px; left: 47px;">
+<svg width="320" height="87" viewBox="0 0 600 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M437.407 65.8494L351.5 195L592.184 195.406L437.407 65.8494Z" fill="#DFFF00"/>
+<path d="M161.5 67.5L274.5 195L0.845431 194.526L161.5 67.5Z" fill="#DFFF00"/>
+<path d="M161.5 9L278 41.5001L278 47.5001L161.5 10.5001L161.5 9Z" fill="#D9D9D9"/>
+<path d="M441.515 8.49999L349.5 42L349.5 49.5L441.515 15.5L441.515 8.49999Z" fill="#D9D9D9"/>
+<path d="M161.5 10.5L278 47.5L274.515 195H162L161.5 10.5Z" fill="#DFFF00"/>
+<path d="M441 15.4999L350 49.1309L351.5 195.2H438.5L441 15.4999Z" fill="#DFFF00"/>
+<path d="M278 41.5L283.5 43L285 195H274.5L278 41.5Z" fill="#D9D9D9"/>
+<path d="M344 45L350 42L351.5 195H345.5L344 45Z" fill="#D9D9D9"/>
+<path d="M350 89H465L486.5 107H350V89Z" fill="#D9D9D9"/>
+<path d="M350 136H521.2L542.7 154H350V136Z" fill="#D9D9D9"/>
+<path d="M74 136H275V154H52L74 136Z" fill="#D9D9D9"/>
+<path d="M133.5 89H278L276.197 107H112L133.5 89Z" fill="#D9D9D9"/>
+</svg>
     </div>`;
   }
 
@@ -1105,13 +1115,27 @@
     return numberStr.includes("88888");
   }
 
-  function displayDoubleAlienBowTie(number) {
-    return `<div style="position: absolute; top: 365px; left: 177px;">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 36V0L18 18L0 36Z" fill="#49EFEF"/>
-        <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#49EFEF"/>
-        </svg>
-    </div>`;
+  function displaySuit(number) {
+    return `<div style="position: absolute; top: 325px; left: 57px;">
+
+<svg width="300" height="100" viewBox="0 0 600 205" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M286.156 39.5L302.507 43.5L319.881 49L334.189 47.5L350.541 42L346.453 62L290.243 62L286.156 39.5Z" fill="#D9D9D9"/>
+<path d="M265.716 54.0002L324.991 71.0002L383.244 54.0002L383.244 207L265.716 207L265.716 54.0002Z" fill="white"/>
+<path d="M265.716 49.0002L319.881 57.5002L383.244 49.0002L383.244 55.5457L319.881 75.5002L265.716 55.5457L265.716 49.0002Z" fill="black"/>
+<path d="M446.159 77.9864L358.363 207.137L604.339 207.543L446.159 77.9864Z" fill="black"/>
+<path d="M164.186 79.6369L279.671 207.137L4.1063e-05 206.663L164.186 79.6369Z" fill="black"/>
+<path d="M164.186 21.137L283.248 53.6371L283.248 59.6371L164.186 22.637L164.186 21.137Z" fill="#555555"/>
+<path d="M450.357 20.6368L356.319 54.1368L356.319 61.6368L450.357 27.6368L450.357 20.6368Z" fill="#555555"/>
+<path d="M164.186 22.637L283.248 59.637L279.686 207.137L164.697 207.137L164.186 22.637Z" fill="black"/>
+<path d="M449.831 27.6368L356.83 61.2678L358.363 207.337L447.276 207.337L449.831 27.6368Z" fill="black"/>
+<path d="M283.247 53.637L288.868 55.137L290.401 207.137L279.671 207.137L283.247 53.637Z" fill="#555555"/>
+<path d="M350.698 57.137L356.83 54.137L358.363 207.137L352.231 207.137L350.698 57.137Z" fill="#555555"/>
+<path d="M449.97 12.5L338.277 46.0002L334.189 62.5002L449.97 20.9919L449.97 12.5Z" fill="white"/>
+<path d="M165.562 9.50006L303.018 43.0002L306.084 60.5002L165.562 20.9997L165.562 9.50006Z" fill="white"/>
+<rect x="306.595" y="57" width="26.5716" height="24" rx="6" fill="black"/>
+<path d="M310.683 77L328.057 77L328.057 207L319.37 207L310.683 207L310.683 77Z" fill="black"/>
+</svg>
+</div>`;
   }
 
   function cp6(number) {
@@ -1991,10 +2015,8 @@
     let bowR = c8a8(blockNumber) ? displayBowR() : "";
     let bowL = c88(blockNumber) ? displayBowL() : "";
     let bowTail = c888(blockNumber) ? displayBowTail() : "";
-    let bowAlienBowTie = c8888(blockNumber) ? displayAlienBowTie() : "";
-    let bowDoubleAlienBowTie = c88888(blockNumber)
-      ? displayDoubleAlienBowTie()
-      : "";
+    let highVis = c8888(blockNumber) ? displayHighVis() : "";
+    let suit = c88888(blockNumber) ? displaySuit() : "";
     let alienDiamond = cp6(blockNumber) ? displayAlienDiamond() : "";
     let yarn = cs5(blockNumber) ? displayYarn() : "";
     let laserPointer = cs6(blockNumber) ? displayLaserPointer() : "";
@@ -2043,8 +2065,8 @@
       buildersHat +
       wifHat +
       crown +
-      bowAlienBowTie +
-      bowDoubleAlienBowTie +
+      highVis +
+      suit +
       trout +
       salmon +
       alienFish +
