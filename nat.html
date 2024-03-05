@@ -1165,11 +1165,11 @@
     return null;
   }
 
-  function displayAlienDiamond(number) {
-    return `<div style="position: absolute; top: 358px; left: 321px;">
-        <svg width="67" height="68" viewBox="0 0 67 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="33.2734" y="0.546875" width="47.0569" height="47.0569" transform="rotate(45 33.2734 0.546875)" fill="#49EFEF"/>
-        </svg>
+  function displayGoatee(number) {
+    return `<div style="position: absolute; top: 303px; left: 195px;">
+      <svg width="50" height="67" viewBox="0 0 90 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M45 67L0.832703 0.25H89.1673L45 67Z" fill="#43291A"/>
+</svg>
     </div>`;
   }
 
@@ -2062,7 +2062,7 @@
     let tShirt = c888(blockNumber) ? displayTShirt() : "";
     let highVis = c8888(blockNumber) ? displayHighVis() : "";
     let suit = c88888(blockNumber) ? displaySuit() : "";
-    let alienDiamond = cp6(blockNumber) ? displayAlienDiamond() : "";
+    let goatee = cp6(blockNumber) ? displayGoatee() : "";
     let smoke = cs5(blockNumber) ? displaySmoke() : "";
     let sonicScrewdriver = cs6(blockNumber) ? displaySonicScrewdriver() : "";
     let balloon = c9a9(blockNumber) ? displayBalloon() : "";
@@ -2125,7 +2125,7 @@
       tongue +
       blood +
       shield +
-      alienDiamond +
+      goatee +
       bloodShot +
       headphones +
       laserEyes;
