@@ -1967,18 +1967,11 @@
     return number % 11 === 0;
   }
 
-  function displayStaff(number) {
-    return `<div style="position: absolute; top: 268.5px; left: 57px;">
-<svg width="46" height="156" viewBox="0 0 46 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M23 0H28C36.8366 0 44 7.16344 44 16V107H23V0Z" fill="#A1662F"/>
-<path d="M23.5976 100L44.3727 103.065L40.177 131.502L19.402 128.436L23.5976 100Z" fill="#A1662F"/>
-<path d="M19.1279 127L40.1277 127.093L39.9998 155.837L19 155.744L19.1279 127Z" fill="#A1662F"/>
-<path d="M23 37C16.9 37 11.0499 35.0509 6.73654 31.5815C2.42321 28.1121 -1.6969e-07 23.4065 0 18.5C1.6969e-07 13.5935 2.42321 8.88795 6.73654 5.41852C11.0499 1.9491 16.9 -5.85095e-08 23 0L23 18.5L23 37Z" fill="#A1662F"/>
-<path d="M18.8522 15.5287C18.4914 14.486 19.5458 13.2364 20.4987 12.5343C21.2626 11.9714 22.2639 11.7357 23.16 11.4257C24.5274 10.9527 24.9582 11.7005 25.6572 12.5597C26.4028 13.4763 27.0261 15.5179 26.6496 16.6734C25.9375 18.8586 24.6171 20.4993 22.3906 21.6816C20.0893 22.9036 17.7812 23.9507 15.3569 22.9708C12.2547 21.7169 11.2827 17.5675 11.5907 14.6598C11.8011 12.6737 13.3979 10.3459 14.9717 8.89654C16.902 7.11881 20.2925 6.38577 22.7682 5.56744C24.7688 4.90618 27.2091 6.43956 28.6526 7.40805C30.4227 8.59572 31.6291 10.5482 32.7023 12.2655C33.5006 13.5432 33.9551 14.868 34.4443 16.282C34.9014 17.6035 34.4516 19.4427 34.0796 20.831C33.7073 22.2198 33.0516 23.6538 32.5217 25.0158C31.93 26.5367 30.394 27.4 30.1988 28.97" stroke="black" stroke-linecap="round"/>
-<line x1="24.5" y1="37" x2="24.5" y2="127" stroke="black"/>
-<line x1="30.5" y1="62" x2="30.5" y2="152" stroke="black"/>
-<line x1="33.5" y1="31" x2="33.5" y2="121" stroke="black"/>
-<line x1="40.5" y1="26" x2="40.5" y2="116" stroke="black"/>
+  function displayTongue(number) {
+    return `<div style="position: absolute; top: 240px; left: 202px;">
+      <svg width="100" height="150" viewBox="0 0 192 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 62L60 58.5L191.023 139.326L113.854 135.02L120.408 199.845L0 62Z" fill="#E40000"/>
+<line x1="111.657" y1="133.364" x2="41.657" y2="67.3638" stroke="black"/>
 </svg>
     </div>`;
   }
@@ -2081,7 +2074,7 @@
     let abduction = cf5(blockNumber) ? displayAbduction() : "";
     let scar = cf6(blockNumber) ? displayScar() : "";
     let tired = cf7(blockNumber) ? displayTired() : "";
-    let staff = m11(blockNumber) ? displayStaff() : "";
+    let tongue = m11(blockNumber) ? displayTongue() : "";
     let shield = m888(blockNumber) ? displayShield() : "";
     let nightVision = ce7(blockNumber) ? displayLipsVision() : "";
     let spikyHair = m12(blockNumber) ? displaySpikyHair() : "";
@@ -2129,7 +2122,7 @@
       saliva +
       scar +
       tired +
-      staff +
+      tongue +
       blood +
       shield +
       alienDiamond +
