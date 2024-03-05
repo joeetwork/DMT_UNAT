@@ -1451,12 +1451,13 @@
     return null;
   }
 
-  function displayBloodDrips(number) {
-    return `<div style="position: absolute; top: 329px; left: 159px;">
-                <svg width="36" height="90" viewBox="0 0 36 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M36 18L36 0L18 -7.86805e-07L18 18L18 36L36 36L36 18Z" fill="#FF1E39"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M18 72L18 54L0 54L-7.86805e-07 72L-1.57361e-06 90L18 90L18 72Z" fill="#FF1E39"/>
-                </svg>
+  function displaySaliva(number) {
+    return `<div style="position: absolute; top: 300px; left: 243px;">
+      <svg width="30" height="61" viewBox="0 0 78 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M60.9709 39.8567C65.097 45.834 65.1172 52.9745 61.0162 55.8055C56.9151 58.6364 50.2456 56.0858 46.1195 50.1084C41.9934 44.1311 42.5423 36.1023 42.4257 28.8741C47.2746 31.5969 56.8447 33.8794 60.9709 39.8567Z" fill="#2D62A1"/>
+<path d="M66.0776 15.4591C72.3296 19.1559 75.3417 25.6301 72.8053 29.9196C70.2689 34.2091 63.1446 34.6896 56.8926 30.9928C50.6406 27.296 47.7729 19.7768 44.6366 13.2634C50.1803 13.7025 59.8257 11.7624 66.0776 15.4591Z" fill="#2D62A1"/>
+<path d="M25.9709 16.1084C30.097 22.0857 30.1172 29.2262 26.0162 32.0572C21.9151 34.8881 15.2456 32.3375 11.1195 26.3602C6.99344 20.3828 7.54232 12.354 7.42566 5.12583C12.2746 7.8486 21.8447 10.1311 25.9709 16.1084Z" fill="#2D62A1"/>
+</svg>
     </div>`;
   }
 
@@ -1561,14 +1562,16 @@
     return null;
   }
 
-  // function displayHammer(number) {
-  //   return `<div style="position: absolute; top: 160px; left: 341px;">
-  //               <svg width="84" height="265" viewBox="0 0 84 265" fill="none" xmlns="http://www.w3.org/2000/svg">
-  //               <rect x="33" y="265" width="229" height="18" transform="rotate(-90 33 265)" fill="#5A4545"/>
-  //               <path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V36H48H84C84 16.1177 67.8822 0 48 0Z" fill="#C6C2D2"/>
-  //               </svg>
-  //   </div>`;
-  // }
+  function displayScar(number) {
+    return `<div style="position: absolute; top: 140px; left: 151px;">
+      <svg width="25" height="73" viewBox="0 0 44 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="1.01965" y1="1.89985" x2="42.0196" y2="39.8999" stroke="black" stroke-width="3"/>
+<line x1="42.2401" y1="39.4807" x2="5.24011" y2="45.4807" stroke="black" stroke-width="3"/>
+<line x1="6.10064" y1="44.9809" x2="31.1006" y2="71.9809" stroke="black" stroke-width="3"/>
+</svg>
+
+    </div>`;
+  }
 
   function cf7(number) {
     let numberStr = number.toString();
@@ -2066,10 +2069,10 @@
     let hammer = c99(blockNumber) ? displayHammer() : "";
     let pickaxe = c999(blockNumber) ? displayPickaxe() : "";
     let gun = c9999(blockNumber) ? displayGun() : "";
-    let bloodDrips = cf3(blockNumber) ? displayBloodDrips() : "";
+    let saliva = cf3(blockNumber) ? displaySaliva() : "";
     let blood = cf4(blockNumber) ? displayBlood() : "";
     let halo = cf5(blockNumber) ? displayHalo() : "";
-    // let hammer = cf6(blockNumber) ? displayHammer() : "";
+    let scar = cf6(blockNumber) ? displayScar() : "";
     let vial = cf7(blockNumber) ? displayVial() : "";
     let staff = m11(blockNumber) ? displayStaff() : "";
     let shield = m888(blockNumber) ? displayShield() : "";
@@ -2116,8 +2119,8 @@
       smoke +
       sonicScrewdriver +
       halo +
-      bloodDrips +
-      // hammer +
+      saliva +
+      scar +
       vial +
       staff +
       blood +
