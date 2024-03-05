@@ -1524,11 +1524,11 @@
     return null;
   }
 
-  function displayBrowPiercing(number) {
-    return `<div style="position: absolute; top: 174px; left: 320px;">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="18" y="18" width="18" height="18" transform="rotate(-180 18 18)" fill="#FFB800"/>
-            </svg>
+  function displayBlood(number) {
+    return `<div style="position: absolute; top: 292px; left: 174px;">
+      <svg width="20" height="69" viewBox="0 0 51 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M47.001 24.4103C27.5364 32.8462 31.0396 68.5 8 68.5C-15.0396 68.5 23.8343 47.828 23.8343 31.7692C23.8343 15.7105 37.6248 20.641 47.001 0C55.9987 22.0769 47.001 8.35151 47.001 24.4103Z" fill="#F80000"/>
+</svg>
 
     </div>`;
   }
@@ -2067,7 +2067,7 @@
     let pickaxe = c999(blockNumber) ? displayPickaxe() : "";
     let gun = c9999(blockNumber) ? displayGun() : "";
     let bloodDrips = cf3(blockNumber) ? displayBloodDrips() : "";
-    let browPiercing = cf4(blockNumber) ? displayBrowPiercing() : "";
+    let blood = cf4(blockNumber) ? displayBlood() : "";
     let halo = cf5(blockNumber) ? displayHalo() : "";
     // let hammer = cf6(blockNumber) ? displayHammer() : "";
     let vial = cf7(blockNumber) ? displayVial() : "";
@@ -2120,7 +2120,7 @@
       // hammer +
       vial +
       staff +
-      browPiercing +
+      blood +
       shield +
       alienDiamond +
       bloodShot +
