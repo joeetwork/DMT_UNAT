@@ -1073,12 +1073,23 @@
     }
   }
 
-  function displayBowTail(number) {
-    return `<div style="position: absolute; top: 293px; left: 28px;">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 36V0L18 18L0 36Z" fill="#FF94D4"/>
-        <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#FF94D4"/>
-        </svg>
+  function displayTShirt(number) {
+    return `<div style="position: absolute; top: 324.5px; left: 71px;">
+
+      <svg width="270" height="100" viewBox="0 0 590 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M288.633 73.6353L581.237 189.332L1 189.332L288.633 73.6353Z" fill="#2874E5"/>
+<path d="M151 5.51922L296.824 70.471L435 0.5L435 123.001L151 123.246L151 5.51922Z" fill="#2874E5"/>
+<path d="M434 57.9998L372.627 177.248L586.5 186.5L434 57.9998Z" fill="#2874E5"/>
+<path d="M151.499 57.9998L210.095 175.074L0.499999 189.5L151.499 57.9998Z" fill="#2874E5"/>
+<path d="M110.349 93.8135L476.5 93.8135L493.5 108.069L94 108.069L110.349 93.8135Z" fill="#E6E6E6"/>
+<path d="M16.5 175.67L574 175.67L590 189.467L0.5 189.467L16.5 175.67Z" fill="#E6E6E6"/>
+<path d="M66.9999 131.523L521.5 131.523L537.5 145.319L51.19 145.319L66.9999 131.523Z" fill="#E6E6E6"/>
+<path d="M151 47.8264L245.5 47.8264L267 57L151 57L151 47.8264Z" fill="#E6E6E6"/>
+<path d="M343.581 48L435 48L435 57L326 57L343.581 48Z" fill="#E6E6E6"/>
+<rect width="158.679" height="6.68423" transform="matrix(0.914371 0.404877 -0.463753 0.885965 154.1 0)" fill="#D9D9D9"/>
+<path d="M435 0.5L293 65.3014L296.5 70.8199L435 6.5L435 0.5Z" fill="#D9D9D9"/>
+</svg>
+
     </div>`;
   }
 
@@ -2016,7 +2027,7 @@
     let headphones = c11111(blockNumber) ? displayHeadphones() : "";
     let necklace = c8a8(blockNumber) ? displayNecklace() : "";
     let scarf = c88(blockNumber) ? displayScarf() : "";
-    let bowTail = c888(blockNumber) ? displayBowTail() : "";
+    let tShirt = c888(blockNumber) ? displayTShirt() : "";
     let highVis = c8888(blockNumber) ? displayHighVis() : "";
     let suit = c88888(blockNumber) ? displaySuit() : "";
     let alienDiamond = cp6(blockNumber) ? displayAlienDiamond() : "";
@@ -2062,7 +2073,7 @@
       hoodie +
       scarf +
       necklace +
-      bowTail +
+      tShirt +
       spikyHair +
       buildersHat +
       wifHat +
