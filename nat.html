@@ -1031,12 +1031,12 @@
     return count >= 2 ? "c8a8" : null;
   }
 
-  function displayBowR(number) {
-    return `<div style="position: absolute; top: 138px; left: 87px;">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 36V0L18 18L0 36Z" fill="#FF94D4"/>
-        <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#FF94D4"/>
-        </svg>
+  function displayNecklace(number) {
+    return `<div style="position: absolute; top: 322px; left: 144px;">
+      <svg width="126" height="90" viewBox="0 0 290 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M285.443 4.85083C275.073 6.00299 266.078 19.4478 255.691 20.602C244.284 21.8695 233.306 33.6465 221.563 36.256C203.264 40.3225 188.427 47.4697 168.573 48.6042C156.479 49.2952 144.751 50.3543 132.306 50.3543C121.219 50.3543 105.47 46.2377 95.5533 40.7286C85.0385 34.887 73.651 32.9534 63.1758 27.9915C44.8621 19.3166 22.7775 18.1717 5.42139 6.60096" stroke="#ADA8A7" stroke-width="9" stroke-linecap="round"/>
+<ellipse cx="147" cy="70" rx="13" ry="20" fill="#B79232"/>
+</svg>
     </div>`;
   }
 
@@ -2012,7 +2012,7 @@
     let earWound = c111(blockNumber) ? displayEarWound() : "";
     let hoops = c1111(blockNumber) ? displayHoops() : "";
     let headphones = c11111(blockNumber) ? displayHeadphones() : "";
-    let bowR = c8a8(blockNumber) ? displayBowR() : "";
+    let necklace = c8a8(blockNumber) ? displayNecklace() : "";
     let bowL = c88(blockNumber) ? displayBowL() : "";
     let bowTail = c888(blockNumber) ? displayBowTail() : "";
     let highVis = c8888(blockNumber) ? displayHighVis() : "";
@@ -2059,7 +2059,7 @@
       longHair +
       hoodie +
       bowL +
-      bowR +
+      necklace +
       bowTail +
       spikyHair +
       buildersHat +
