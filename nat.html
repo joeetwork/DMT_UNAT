@@ -1601,13 +1601,14 @@
     return null;
   }
 
-  function displayVial(number) {
-    return `<div style="position: absolute; top: 251px; left: 338px;">
-                <svg width="36" height="174" viewBox="0 0 36 174" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="36" width="174" height="36" transform="rotate(90 36 0)" fill="white" fill-opacity="0.5"/>
-                <rect x="36" y="67" width="107" height="36" transform="rotate(90 36 67)" fill="#A2FF00"/>
-                </svg>
-             </div>`;
+  function displayTired(number) {
+    return `<div style="position: absolute; top: 233px; left: 245px;">
+      <svg width="45" height="117" viewBox="0 0 95 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.5942 105V100.49L27.9465 83.9595V83.7642H15.0558V77.7273H37.0551V82.6456L24.5196 98.7678V98.9631H37.5168V105H14.5942Z" fill="black"/>
+<path d="M39.5942 87V82.4901L52.9465 65.9595V65.7642H40.0558V59.7273H62.0551V64.6456L49.5196 80.7678V80.9631H62.5168V87H39.5942Z" fill="black"/>
+<path d="M57.5942 49V44.4901L70.9465 27.9595V27.7642H58.0558V21.7273H80.0551V26.6456L67.5196 42.7678V42.9631H80.5168V49H57.5942Z" fill="black"/>
+</svg>
+    </div>`;
   }
 
   function m12(number) {
@@ -2073,7 +2074,7 @@
     let blood = cf4(blockNumber) ? displayBlood() : "";
     let halo = cf5(blockNumber) ? displayHalo() : "";
     let scar = cf6(blockNumber) ? displayScar() : "";
-    let vial = cf7(blockNumber) ? displayVial() : "";
+    let tired = cf7(blockNumber) ? displayTired() : "";
     let staff = m11(blockNumber) ? displayStaff() : "";
     let shield = m888(blockNumber) ? displayShield() : "";
     let nightVision = ce7(blockNumber) ? displayLipsVision() : "";
@@ -2121,7 +2122,7 @@
       halo +
       saliva +
       scar +
-      vial +
+      tired +
       staff +
       blood +
       shield +
