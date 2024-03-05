@@ -1489,11 +1489,17 @@
     return null;
   }
 
-  function displayHalo(number) {
-    return `<div style="position: absolute; top: 41px; left: 146px;">
-            <svg width="132" height="18" viewBox="0 0 132 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="132" height="18" fill="#FFB700"/>
-            </svg>
+  function displayAbduction(number) {
+    return `<div style="position: absolute; top: -310px; left: 65px;">
+      <svg width="300" height="500" viewBox="0 0 668 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M183 0H444L668 805H0L183 0Z" fill="url(#paint0_linear_61_1754)" fill-opacity="0.2"/>
+<defs>
+<linearGradient id="paint0_linear_61_1754" x1="334" y1="240" x2="334" y2="-565" gradientUnits="userSpaceOnUse">
+<stop stop-color="#57B8FF"/>
+<stop offset="1" stop-color="#346F99"/>
+</linearGradient>
+</defs>
+</svg>
     </div>`;
   }
 
@@ -2072,7 +2078,7 @@
     let gun = c9999(blockNumber) ? displayGun() : "";
     let saliva = cf3(blockNumber) ? displaySaliva() : "";
     let blood = cf4(blockNumber) ? displayBlood() : "";
-    let halo = cf5(blockNumber) ? displayHalo() : "";
+    let abduction = cf5(blockNumber) ? displayAbduction() : "";
     let scar = cf6(blockNumber) ? displayScar() : "";
     let tired = cf7(blockNumber) ? displayTired() : "";
     let staff = m11(blockNumber) ? displayStaff() : "";
@@ -2119,7 +2125,7 @@
       gun +
       smoke +
       sonicScrewdriver +
-      halo +
+      abduction +
       saliva +
       scar +
       tired +
