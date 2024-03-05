@@ -1182,13 +1182,12 @@
     return count >= 2 ? "c9a9" : null;
   }
 
-  function displayTrout(number) {
-    return `<div style="position: absolute; top: 318px; left: 219px;">
-                <svg width="176" height="76" viewBox="0 0 176 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M176 0V76L137 38L176 0Z" fill="#0082BA"/>
-                <rect width="137" height="76" rx="38" fill="#0D8DCE"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H137C137 17.0132 119.987 0 99 0H38Z" fill="#0082BA"/>
-                </svg>
+  function displayBalloon(number) {
+    return `<div style="position: absolute; top: 223px; left: 278px; z-index: 1;">              
+<svg width="97" height="202" viewBox="0 0 97 190" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="48.6159" cy="48.2961" rx="35.3878" ry="45.0887" transform="rotate(4.99072 48.6159 48.2961)" fill="#A31818"/>
+<path d="M45.2955 93.2664C45.082 94.7168 44.3114 95.8964 43.7116 97.22C42.2068 100.541 41.9713 103.976 41.6587 107.556C41.1609 113.257 41.4884 116.303 44.8098 121.119C49.655 128.145 56.6132 132.607 64.1314 136.446C67.643 138.239 71.4545 139.87 74.0488 142.944C82.0003 152.365 85.32 159.083 81.1128 170.972C78.905 177.211 72.4432 181.18 67.6929 185.332C63.5855 188.922 61.914 195.22 59.0853 199.804" stroke="black" stroke-width="2" stroke-linecap="round"/>
+</svg>
     </div>`;
   }
 
@@ -1203,13 +1202,15 @@
     }
   }
 
-  function displaySalmon(number) {
-    return `<div style="position: absolute; top: 318px; left: 183px;">
-                <svg width="212" height="76" viewBox="0 0 212 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M212 0V76L173 38L212 0Z" fill="#0082BA"/>
-                <rect width="173" height="76" rx="38" fill="#FF906D"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H173C173 17.0132 155.987 0 135 0H38Z" fill="#0082BA"/>
-                </svg>
+  function displayHammer(number) {
+    return `<div style="position: absolute; top: 274px; left: 273px;">
+      <svg width="140" height="150" viewBox="0 0 294 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="197.802" y="38.8684" width="26.7313" height="290.784" transform="rotate(26.2311 197.802 38.8684)" fill="#57504A"/>
+<rect x="131.681" y="0.473633" width="48.2467" height="63.8943" transform="rotate(26.2311 131.681 0.473633)" fill="#D9D9D9"/>
+<rect x="249.818" y="58.6843" width="48.2467" height="63.8943" transform="rotate(26.2311 249.818 58.6843)" fill="#D9D9D9"/>
+<rect x="169.195" y="33.4951" width="83.4537" height="37.163" transform="rotate(26.2311 169.195 33.4951)" fill="#D9D9D9"/>
+</svg>
+
     </div>`;
   }
 
@@ -1224,13 +1225,13 @@
     }
   }
 
-  function displayAlienFish(number) {
-    return `<div style="position: absolute; top: 318px; left: 183px;">
-                <svg width="212" height="76" viewBox="0 0 212 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M212 0V76L173 38L212 0Z" fill="#49EFEF"/>
-                <rect width="173" height="76" rx="38" fill="#66F8F8"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H173C173 17.0132 155.987 0 135 0H38Z" fill="#49EFEF"/>
-                </svg>
+  function displayPickaxe(number) {
+    return `<div style="position: absolute; top: 275px; left: 263px;">
+      <svg width="160" height="150" viewBox="0 0 400 270" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="274.643" y="65.7522" width="29.5691" height="321.654" transform="rotate(28.3886 274.643 65.7522)" fill="#A1662F"/>
+<path d="M379.481 210.387C379.994 189.597 370.555 166.038 352.588 143.268C334.622 120.498 309.105 99.754 279.891 84.1689C250.677 68.5838 219.353 59.0042 190.65 56.8769C161.947 54.7497 137.423 60.1903 120.784 72.3771L167.213 108.109C177.305 100.717 192.18 97.4171 209.59 98.7074C227 99.9977 245.999 105.808 263.719 115.261C281.439 124.714 296.916 137.297 307.813 151.108C318.71 164.919 324.436 179.208 324.125 191.819L379.481 210.387Z" fill="#6FE4FF"/>
+</svg>
+
     </div>`;
   }
 
@@ -1239,13 +1240,22 @@
     return numberStr.includes("9999");
   }
 
-  function displayGiantAlienFish(number) {
-    return `<div style="position: absolute; top: 318px; left: 123px;">
-            <svg width="272" height="76" viewBox="0 0 272 76" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M272 0V76L233 38L272 0Z" fill="#49EFEF"/>
-            <rect width="233" height="76" rx="38" fill="#66F8F8"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M38 0C17.0132 0 0 17.0132 0 38H233C233 17.0132 215.987 0 195 0H38Z" fill="#49EFEF"/>
-            </svg>
+  function displayGun(number) {
+    return `<div style="position: absolute; top: 223px; left: 285px;">
+      <svg width="150" height="202" viewBox="0 0 259 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="5.54016" y="87.0076" width="10.4078" height="23.8685" transform="rotate(-52.1971 5.54016 87.0076)" fill="#969292"/>
+<rect x="21.8126" y="69.2476" width="10.4078" height="24.3572" transform="rotate(-41.4583 21.8126 69.2476)" fill="#969292"/>
+<path d="M196.719 50.0904L214.917 24.6901L226.465 59.6557L196.719 50.0904Z" fill="#1950A2"/>
+<rect x="42.4244" y="135.878" width="31.2994" height="58.4649" transform="rotate(-10.5249 42.4244 135.878)" fill="#1950A2"/>
+<rect x="149.821" y="58.7385" width="59.0555" height="12.4017" transform="rotate(-18.277 149.821 58.7385)" fill="#969292"/>
+<ellipse cx="56.2142" cy="108.623" rx="36.6144" ry="33.3664" transform="rotate(-18.277 56.2142 108.623)" fill="#1950A2"/>
+<path d="M64.7853 81.8479L144.677 55.4617C151.965 53.055 159.823 57.0113 162.23 64.2984V64.2984C164.937 72.4963 160.486 81.337 152.288 84.0446L74.0455 109.886L64.7853 81.8479Z" fill="#1950A2"/>
+<rect x="125.348" y="61.8457" width="7.67721" height="11.2205" transform="rotate(-18.277 125.348 61.8457)" fill="#B61F1F"/>
+<rect x="97.3096" y="71.106" width="7.67721" height="11.2205" transform="rotate(-18.277 97.3096 71.106)" fill="#B61F1F"/>
+<rect x="111.329" y="66.4758" width="7.67721" height="11.2205" transform="rotate(-18.277 111.329 66.4758)" fill="#4C1E5C"/>
+<path d="M70.0355 83.8676C65.0101 80.3808 58.6509 78.8862 52.2555 79.6889C45.86 80.4915 39.9103 83.531 35.6204 88.187C31.3305 92.843 29.0238 98.7647 29.1708 104.744C29.3179 110.723 31.9077 116.308 36.4118 120.361L44.5648 112.483C42.1064 110.271 40.6929 107.222 40.6126 103.959C40.5324 100.695 41.7914 97.4631 44.1329 94.9218C46.4743 92.3806 49.7217 90.7216 53.2124 90.2835C56.7031 89.8454 60.174 90.6611 62.9169 92.5643L70.0355 83.8676Z" fill="#4C1E5C"/>
+<ellipse cx="55.6587" cy="106.941" rx="7.08666" ry="6.20083" transform="rotate(-18.277 55.6587 106.941)" fill="black"/>
+</svg>
     </div>`;
   }
 
@@ -1532,14 +1542,14 @@
     return null;
   }
 
-  function displayHammer(number) {
-    return `<div style="position: absolute; top: 160px; left: 341px;">
-                <svg width="84" height="265" viewBox="0 0 84 265" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="33" y="265" width="229" height="18" transform="rotate(-90 33 265)" fill="#5A4545"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V36H48H84C84 16.1177 67.8822 0 48 0Z" fill="#C6C2D2"/>
-                </svg>
-    </div>`;
-  }
+  // function displayHammer(number) {
+  //   return `<div style="position: absolute; top: 160px; left: 341px;">
+  //               <svg width="84" height="265" viewBox="0 0 84 265" fill="none" xmlns="http://www.w3.org/2000/svg">
+  //               <rect x="33" y="265" width="229" height="18" transform="rotate(-90 33 265)" fill="#5A4545"/>
+  //               <path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V36H48H84C84 16.1177 67.8822 0 48 0Z" fill="#C6C2D2"/>
+  //               </svg>
+  //   </div>`;
+  // }
 
   function cf7(number) {
     let numberStr = number.toString();
@@ -2033,14 +2043,14 @@
     let alienDiamond = cp6(blockNumber) ? displayAlienDiamond() : "";
     let yarn = cs5(blockNumber) ? displayYarn() : "";
     let laserPointer = cs6(blockNumber) ? displayLaserPointer() : "";
-    let trout = c9a9(blockNumber) ? displayTrout() : "";
-    let salmon = c99(blockNumber) ? displaySalmon() : "";
-    let alienFish = c999(blockNumber) ? displayAlienFish() : "";
-    let giantAlienFish = c9999(blockNumber) ? displayGiantAlienFish() : "";
+    let balloon = c9a9(blockNumber) ? displayBalloon() : "";
+    let hammer = c99(blockNumber) ? displayHammer() : "";
+    let pickaxe = c999(blockNumber) ? displayPickaxe() : "";
+    let gun = c9999(blockNumber) ? displayGun() : "";
     let bloodDrips = cf3(blockNumber) ? displayBloodDrips() : "";
     let browPiercing = cf4(blockNumber) ? displayBrowPiercing() : "";
     let halo = cf5(blockNumber) ? displayHalo() : "";
-    let hammer = cf6(blockNumber) ? displayHammer() : "";
+    // let hammer = cf6(blockNumber) ? displayHammer() : "";
     let vial = cf7(blockNumber) ? displayVial() : "";
     let staff = m11(blockNumber) ? displayStaff() : "";
     let shield = m888(blockNumber) ? displayShield() : "";
@@ -2080,15 +2090,15 @@
       crown +
       highVis +
       suit +
-      trout +
-      salmon +
-      alienFish +
-      giantAlienFish +
+      balloon +
+      hammer +
+      pickaxe +
+      gun +
       yarn +
       laserPointer +
       halo +
       bloodDrips +
-      hammer +
+      // hammer +
       vial +
       staff +
       browPiercing +
