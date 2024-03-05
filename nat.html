@@ -1034,7 +1034,7 @@
   function displayNecklace(number) {
     return `<div style="position: absolute; top: 322px; left: 144px;">
       <svg width="126" height="90" viewBox="0 0 290 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M285.443 4.85083C275.073 6.00299 266.078 19.4478 255.691 20.602C244.284 21.8695 233.306 33.6465 221.563 36.256C203.264 40.3225 188.427 47.4697 168.573 48.6042C156.479 49.2952 144.751 50.3543 132.306 50.3543C121.219 50.3543 105.47 46.2377 95.5533 40.7286C85.0385 34.887 73.651 32.9534 63.1758 27.9915C44.8621 19.3166 22.7775 18.1717 5.42139 6.60096" stroke="#ADA8A7" stroke-width="9" stroke-linecap="round"/>
+<path d="M285.443 4.85083C275.073 6.00299 266.078 19.4478 255.691 20.602C244.284 21.8695 233.306 33.6465 221.563 36.256C203.264 40.3225 188.427 47.4697 168.573 48.6042C156.479 49.2952 144.751 50.3543 132.306 50.3543C121.219 50.3543 105.47 46.2377 95.5533 40.7286C85.0385 34.887 73.651 32.9534 63.1758 27.9915C44.8621 19.3166 22.7775 18.1717 5.42139 6.60096" stroke="#5D514D" stroke-width="9" stroke-linecap="round"/>
 <ellipse cx="147" cy="70" rx="13" ry="20" fill="#B79232"/>
 </svg>
     </div>`;
@@ -1051,12 +1051,14 @@
     }
   }
 
-  function displayBowL(number) {
-    return `<div style="position: absolute; top: 138px; left: 302px;">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 36V0L18 18L0 36Z" fill="#FF94D4"/>
-        <path d="M36 9.43221e-07L36 36L18 18L36 9.43221e-07Z" fill="#FF94D4"/>
-        </svg>
+  function displayScarf(number) {
+    return `<div style="position: absolute; top: 275px; left: 145px;">
+      <svg width="145" height="150" viewBox="0 0 327 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 0L136.919 21.6593L283 0V50.3704L136.919 68L0 50.3704V0Z" fill="#671821"/>
+<path d="M138 51.1968L163.247 21.4352L326.622 143.803L262.344 153.762L138 51.1968Z" fill="#671821"/>
+<rect x="117" y="42.0896" width="50.1287" height="143.508" transform="rotate(-0.102369 117 42.0896)" fill="#671821"/>
+<path d="M192 42C192 61.8823 174.091 78 152 78C129.909 78 112 61.8823 112 42C112 22.1178 129.909 18.5 152 18.5C174.091 18.5 192 22.1178 192 42Z" fill="#490A12"/>
+</svg>
     </div>`;
   }
 
@@ -2013,7 +2015,7 @@
     let hoops = c1111(blockNumber) ? displayHoops() : "";
     let headphones = c11111(blockNumber) ? displayHeadphones() : "";
     let necklace = c8a8(blockNumber) ? displayNecklace() : "";
-    let bowL = c88(blockNumber) ? displayBowL() : "";
+    let scarf = c88(blockNumber) ? displayScarf() : "";
     let bowTail = c888(blockNumber) ? displayBowTail() : "";
     let highVis = c8888(blockNumber) ? displayHighVis() : "";
     let suit = c88888(blockNumber) ? displaySuit() : "";
@@ -2058,7 +2060,7 @@
       hoops +
       longHair +
       hoodie +
-      bowL +
+      scarf +
       necklace +
       bowTail +
       spikyHair +
