@@ -123,15 +123,7 @@
     generateHtmlBasedOnBlockNumber(blockNumber);
   }
 
-  function generateSvgForDigits(blockNumber, lookType) {
-    const originalString = blockNumber.toString();
-    const digits = originalString
-      .padStart(7, "0")
-      .split("")
-      .map(Number)
-      .reverse();
-    let svgs = [];
-
+  function displayEyes(originalString, digits, lookType) {
     //eyes
     if (originalString.length >= 0) {
       const eyeLidColor = () => {
@@ -217,25 +209,20 @@
         0: fiveEyes,
       };
 
-      svgs.push(
-        `${originalString.length >= 5 ? eyeType[digits[4]] : singleEye}`
-      );
+      return `${originalString.length >= 5 ? eyeType[digits[4]] : singleEye}`;
     }
+  }
 
-    //background
-    if (originalString.length >= 2) {
-      const colorForSecondDigit = colorMap2[digits[1]] || "transparent";
-      svgs.push(`
+  function displayBackground(digits, lookType) {
+    const colorForSecondDigit = colorMap2[digits[1]] || "transparent";
+    return `
         <div style="position: absolute; top: 0px; left: 0px; z-index:-1;">
             <svg width="425" height="425" viewBox="0 0 425 425" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="425" height="425" fill="${colorForSecondDigit}"/>
             </svg>
         </div>
 
-        `);
-    }
-
-    return svgs.join("");
+        `;
   }
 
   //nft type
@@ -252,14 +239,7 @@
     }
   }
 
-  function generateLookSvg(blockNumber, lookType) {
-    const originalString = blockNumber.toString();
-    const digits = originalString
-      .padStart(7, "0")
-      .split("")
-      .map(Number)
-      .reverse();
-
+  function generateLookSvg(digits, lookType) {
     const bodyColor = () => {
       if (lookType === "cyclops") {
         return "#206227";
@@ -286,7 +266,7 @@
 `;
 
     const ears = `
-  <div style="position: absolute; top: 136px; left: 46px; z-index:1;">
+  <div style="position: absolute; top: 136px; left: 46px; z-index:3;">
     <svg width="330" height="125" viewBox="0 0 775 125" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="83" y="51" width="85.6155" height="42.0018" transform="rotate(24.0638 83 51)" fill="${bodyColor()}"/>
       <path d="M35.815 89.5233C40.5183 92.4876 45.6723 94.6346 50.9829 95.8418C56.2934 97.0489 61.6564 97.2925 66.7657 96.5587C71.875 95.8249 76.6305 94.1281 80.7608 91.5651C84.891 89.002 88.315 85.623 90.8374 81.621C93.3597 77.6189 94.931 73.0722 95.4615 68.2403C95.9919 63.4085 95.4712 58.3863 93.9291 53.4603C92.3869 48.5343 89.8535 43.8011 86.4735 39.5309C83.0935 35.2607 78.9331 31.5372 74.2298 28.5729L55.0224 59.0481L35.815 89.5233Z" fill="${bodyColor()}"/>
@@ -344,7 +324,7 @@
   }
 
   function displayDiamond() {
-    return `<div style="position: absolute; top: 370px; left: 181.5px;">
+    return `<div style="position: absolute; top: 370px; left: 181.5px; z-index: 5;">
 <svg width="10" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.9389 0.393633L27.8526 12.8181L20.8858 28.325L7.00544 31.4075L0.0917893 18.983L7.05852 3.47607L20.9389 0.393633Z" fill="#00F0FF"/>
 </svg>
@@ -352,14 +332,7 @@
     </div>`;
   }
 
-  function displayMouth(blockNumber, bunnyTeeth) {
-    const originalString = blockNumber.toString();
-    const digits = originalString
-      .padStart(7, "0")
-      .split("")
-      .map(Number)
-      .reverse();
-
+  function displayMouth(originalString, digits, bunnyTeeth) {
     //mouth
     //mouth color
     const colorForSixthDigit =
@@ -368,6 +341,7 @@
     //tooth colour
     const colorForFourthDigit =
       originalString.length >= 4 ? colorMap2[digits[3]] : "#D9D9D9";
+
     return `
   <div style="position: absolute; top: 281px; left:146px; z-index-1">
     <svg width="150" height="75" viewBox="0 0 190 162" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -392,7 +366,7 @@
   }
 
   function displaycig(number) {
-    return `<div style="position: absolute; top: 226px; left: 251px;">
+    return `<div style="position: absolute; top: 226px; left: 251px; z-index: 5;">
         <svg width="72" height="92" viewBox="0 0 72 92" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="72" y="92" width="72" height="18" transform="rotate(-180 72 92)" fill="#FBFBFB"/>
             <rect x="72" y="56" width="18" height="56" transform="rotate(-180 72 56)" fill="#EEEEEE" fill-opacity="0.3"/>
@@ -501,7 +475,7 @@
 
   function displayEyeLash(eyeType) {
     const eyeLash = (top, left, width, height) => {
-      return `<div style="position: absolute; top: ${top}px; left: ${left}px; z-index:1;">
+      return `<div style="position: absolute; top: ${top}px; left: ${left}px; z-index:2;">
       <svg width="${width}" height="${height}" viewBox="0 0 141 76" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line x1="15.44" y1="2.42" x2="1.44" y2="50.42" stroke="black" stroke-width="3"/>
 <line x1="124.39" y1="1.43644" x2="139.39" y2="38.4364" stroke="black" stroke-width="3"/>
@@ -552,7 +526,7 @@
   }
 
   function displayMonocle(number) {
-    return `<div style="position: absolute; top: 185px; left: 129px; z-index:1;">
+    return `<div style="position: absolute; top: 185px; left: 129px; z-index:3;">
         <svg width="119" height="182" viewBox="0 0 119 182" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M59.143 30.6357C59.143 44.8939 71.2524 56.7714 86.5917 56.7714C101.931 56.7714 114.04 44.8939 114.04 30.6357C114.04 16.3775 101.931 4.5 86.5917 4.5C71.2524 4.5 59.143 16.3775 59.143 30.6357Z" fill="#A7C7CB" fill-opacity="0.65" stroke="#FFD700" stroke-width="9"/>
 <path d="M62.5208 47.7041C62.4007 48.7522 60.8817 49.7839 60.249 50.5679C58.8034 52.3591 57.8594 54.1545 57.0937 56.3201C55.6385 60.4359 55.4381 65.0428 54.3423 69.293C50.5789 83.8906 34.1222 90.2081 22.5373 97.9314C17.9728 100.974 14.3787 105.674 11.0774 109.925C5.62651 116.944 2.99997 125.975 2.99997 134.672C2.99997 149.448 2.99997 164.224 2.99997 179" stroke="#FFD700" stroke-width="5" stroke-linecap="round"/>
@@ -635,7 +609,7 @@
   }
 
   function displayStud(number) {
-    return `<div style="position: absolute; top: 196px; left: 352px;">
+    return `<div style="position: absolute; top: 196px; left: 352px; z-index: 4;">
       <svg width="14" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <ellipse cx="14" cy="12" rx="14" ry="12" fill="#FFD700"/>
 </svg>
@@ -654,7 +628,7 @@
   }
 
   function displayEarWound(number) {
-    return `<div style="position: absolute; top: 188.5px; left: 319px;">
+    return `<div style="position: absolute; top: 188.5px; left: 319px; z-index: 4;">
       <svg width="20" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0.5 10.5L10.5 6L23 0.5L21.7969 15.3333L30 19.3333L13.2031 16.3333L5 28.9999L8.125 11.6666L0.5 10.5Z" fill="black"/>
 </svg>
@@ -674,7 +648,7 @@
   }
 
   function displayHoops(number) {
-    return `<div style="position: absolute; top: 154px; left: 46px;">
+    return `<div style="position: absolute; top: 154px; left: 46px; z-index: 4;">
         
 <svg width="40" height="199" viewBox="0 0 75 199" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M71 99.5C71 126.622 66.85 150.997 60.2735 168.446C56.9798 177.186 53.1547 183.981 49.1103 188.52C45.0628 193.062 41.1309 195 37.5 195C33.8691 195 29.9372 193.062 25.8897 188.52C21.8453 183.981 18.0202 177.186 14.7265 168.446C8.15 150.997 4 126.622 4 99.5C4 72.3784 8.15 48.0032 14.7265 30.5536C18.0202 21.8143 21.8453 15.0192 25.8897 10.4803C29.9372 5.93794 33.8691 4 37.5 4C41.1309 4 45.0628 5.93794 49.1103 10.4803C53.1547 15.0192 56.9798 21.8143 60.2735 30.5536C66.85 48.0032 71 72.3784 71 99.5Z" stroke="#FFD700" stroke-width="8"/>
@@ -696,7 +670,7 @@
   }
 
   function displayHeadphones(number) {
-    return `<div style="position: absolute; top: 158px; left: 51px;">
+    return `<div style="position: absolute; top: 158px; left: 51px; z-index:4;">
       <svg width="320" height="103" viewBox="0 0 740 103" fill="none" xmlns="http://www.w3.org/2000/svg">
 <ellipse cx="710" cy="20.5" rx="30" ry="16.5" fill="#D9D9D9"/>
 <rect x="722.284" y="21" width="18" height="68" transform="rotate(15.5977 722.284 21)" fill="#D9D9D9"/>
@@ -718,7 +692,7 @@
   }
 
   function displayNecklace(number) {
-    return `<div style="position: absolute; top: 315px; left: 144px;">
+    return `<div style="position: absolute; top: 315px; left: 144px; z-index: 4;">
 <svg width="126" height="90" viewBox="0 0 290 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M285.021 5C274.652 6.15216 265.657 19.597 255.269 20.7512C243.862 22.0186 232.884 33.7957 221.142 36.4052C202.842 40.4717 188.005 47.6188 168.151 48.7533C156.058 49.4444 144.329 50.5035 131.885 50.5035C120.797 50.5035 105.048 46.3869 95.1319 40.8777C84.6171 35.0362 73.2296 33.1026 62.7544 28.1407C44.4408 19.4658 22.3562 18.3209 5 6.75013" stroke="#5D514D" stroke-width="9" stroke-linecap="round"/>
 <ellipse cx="97.7781" cy="64.4886" rx="13" ry="20" transform="rotate(22.9868 97.7781 64.4886)" fill="#B79232"/>
@@ -739,7 +713,7 @@
   }
 
   function displayScarf(number) {
-    return `<div style="position: absolute; top: 275px; left: 145px; z-index:1">
+    return `<div style="position: absolute; top: 275px; left: 145px; z-index:5">
       <svg width="145" height="150" viewBox="0 0 327 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 0L136.919 21.6593L283 0V50.3704L136.919 68L0 50.3704V0Z" fill="#671821"/>
 <path d="M138 51.1968L163.247 21.4352L326.622 143.803L262.344 153.762L138 51.1968Z" fill="#671821"/>
@@ -761,7 +735,7 @@
   }
 
   function displayTShirt(number) {
-    return `<div style="position: absolute; top: 324.5px; left: 71px;">
+    return `<div style="position: absolute; top: 324.5px; left: 71px; z-index: 3;">
 
       <svg width="270" height="100" viewBox="0 0 590 160" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M288.633 73.6353L581.237 189.332L1 189.332L288.633 73.6353Z" fill="#2874E5"/>
@@ -792,7 +766,7 @@
   }
 
   function displayHighVis(number) {
-    return `<div style="position: absolute; top: 337.7px; left: 47px;">
+    return `<div style="position: absolute; top: 337.7px; left: 47px; z-index: 3;">
 <svg width="320" height="87" viewBox="0 0 600 190" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M437.407 65.8494L351.5 195L592.184 195.406L437.407 65.8494Z" fill="#DFFF00"/>
 <path d="M161.5 67.5L274.5 195L0.845431 194.526L161.5 67.5Z" fill="#DFFF00"/>
@@ -816,7 +790,7 @@
   }
 
   function displaySuit(number) {
-    return `<div style="position: absolute; top: 325px; left: 57px;">
+    return `<div style="position: absolute; top: 325px; left: 57px; z-index: 3;">
 
 <svg width="300" height="100" viewBox="0 0 600 205" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M286.156 39.5L302.507 43.5L319.881 49L334.189 47.5L350.541 42L346.453 62L290.243 62L286.156 39.5Z" fill="#D9D9D9"/>
@@ -870,7 +844,7 @@
   }
 
   function displayBalloon(number) {
-    return `<div style="position: absolute; top: 223px; left: 278px; z-index: 1;">              
+    return `<div style="position: absolute; top: 223px; left: 302px; z-index: 6;">              
 <svg width="97" height="202" viewBox="0 0 97 190" fill="none" xmlns="http://www.w3.org/2000/svg">
 <ellipse cx="48.6159" cy="48.2961" rx="35.3878" ry="45.0887" transform="rotate(4.99072 48.6159 48.2961)" fill="#A31818"/>
 <path d="M45.2955 93.2664C45.082 94.7168 44.3114 95.8964 43.7116 97.22C42.2068 100.541 41.9713 103.976 41.6587 107.556C41.1609 113.257 41.4884 116.303 44.8098 121.119C49.655 128.145 56.6132 132.607 64.1314 136.446C67.643 138.239 71.4545 139.87 74.0488 142.944C82.0003 152.365 85.32 159.083 81.1128 170.972C78.905 177.211 72.4432 181.18 67.6929 185.332C63.5855 188.922 61.914 195.22 59.0853 199.804" stroke="black" stroke-width="2" stroke-linecap="round"/>
@@ -890,7 +864,7 @@
   }
 
   function displayHammer(number) {
-    return `<div style="position: absolute; top: 274px; left: 273px;">
+    return `<div style="position: absolute; top: 274px; left: 273px; z-index: 6;">
       <svg width="140" height="150" viewBox="0 0 294 170" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="197.802" y="38.8684" width="26.7313" height="290.784" transform="rotate(26.2311 197.802 38.8684)" fill="#57504A"/>
 <rect x="131.681" y="0.473633" width="48.2467" height="63.8943" transform="rotate(26.2311 131.681 0.473633)" fill="#D9D9D9"/>
@@ -913,7 +887,7 @@
   }
 
   function displayPickaxe(number) {
-    return `<div style="position: absolute; top: 275px; left: 263px;">
+    return `<div style="position: absolute; top: 275px; left: 263px; z-index: 6;">
       <svg width="160" height="150" viewBox="0 0 400 270" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="274.643" y="65.7522" width="29.5691" height="321.654" transform="rotate(28.3886 274.643 65.7522)" fill="#A1662F"/>
 <path d="M379.481 210.387C379.994 189.597 370.555 166.038 352.588 143.268C334.622 120.498 309.105 99.754 279.891 84.1689C250.677 68.5838 219.353 59.0042 190.65 56.8769C161.947 54.7497 137.423 60.1903 120.784 72.3771L167.213 108.109C177.305 100.717 192.18 97.4171 209.59 98.7074C227 99.9977 245.999 105.808 263.719 115.261C281.439 124.714 296.916 137.297 307.813 151.108C318.71 164.919 324.436 179.208 324.125 191.819L379.481 210.387Z" fill="#6FE4FF"/>
@@ -928,7 +902,7 @@
   }
 
   function displayGun(number) {
-    return `<div style="position: absolute; top: 223px; left: 285px;">
+    return `<div style="position: absolute; top: 223px; left: 285px; z-index: 6;">
       <svg width="150" height="202" viewBox="0 0 259 1" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect x="5.54016" y="87.0076" width="10.4078" height="23.8685" transform="rotate(-52.1971 5.54016 87.0076)" fill="#969292"/>
 <rect x="21.8126" y="69.2476" width="10.4078" height="24.3572" transform="rotate(-41.4583 21.8126 69.2476)" fill="#969292"/>
@@ -967,7 +941,7 @@
   function displaySmoke(number) {
     return `<div style="position: absolute; top: 80px;
     left: 3px;
-    z-index: 2;">
+    z-index: 4;">
             
       <svg width="420" height="191" viewBox="0 0 1148 191" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M211.851 99.5844L195.389 94.4755L197.037 78.4999L184.5 72.4999V61.4999L162 58L180 32.2279L162 28L157.5 19.2279L147 24.5L136.5 12L125 21.7721L113.5 4L106 16.5L83.5 7.5L71.5 13L55.1797 7.5V22L38.1502 28L55.1797 47L60.2886 76.3107L38.1502 70.6342L45.0603 90.7738L38.1502 108.667L15.4442 113.492L0 118.317L23.3913 125.788V145.655L55.1797 148.97L65.9651 158.144L62.5592 175.649L93.7799 165.432L117.621 173.947L125.568 167.135L161.321 170.423L178.928 175.082L191.716 183.531L203.336 180.758L219.629 190.5L232.287 182.461L240.811 190.268L252.037 182.87L251.597 169.434L235.693 156.349L237.395 148.402L223.204 133.076L225.475 118.317L211.851 99.5844Z" fill="#D9D9D9"/>
@@ -990,14 +964,7 @@
   }
 
   // Determine the range for laser eyes based on the digit 5 value
-  function getLaserEyeRange(blockNumber) {
-    const originalString = blockNumber.toString();
-    const digits = originalString
-      .padStart(7, "0")
-      .split("")
-      .map(Number)
-      .reverse();
-
+  function getLaserEyeRange(digits) {
     const eyeType = {
       1: "single_eye",
       2: "single_eye",
@@ -1011,65 +978,58 @@
       0: "five_eyes",
     };
 
-    return originalString.length >= 5 ? eyeType[digits[4]] : "single_eye";
+    return eyeType[digits[4]];
   }
 
   // Function to generate SVG for laser eyes based on direction
-  function displayLaserEyes(blockNumber, eyeType) {
-    const originalString = blockNumber.toString();
-    const digits = originalString
-      .padStart(7, "0")
-      .split("")
-      .map(Number)
-      .reverse();
-
+  function displayLaserEyes(digits, eyeType) {
     const colorForFirstDigit = colorMap[digits[0]];
 
     if (eyeType === "four_eyes") {
       return `
-      <div style="position: absolute; top: 159px; left: 264px; z-index: 2; transform: rotate(127deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 216px;"></div>
-<div style="position: absolute; top: 163px; left: 326px; z-index: 2; transform: rotate(126deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 185px;"></div>
-<div style="position: absolute; top: 167px; left: 315px; z-index: 2; transform: rotate(126deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 250px;"></div>
-<div style="position: absolute; top: 131px; left: 312px; z-index: 2; transform: rotate(128deg); background: linear-gradient(to top, ${colorForFirstDigit}, #06CDDA, #03F0FF); width: 7px; height: 250px;"></div>
+      <div style="position: absolute; top: 159px; left: 264px; z-index: 10; transform: rotate(127deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 216px;"></div>
+<div style="position: absolute; top: 163px; left: 326px; z-index: 10; transform: rotate(126deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 185px;"></div>
+<div style="position: absolute; top: 167px; left: 315px; z-index: 10; transform: rotate(126deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 250px;"></div>
+<div style="position: absolute; top: 131px; left: 312px; z-index: 10; transform: rotate(128deg); background: linear-gradient(to top, ${colorForFirstDigit}, #06CDDA, #03F0FF); width: 7px; height: 250px;"></div>
 `;
     } else if (eyeType === "five_eyes") {
       return `
       <div style="    position: absolute;
-    top: 155px;
+    top: 153px;
     left: 340px;
-    z-index: 2;
+    z-index: 10;
     transform: rotate(127deg);
     background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
-    width: 5px;
+    width: 4px;
     height: 216px;"></div>
 
       <div style="    position: absolute;
     top: 171px;
     left: 221px;
-    z-index: 2;
+    z-index: 10;
     transform: rotate(127deg);
     background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
-    width: 5px;
+    width: 4px;
     height: 216px;"></div>
 
 <div style="    position: absolute;
     top: 171px;
     left: 375px;
-    z-index: 2;
+    z-index: 10;
     transform: rotate(127deg);
     background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
-    width: 5px;
+    width: 4px;
     height: 216px;"></div>
 
-<div style="position: absolute; top: 172px; left: 312px; z-index: 2; transform: rotate(128deg); background: linear-gradient(to top, ${colorForFirstDigit}, #06CDDA, #03F0FF); width: 7px; height: 250px;"></div>
+<div style="position: absolute; top: 172px; left: 312px; z-index: 10; transform: rotate(128deg); background: linear-gradient(to top, ${colorForFirstDigit}, #06CDDA, #03F0FF); width: 4px; height: 250px;"></div>
 
-<div style="      position: absolute;
-    top: 158px;
-    left: 256px;
-    z-index: 2;
+<div style="  position: absolute;
+    top: 156px;
+    left: 254px;
+    z-index: 10;
     transform: rotate(128deg);
-    background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
-    width: 5px;
+    background: linear-gradient(to top, #FDF64D, red, red);
+    width: 4px;
     height: 216px;"></div>
 `;
     } else {
@@ -1077,7 +1037,7 @@
   <div style="position: absolute;
     top: 182px;
     left: 300px;
-    z-index: 2;
+    z-index: 10;
     transform: rotate(135deg);
     background: linear-gradient(to top, ${colorForFirstDigit}, red, red);;
     width: 7px;
@@ -1105,7 +1065,7 @@
   }
 
   function displaySonicScrewdriver(number) {
-    return `<div style="position: absolute; top: 283px; left: 232px;">
+    return `<div style="position: absolute; top: 283px; left: 232px; z-index: 5;">
 <svg width="190" height="45" viewBox="0 0 190 45" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M97.5132 25.5078C97.5132 31.0307 93.036 35.5078 87.5132 35.5078L13.0687 35.5078V11.0674L87.5132 11.0674C93.036 11.0674 97.5132 15.5446 97.5132 21.0674V25.5078Z" fill="url(#paint0_linear_61_1765)"/>
 <rect x="127.672" y="29.9739" width="30.1587" height="12.9119" transform="rotate(-180 127.672 29.9739)" fill="#ADADAD"/>
@@ -1196,7 +1156,7 @@
   }
 
   function displayAbduction(number) {
-    return `<div style="position: absolute; top: -310px; left: 65px;">
+    return `<div style="position: absolute; top: -310px; left: 65px; z-index:9;">
       <svg width="300" height="500" viewBox="0 0 668 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M183 0H444L668 805H0L183 0Z" fill="url(#paint0_linear_61_1754)" fill-opacity="0.2"/>
 <defs>
@@ -1314,7 +1274,7 @@
   }
 
   function displayTired(number) {
-    return `<div style="position: absolute; top: 233px; left: 245px;">
+    return `<div style="position: absolute; top: 233px; left: 245px; z-index:9;">
       <svg width="45" height="117" viewBox="0 0 95 117" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.5942 105V100.49L27.9465 83.9595V83.7642H15.0558V77.7273H37.0551V82.6456L24.5196 98.7678V98.9631H37.5168V105H14.5942Z" fill="black"/>
 <path d="M39.5942 87V82.4901L52.9465 65.9595V65.7642H40.0558V59.7273H62.0551V64.6456L49.5196 80.7678V80.9631H62.5168V87H39.5942Z" fill="black"/>
@@ -1403,8 +1363,8 @@
   }
 
   function displayLongHair(number) {
-    return `<div style="position: absolute; top: 18px; left: 57px;">
-<svg width="300" height="415" viewBox="0 0 593 415" fill="none" xmlns="http://www.w3.org/2000/svg">
+    return `<div style="position: absolute; top: 66px; left: 57px;">
+<svg width="300" height="215" viewBox="0 0 593 215" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M43.1727 45.9672C44.578 35.4196 52.2687 26.7928 62.5865 24.1906L155.37 0.789474C157.449 0.265172 159.584 0 161.728 0H295L446.932 13.812C448.308 13.9371 449.673 14.1718 451.012 14.5139L546.619 38.933C557.328 41.6682 565.137 50.8749 566.088 61.8866L592.671 369.613C593.49 379.097 589.06 388.271 581.123 393.528L555.918 410.22C539.259 421.252 516.9 410.153 515.615 390.214L500.168 150.368C499.739 143.712 496.769 137.475 491.871 132.947L419.444 65.9949C415.573 62.4163 410.706 60.0991 405.487 59.3505L297.882 43.9134C295.967 43.6387 294.027 43.5786 292.098 43.7342L191.926 51.8198C186.45 52.2619 181.254 54.4275 177.085 58.0059L128.185 99.975C122.945 104.473 119.709 110.87 119.192 117.756L99.3849 381.271C98.1526 397.666 82.2028 408.815 66.3821 404.34L19.6706 391.129C7.23219 387.611 -0.732847 375.49 0.974369 362.677L43.1727 45.9672Z" fill="#F3E45E"/>
 </svg>
     </div>`;
@@ -1415,22 +1375,18 @@
   }
 
   function displayHoodie(number) {
-    return `<div style="position: absolute; top: 105px; left: 8px;">               
+    return `<div style="position: absolute; top: 105px; left: 11.5px; z-index: 2;">               
 <svg width="400" height="320" viewBox="0 0 600 710" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M289.135 598.278L581 713.3L0.500001 713.5L289.135 598.278Z" fill="#272424"/>
-<path d="M141.931 529.567L297.897 595.085L444.612 529.567L444.612 648.321L141.931 648.321L141.931 529.567Z" fill="#272424"/>
-<path d="M444.5 597L346.971 694.063L581.1 713.3L444.5 597Z" fill="#272424"/>
-<path d="M142 593L205.137 700.602L0.49999 713.5L142 593Z" fill="#272424"/>
-<rect width="168.17" height="6.83203" transform="matrix(0.922766 0.385361 -0.485273 0.874363 145.247 524)" fill="#272424"/>
-<path d="M442.171 526.4L293.806 589.871L297.55 595.438L445.486 532.374L442.171 526.4Z" fill="#272424"/>
-<path d="M65.8243 34.5L127.827 124.5L98.562 527L65.8243 532L61 487V465.5V418.5V372.5V282V193.5L60.5 105L65.8243 34.5Z" fill="#272424"/>
-<path d="M578.219 34L512.247 123.5L541.513 526L576.731 522.5L578.219 470.5V396V34Z" fill="#272424"/>
-<path d="M61 34C62.9155 14.7023 79.1493 0 98.5418 0H539.518C562.065 0 579.653 19.5193 577.313 41.9448L571.345 99.1231C569.083 120.795 549.098 136.13 527.579 132.706L319.995 99.6793C315.715 98.9982 311.349 99.0545 307.088 99.8458L104.471 137.465C80.7642 141.866 59.0053 123.361 59.5434 99.2553L61 34V34Z" fill="#272424"/>
+<path d="M151.75 527L297.714 591.657L431.44 527L431.44 589.5L430.739 651.6L151.75 649.098L151.75 527Z" fill="#272424"/>
+<path d="M431 585.5L346.971 694.063L581.1 713.3L431 585.5Z" fill="#272424"/>
+<path d="M152 584.5L205.137 700.602L0.499999 713.5L152 584.5Z" fill="#272424"/>
+<path d="M64.5 21.5L114.5 134L89 487.041L107 528.5L89 525.5L73 522.5L63.5 519.508L53.5 515L49 512.5L44.5 509L42.5 505.5L41.6461 501.528V487.041V465.562V418.61V372.657V282.249V193.839L41 105.428L44 63L44.5 59L45.5 55L47 50L52 39L57.5 31L61.5 25.5L64.5 21.5Z" fill="#272424"/>
+<path d="M578.219 34L512.247 123.5L541 525.5L548 523L555 519.5L560.5 515.5L564.5 511.5L571 503L575 494.5L576 492L577 488L577.5 483L578 480L578.219 470.5V396V34Z" fill="#272424"/>
+<path d="M61 34C62.9155 14.7023 79.1493 0 98.5418 0H539.518C562.065 0 579.653 19.5193 577.313 41.9448L571.345 99.1231C569.083 120.795 549.098 136.13 527.579 132.706L319.995 99.6793C315.715 98.9982 311.349 99.0545 307.088 99.8458L104.471 137.465C80.7642 141.866 59.0053 123.361 59.5434 99.2553L61 34Z" fill="#272424"/>
 <rect x="264.234" y="79" width="111.11" height="26" fill="#272424"/>
-<path d="M423.955 529L568.735 488.827L577.038 522.811L433.249 558.505L423.955 529Z" fill="#272424"/>
-<path d="M218.104 547L77.3826 498L66.8164 531.34L207.878 576.765L218.104 547Z" fill="#272424"/>
-<path d="M283.235 570.199L440.324 524.5L449.006 554.716L292.138 600.915L283.235 570.199Z" fill="#272424"/>
-<rect width="127.248" height="31.9801" transform="matrix(-0.959264 -0.282512 -0.278388 0.960469 319.806 576.949)" fill="#272424"/>
+<path d="M297.231 557.919L135.835 499.5L82 473.5L87 522L297.231 591.009L297.231 557.919Z" fill="#272424"/>
+<path d="M295 557L426.5 519.5L543 474L543 525L295 593L295 557Z" fill="#272424"/>
 </svg>
     </div>`;
   }
@@ -1470,7 +1426,7 @@
   }
 
   function displayTongue(number) {
-    return `<div style="position: absolute; top: 240px; left: 202px;">
+    return `<div style="position: absolute; top: 240px; left: 202px; z-index: 4;">
       <svg width="100" height="150" viewBox="0 0 192 110" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 62L60 58.5L191.023 139.326L113.854 135.02L120.408 199.845L0 62Z" fill="#E40000"/>
 <line x1="111.657" y1="133.364" x2="41.657" y2="67.3638" stroke="black"/>
@@ -1483,7 +1439,7 @@
   }
 
   function displayShield(number) {
-    return `<div style="position: absolute; top: 274px; left: 8px;">
+    return `<div style="position: absolute; top: 274px; left: 8px; z-index: 6;">
        
 <svg width="175" height="150" viewBox="0 0 233 205" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="118.69" height="115.679" transform="matrix(0.829823 0.558027 -0.530394 0.847751 96.8952 24.9885)" fill="#A1662F"/>
@@ -1545,9 +1501,17 @@
 
   //fixed elements
   function generateHtmlBasedOnBlockNumber(blockNumber) {
+    const originalString = blockNumber.toString();
+    const digits = originalString
+      .padStart(7, "0")
+      .split("")
+      .map(Number)
+      .reverse();
+
     const lookType = getLook(blockNumber);
-    const lookHtml = generateLookSvg(blockNumber, lookType);
-    const eyeType = getLaserEyeRange(blockNumber);
+    const lookHtml = generateLookSvg(digits, lookType);
+    const eyeType =
+      originalString.length >= 5 ? getLaserEyeRange(digits) : "single_eye";
     let diamond = c420(blockNumber) ? displayDiamond() : "";
     let cig = c4a0(blockNumber) ? displaycig() : "";
     let squint = c0(blockNumber) ? displaySquint(lookType, eyeType) : "";
@@ -1578,19 +1542,19 @@
     let tired = cf7(blockNumber) ? displayTired() : "";
     let tongue = m11(blockNumber) ? displayTongue() : "";
     let shield = m888(blockNumber) ? displayShield() : "";
-    let nightVision = ce7(blockNumber) ? displayLipsVision() : "";
+    let lips = ce7(blockNumber) ? displayLipsVision() : "";
     let spikyHair = m12(blockNumber) ? displaySpikyHair() : "";
     let bunnyTeeth = m13(blockNumber) ? displayBunnyTeeth() : "";
     let buildersHat = m14(blockNumber) ? displayBuildersHat() : "";
     let longHair = m15(blockNumber) ? displayLongHair() : "";
     let hoodie = m16(blockNumber) ? displayHoodie() : "";
     let wifHat = m69(blockNumber) ? displayWifHat() : "";
-    let mouth = displayMouth(blockNumber, bunnyTeeth);
+    let mouth = displayMouth(originalString, digits, bunnyTeeth);
     const containsSquare = containsFourDigitSquare(blockNumber);
-    const laserEyes = containsSquare
-      ? displayLaserEyes(blockNumber, eyeType)
-      : "";
-    const svgsForDigits = generateSvgForDigits(blockNumber, lookType);
+    const laserEyes = containsSquare ? displayLaserEyes(digits, eyeType) : "";
+    const eyes = displayEyes(originalString, digits, lookType);
+    const background =
+      originalString.length >= 2 ? displayBackground(digits, lookType) : "";
 
     //construction
     const htmlContent =
@@ -1598,9 +1562,10 @@
       eyeLash +
       tash +
       monocle +
-      nightVision +
+      lips +
       lookHtml +
-      svgsForDigits +
+      eyes +
+      background +
       cig +
       diamond +
       stud +
