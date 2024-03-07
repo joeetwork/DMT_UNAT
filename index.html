@@ -1,9 +1,9 @@
-<div id="natcatviewer" width="256" height="256"></div>
+<div id="monstoorzviewer" width="256" height="256"></div>
 <input id="blk" type="number" style="display: none" />
 
 <script id="preview" mint="MINT_INSCRIPTION_ID">
   // Retrieve render area
-  const root = document.getElementById("natcatviewer");
+  const root = document.getElementById("monstoorzviewer");
   root.parentElement.style.width = "100%";
   root.parentElement.style.height = "100%";
   root.parentElement.style.padding = "0px";
@@ -1027,51 +1027,61 @@
 
     if (eyeType === "four_eyes") {
       return `
-      <div>
-  <div style="position: absolute; top: 174px; left: 212px; z-index: 2;">
-    <svg width="165" height="141" viewBox="0 0 165 141" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="3.59629" y1="3.90358" x2="161.518" y2="137.41" stroke="${colorForFirstDigit}" stroke-width="7.5"/>
-    </svg>
-  </div>
-
-  <div style="position: absolute; top: 197px; left: 177px; z-index: 2;">
-    <svg width="145" height="130" viewBox="0 0 145 130" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="2.57021" y1="3.04005" x2="142.31" y2="127.196" stroke="${colorForFirstDigit}" stroke-width="6.23377"/>
-    </svg>
-  </div>
-
-  <div style="position: absolute; top: 216px; left: 214px; z-index: 2;">
-    <svg width="126" height="108" viewBox="0 0 126 108" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2.29224 2.43506L123.851 105.292" stroke="${colorForFirstDigit}" stroke-width="6.23377"/>
-    </svg>
-  </div>
-
-  <div style="position: absolute; top: 197px; left: 253px; z-index: 2;">
-    <svg width="106" height="93" viewBox="0 0 106 93" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="2.5145" y1="3.00275" x2="103.813" y2="89.756" stroke="${colorForFirstDigit}" stroke-width="6.23377"/>
-    </svg>
-  </div>
-</div>
+      <div style="position: absolute; top: 159px; left: 264px; z-index: 2; transform: rotate(127deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 216px;"></div>
+<div style="position: absolute; top: 163px; left: 326px; z-index: 2; transform: rotate(126deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 185px;"></div>
+<div style="position: absolute; top: 167px; left: 315px; z-index: 2; transform: rotate(126deg); background: linear-gradient(to top, ${colorForFirstDigit}, red, red); width: 7px; height: 250px;"></div>
+<div style="position: absolute; top: 131px; left: 312px; z-index: 2; transform: rotate(128deg); background: linear-gradient(to top, ${colorForFirstDigit}, #06CDDA, #03F0FF); width: 7px; height: 250px;"></div>
 `;
     } else if (eyeType === "five_eyes") {
       return `
-  <div style="position: absolute; top: 125px; left: 133px; z-index:2;">
-    <svg width="260" height="300" viewBox="0 0 606 378" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="189.172" y1="62.132" x2="586.172" y2="370.132" stroke="${colorForFirstDigit}" stroke-width="16"/>
-      <line x1="288.091" y1="4.61137" x2="546.694" y2="245.702" stroke="${colorForFirstDigit}" stroke-width="12"/>
-      <line x1="87.0243" y1="8.54974" x2="390.024" y2="282.55" stroke="${colorForFirstDigit}" stroke-width="12"/>
-      <line x1="3.96144" y1="46.4937" x2="309.961" y2="313.494" stroke="${colorForFirstDigit}" stroke-width="12"/>
-      <line x1="363.167" y1="44.6574" x2="601.532" y2="250.722" stroke="${colorForFirstDigit}" stroke-width="12"/>
-    </svg>
-  </div>
+      <div style="    position: absolute;
+    top: 155px;
+    left: 340px;
+    z-index: 2;
+    transform: rotate(127deg);
+    background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
+    width: 5px;
+    height: 216px;"></div>
+
+      <div style="    position: absolute;
+    top: 171px;
+    left: 221px;
+    z-index: 2;
+    transform: rotate(127deg);
+    background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
+    width: 5px;
+    height: 216px;"></div>
+
+<div style="    position: absolute;
+    top: 171px;
+    left: 375px;
+    z-index: 2;
+    transform: rotate(127deg);
+    background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
+    width: 5px;
+    height: 216px;"></div>
+
+<div style="position: absolute; top: 172px; left: 312px; z-index: 2; transform: rotate(128deg); background: linear-gradient(to top, ${colorForFirstDigit}, #06CDDA, #03F0FF); width: 7px; height: 250px;"></div>
+
+<div style="      position: absolute;
+    top: 158px;
+    left: 256px;
+    z-index: 2;
+    transform: rotate(128deg);
+    background: linear-gradient(to top, ${colorForFirstDigit}, red, red);
+    width: 5px;
+    height: 216px;"></div>
 `;
     } else {
       return `
-  <div style="position: absolute; top: 65px; left: 215px; z-index:2;">
-    <svg width="200" height="325" viewBox="0 0 454 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="5.71717" y1="8.79549" x2="447.717" y2="316.796" stroke="${colorForFirstDigit}" stroke-width="20"/>
-    </svg>
-  </div>
+  <div style="position: absolute;
+    top: 182px;
+    left: 300px;
+    z-index: 2;
+    transform: rotate(135deg);
+    background: linear-gradient(to top, ${colorForFirstDigit}, red, red);;
+    width: 7px;
+    height: 250px;"> </div>
 `;
     }
   }
@@ -1624,6 +1634,6 @@
       bloodShot +
       headphones +
       laserEyes;
-    document.getElementById("natcatviewer").innerHTML = htmlContent;
+    document.getElementById("monstoorzviewer").innerHTML = htmlContent;
   }
 </script>
