@@ -362,6 +362,11 @@
 
   function c4a0(number) {
     const numberStr = number.toString();
+
+    if (numberStr.includes("420")) {
+      return false;
+    }
+
     return numberStr.includes("4") && numberStr.includes("0");
   }
 
@@ -1515,14 +1520,14 @@
     let sonicScrewdriver = c420(blockNumber) ? displaySonicScrewdriver() : "";
     let cig = c4a0(blockNumber) ? displaycig() : "";
     let spikyHair = c0(blockNumber) ? displaySpikyHair() : "";
-    let buildersHat = c00(blockNumber) ? displayBuildersHat() : "";
-    let longHair = c000(blockNumber) ? displayLongHair() : "";
-    let wifHat = c0000(blockNumber) ? displayWifHat() : "";
-    let hoodie = c00000(blockNumber) ? displayHoodie() : "";
+    let longHair = c00(blockNumber) ? displayLongHair() : "";
+    let buildersHat = c000(blockNumber) ? displayBuildersHat() : "";
+    let hoodie = c0000(blockNumber) ? displayHoodie() : "";
+    let wifHat = c00000(blockNumber) ? displayWifHat() : "";
     let stud = c11(blockNumber) ? displayStud() : "";
-    let smoke = c111(blockNumber) ? displaySmoke() : "";
-    let hoops = c1111(blockNumber) ? displayHoops() : "";
-    let headphones = c11111(blockNumber) ? displayHeadphones() : "";
+    let hoops = c111(blockNumber) ? displayHoops() : "";
+    let headphones = c1111(blockNumber) ? displayHeadphones() : "";
+    let smoke = c11111(blockNumber) ? displaySmoke() : "";
     let necklace = c8a8(blockNumber) ? displayNecklace() : "";
     let scarf = c88(blockNumber) ? displayScarf() : "";
     let tShirt = c888(blockNumber) ? displayTShirt() : "";
